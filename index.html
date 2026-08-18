@@ -160,6 +160,18 @@
             background: #000;
         }
 
+        #inicio::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 55%;
+            background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.65));
+            pointer-events: none;
+            z-index: 5;
+        }
+
         .slide {
             position: absolute;
             top: 0;
@@ -481,6 +493,19 @@
             background: #fafafa;
         }
 
+        .award-group-title {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #999;
+            margin-top: 50px;
+            margin-bottom: 5px;
+        }
+
+        .award-group-title:first-child {
+            margin-top: 0;
+        }
+
         .award-item {
             display: flex;
             padding: 20px 0;
@@ -693,6 +718,12 @@
             <div class="slide-caption">
                 <h2>Reserva de Madrid</h2>
                 <p>Cundinamarca | Planificación Urbana</p>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1R_7LMvU5PJ5RZlPqru2XULrX_ux9Jhbh');">
+            <div class="slide-caption">
+                <h2>La Loma</h2>
+                <p>Barranquilla | Planificación Urbana</p>
             </div>
         </div>
         <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1Z09EHXftflumz9T4RV2bSBrgwCRADAj2');">
@@ -934,7 +965,7 @@
                         Milenio, proyecto que también obtuvo el segundo puesto en la Bienal Latinoamericana de
                         Arquitectura de Quito.</p>
                     <div style="margin-top: 40px;">
-                        <a href="#" class="btn-outline">Descargar Curriculum Vitae</a>
+                        <a href="https://drive.google.com/file/d/1dud6l41eXRlnYwrOGreoVIR6iXAyE3E5/view" target="_blank" class="btn-outline">Descargar Curriculum Vitae</a>
                         <a href="https://drive.google.com/file/d/11DH9423dnE7fjUZjcwXpdrW6YinmkX1f/view" target="_blank" class="btn-outline">Descargar Portafolio</a>
                     </div>
                 </div>
@@ -943,20 +974,20 @@
                 <h3 style="font-size: 0.9rem; color: #999; text-transform: uppercase; letter-spacing: 2px; text-align: center;">
                     Nuestros Clientes</h3>
                 <div class="clients-grid">
-                    <div class="client-logo"><img src="https://i.imgur.com/X9B46xQ.jpeg" alt="Cliente"></div>
-                    <div class="client-logo"><img src="https://i.imgur.com/5kMdmco.jpeg" alt="Cliente"></div>
-                    <div class="client-logo"><img src="https://i.imgur.com/7LZAJ0w.jpeg" alt="Cliente"></div>
-                    <div class="client-logo"><img src="https://i.imgur.com/YZ1hrXJ.jpeg" alt="Cliente"></div>
-                    <div class="client-logo"><img src="https://i.imgur.com/kssqyM4.jpeg" alt="Cliente"></div>
-                    <div class="client-logo"><img src="https://i.imgur.com/BKk8aCL.jpeg" alt="Cliente"></div>
-                    <div class="client-logo"><img src="https://i.imgur.com/BSSkqPw.jpeg" alt="Cliente"></div>
-                    <div class="client-logo"><img src="https://i.imgur.com/YKYfwsd.jpeg" alt="Cliente"></div>
-                    <div class="client-logo"><img src="https://i.imgur.com/0LXx0Vx.jpeg" alt="Cliente"></div>
-                    <div class="client-logo"><img src="https://i.imgur.com/FitDo48.jpeg" alt="Cliente"></div>
-                    <div class="client-logo"><img src="https://i.imgur.com/7owJ1Mi.jpeg" alt="Cliente"></div>
-                    <div class="client-logo"><img src="https://i.imgur.com/bbHu1ot.jpeg" alt="Cliente"></div>
-                    <div class="client-logo"><img src="https://i.imgur.com/n2Id76O.jpeg" alt="Cliente"></div>
+                    <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1kocRnjnhFurbdzkyY3EGA8hK9X0wtgPl" alt="Amarilo"></div>
+                    <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1qeEsoNdFwkdYHJWRHBLhE_Fpxy-bYOeb" alt="Prodesa"></div>
                     <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1gQkpihMefEC03v6qf-MoimSr4b1vgF1G" alt="Ingetec"></div>
+                    <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1vt1cMLYHOdV5-fW3Ff8DM_xnY8qkf33R" alt="Cusezar"></div>
+                    <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1kqIHnjE2U0ZdEfwDLrxeFBt9yRxmngf9" alt="Camacol"></div>
+                    <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1ARF6q1_WofSrHnHWywv5Ht9oXTLsy_hA" alt="Colsubsidio"></div>
+                    <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1nqHqLyZpXWxYIqBf_uO0hj6Q-JIrGpf9" alt="Ospinas"></div>
+                    <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/190iHCIdw36vpOo_zJ_ST7mKYw4MnDHiF" alt="Constructora Colpatria"></div>
+                    <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1YuCm1A2LkS9qbI3aG-AsKY-nYdZ6QmGP" alt="Renobo"></div>
+                    <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1knKPi-GtAbtO99Za2GCY01S-B4emV_XL" alt="qbo"></div>
+                    <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1osdks6JmJCA_p10X_Ok7E5ay-F7X48Z0" alt="Probogotá"></div>
+                    <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1RcXMBZC3bhtiVtk9_nVTIOiOPzupAoNl" alt="Apiros"></div>
+                    <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1Pf3XRyI069K0vrxrOk4Fed4GDazohxJx" alt="Planificadas"></div>
+                    <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1AiZlnR24E2jT2D5biYiNUdQuZ833mcua" alt="Universidad de los Andes"></div>
                 </div>
             </div>
             <div class="apuntes-section">
@@ -983,11 +1014,23 @@
                         <p class="apunte-caption">Londres</p>
                     </div>
                     <div class="apunte-item">
+                        <img src="https://lh3.googleusercontent.com/d/1tUS1T3zdWP2X1pYrxyLeI2rCVlkFumUg" alt="Cartagena" loading="lazy">
+                        <p class="apunte-caption">Cartagena</p>
+                    </div>
+                    <div class="apunte-item">
+                        <img src="https://lh3.googleusercontent.com/d/1-tv9bJ95zMfeuqeyS3oWU4_B1K_IK0_a" alt="Cartagena" loading="lazy">
+                        <p class="apunte-caption">Cartagena</p>
+                    </div>
+                    <div class="apunte-item">
                         <img src="https://lh3.googleusercontent.com/d/1_R24bdbOlCTs6CXy6QdKpG-Z6dVNUzwy" alt="Cartagena" loading="lazy">
                         <p class="apunte-caption">Cartagena</p>
                     </div>
                     <div class="apunte-item">
                         <img src="https://lh3.googleusercontent.com/d/16OFSICz6G-0xmE8YDKOLI_rVBLbe_e4f" alt="Cartagena" loading="lazy">
+                        <p class="apunte-caption">Cartagena</p>
+                    </div>
+                    <div class="apunte-item">
+                        <img src="https://lh3.googleusercontent.com/d/1dUmFoUFTgSfch9BkDHAXJb3M7ODugVre" alt="Cartagena" loading="lazy">
                         <p class="apunte-caption">Cartagena</p>
                     </div>
                     <div class="apunte-item">
@@ -1036,18 +1079,52 @@
         <div class="container">
             <h2 class="section-title">Reconocimientos</h2>
             <div class="awards-list">
-                <div class="award-item">
-                    <div class="award-year">2002</div>
-                    <div class="award-desc">Ganador Bienal de Arquitectura de Colombia – Proyecto Parque Tercer Milenio.</div>
-                </div>
-                <div class="award-item">
-                    <div class="award-year">2002</div>
-                    <div class="award-desc">Segundo puesto Bienal Latinoamericana de Arquitectura de Quito – Parque Tercer Milenio.</div>
-                </div>
-                <div class="award-item">
-                    <div class="award-year">Menciones</div>
-                    <div class="award-desc">SCA – CPNAA | CEMEX | FIABCI</div>
-                </div>
+                <p class="award-group-title">SCA / CPNAA &middot; Bienal Nacional de Arquitectura</p>
+                <div class="award-item"><div class="award-year">2025</div><div class="award-desc">Villas de San Pablo, Barranquilla (Fundación Santo Domingo / Prodesa) — II Salones Regionales de Arquitectura y Urbanismo, ganador Vivienda Colectiva – VIP.</div></div>
+                <div class="award-item"><div class="award-year">2023</div><div class="award-desc">Palermo Sm5, Reserva de Madrid (Prodesa) — Salones Regionales de Arquitectura, mención Categoría Hábitat Social.</div></div>
+                <div class="award-item"><div class="award-year">2023</div><div class="award-desc">Conjunto Residencial Perdiz, Barranquilla (Prodesa) — Salones Regionales de Arquitectura, mención Categoría Hábitat Social.</div></div>
+                <div class="award-item"><div class="award-year">2015</div><div class="award-desc">Macroproyecto Ciudad Verde, Soacha — Reconocimiento SCA al Arq. Camilo Santamaría por su compromiso social y ambiental.</div></div>
+                <div class="award-item"><div class="award-year">2010</div><div class="award-desc">Conjunto Residencial Albear de Suba Etapa II, Bogotá (Prodesa) — XXII Bienal Colombiana de Arquitectura, Categoría Hábitat y Vivienda Colectiva.</div></div>
+                <div class="award-item"><div class="award-year">2010</div><div class="award-desc">Urbanización El Triunfo, Et. 1 Salitre, Bogotá (Prodesa) — XX Bienal Colombiana de Arquitectura, Categoría Hábitat y Vivienda Colectiva.</div></div>
+                <div class="award-item"><div class="award-year">2006</div><div class="award-desc">Parque Tercer Milenio, Bogotá (IDU) — XX Bienal Colombiana de Arquitectura, Premio Karl Brunner, ganador Diseño Urbano y Paisajismo.</div></div>
+                <div class="award-item"><div class="award-year">1999</div><div class="award-desc">Las Mercedes de Suba, Bogotá (Prodesa) — XVII Bienal Colombiana de Arquitectura, Mención de Honor Premio Nacional al Hábitat Popular.</div></div>
+                <div class="award-item"><div class="award-year">1998</div><div class="award-desc">Aragón, Bogotá (Prodesa) — XVI Bienal Colombiana de Arquitectura, Premio Obra Seleccionada, Diseño Arquitectónico.</div></div>
+
+                <p class="award-group-title">Colegio de Arquitectos del Ecuador &middot; Bienal Panamericana de Quito</p>
+                <div class="award-item"><div class="award-year">2008</div><div class="award-desc">Parque Tercer Milenio, Bogotá (IDU) — XVI Bienal Panamericana de Arquitectura de Quito, segundo puesto Arquitectura Paisajista.</div></div>
+
+                <p class="award-group-title">Sociedad Colombiana de Ingenieros</p>
+                <div class="award-item"><div class="award-year">2020</div><div class="award-desc">Arq. Camilo Santamaría — Mención de Honor, Premio José Gómez Pinzón por sus servicios a la arquitectura, la ingeniería y la construcción en Colombia.</div></div>
+
+                <p class="award-group-title">CEMEX &middot; Premio Obras CEMEX</p>
+                <div class="award-item"><div class="award-year">2016</div><div class="award-desc">Agrupación de Vivienda Palmar, Reserva de Madrid (Prodesa) — Primer lugar Vivienda Interés Social.</div></div>
+                <div class="award-item"><div class="award-year">2016</div><div class="award-desc">Macroproyecto Ciudad Verde, Soacha (Amarilo) — Finalista Premio Especial en Valor Social, edición internacional.</div></div>
+                <div class="award-item"><div class="award-year">2015</div><div class="award-desc">Agrupaciones Pampa y Prados, Reserva de Madrid (Prodesa) — XXIV Premio Obras Cemex, primer lugar VIS.</div></div>
+                <div class="award-item"><div class="award-year">2013</div><div class="award-desc">Agrupación Primavera, Ciudad Verde (Prodesa) — XXII Premio Obras Cemex, primer lugar Vivienda Interés Social.</div></div>
+                <div class="award-item"><div class="award-year">2013</div><div class="award-desc">Agrupación Primavera, Ciudad Verde (Prodesa) — XXII Premio Obras Cemex, finalista Categoría Habitacional Internacional, CDMX.</div></div>
+                <div class="award-item"><div class="award-year">2009</div><div class="award-desc">Conjunto Nuevo Horizonte I y II, Soacha (Prodesa) — V Premio Obras Cemex Colombia, mención especial Vivienda de Interés Social.</div></div>
+                <div class="award-item"><div class="award-year">2008</div><div class="award-desc">Parque Tercer Milenio, Bogotá (IDU) — IV Premio Obras Cemex Colombia, mención especial Infraestructura / Urbanismo.</div></div>
+                <div class="award-item"><div class="award-year">2008</div><div class="award-desc">Urbanización Senderos de Funza (Prodesa) — IV Premio Obras Cemex Colombia, mención especial Vivienda de Interés Social.</div></div>
+
+                <p class="award-group-title">FIABCI &middot; Premios a la Excelencia Inmobiliaria</p>
+                <div class="award-item"><div class="award-year">2024</div><div class="award-desc">HUB de Movilidad Plaza Calle 136, Bogotá — Ganador Categoría Urbanismo.</div></div>
+                <div class="award-item"><div class="award-year">2023</div><div class="award-desc">Macroproyecto Alameda del Río, Barranquilla (Amarilo) — Ganador Categoría Urbanismo.</div></div>
+                <div class="award-item"><div class="award-year">2023</div><div class="award-desc">Conjunto Residencial Perdiz, Barranquilla (Prodesa) — Segundo finalista Categoría VIS.</div></div>
+                <div class="award-item"><div class="award-year">2022</div><div class="award-desc">Plan Parcial Hacienda Casablanca, Madrid, Cundinamarca (Amarilo) — Ganador Categoría Urbanismo.</div></div>
+                <div class="award-item"><div class="award-year">2022</div><div class="award-desc">Conjunto Residencial Palermo, Reserva de Madrid (Prodesa) — Segundo finalista Categoría VIS.</div></div>
+                <div class="award-item"><div class="award-year">2019</div><div class="award-desc">TransMiCable Ciudad Bolívar, estaciones Manitas y Mirador del Paraíso, Bogotá — Finalista Categoría Sector Público.</div></div>
+                <div class="award-item"><div class="award-year">2019</div><div class="award-desc">Nuevo Casco Urbano de Gramalote, Norte de Santander (FONTUR / Cámara de Comercio de Cúcuta) — Ganador Categoría Sector Público.</div></div>
+                <div class="award-item"><div class="award-year">2017</div><div class="award-desc">Agrupación Palmeto, Ciudad Verde (Prodesa) — Ganador Categoría Sector VIS.</div></div>
+                <div class="award-item"><div class="award-year">2016</div><div class="award-desc">Conjunto Residencial Palmar, Reserva de Madrid (Prodesa) — Ganador Categoría VIS.</div></div>
+                <div class="award-item"><div class="award-year">2016</div><div class="award-desc">Ciudad del Bicentenario, manzanas 78B y 76B, Cartagena (Fundación Mario Santo Domingo) — Finalista Categoría VIS.</div></div>
+                <div class="award-item"><div class="award-year">2015</div><div class="award-desc">Agrupaciones Pampa y Prados, Reserva de Madrid (Prodesa) — Ganador Categoría VIS.</div></div>
+                <div class="award-item"><div class="award-year">2012</div><div class="award-desc">Macroproyecto Ciudad Verde, Soacha (Amarilo) — Gran Ganador, Macroproyecto de Interés Social Nacional.</div></div>
+                <div class="award-item"><div class="award-year">2012</div><div class="award-desc">Urbanización Paraíso II, Mosquera, Cundinamarca (Prodesa) — Ganador Categoría Vivienda de Interés Social.</div></div>
+                <div class="award-item"><div class="award-year">2012</div><div class="award-desc">Urbanización Salitre Alto Reservado (El Triunfo), Bogotá (Prodesa) — Ganador Categoría Vivienda de Interés Social.</div></div>
+                <div class="award-item"><div class="award-year">2009</div><div class="award-desc">Conjunto Nuevo Horizonte I y II, Soacha (Prodesa) — Finalista Categoría VIS Dormitorio.</div></div>
+                <div class="award-item"><div class="award-year">2007</div><div class="award-desc">Conjunto Residencial Punto Madrid (Prodesa) — Ganador Categoría Vivienda de Interés Social, Ciudad Dormitorio.</div></div>
+                <div class="award-item"><div class="award-year">2007</div><div class="award-desc">Conjunto Residencial Recodo de Mosquera, Cundinamarca (Prodesa) — Finalista Categoría Vivienda de Interés Social.</div></div>
+                <div class="award-item"><div class="award-year">2004</div><div class="award-desc">Las Margaritas de Suba, Bogotá (Prodesa) — Finalista Categoría Residencial.</div></div>
             </div>
         </div>
     </section>
