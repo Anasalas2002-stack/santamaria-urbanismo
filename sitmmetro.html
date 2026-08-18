@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1F0iraYRRd3O2ydrTK4Q8iAd4togF1B-7">
+    <title>SITM Metro | Santamaría Urbanismo</title>
+    <style>
+        :root { --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-main); background: #fff; color: #1a1a1a; line-height: 1.6; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        header { position: fixed; top: 0; width: 100%; background: transparent; padding: 40px 60px; z-index: 1000; display: flex; justify-content: space-between; align-items: flex-start; transition: all 0.5s ease; }
+        header:hover { background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent); }
+        header.scrolled { background: rgba(255,255,255,0.98); padding: 15px 60px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); align-items: center; }
+        .logo img { height: 150px; width: auto; display: block; transition: all 0.5s cubic-bezier(0.25,1,0.5,1); filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); }
+        header.scrolled .logo img { height: 120px; filter: none; }
+        nav { opacity: 0; transform: translateY(-10px); transition: all 0.4s ease; margin-top: 20px; }
+        header:hover nav, header.scrolled nav { opacity: 1; transform: translateY(0); }
+        header.scrolled nav { margin-top: 0; }
+        nav ul { display: flex; gap: 30px; }
+        nav a { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; color: #fff; position: relative; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+        header.scrolled nav a { color: #1a1a1a; text-shadow: none; }
+        nav a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -5px; left: 0; background: currentColor; transition: width 0.3s; }
+        nav a:hover::after { width: 100%; }
+        .project-hero { height: 100vh; width: 100%; position: relative; overflow: hidden; background: #000; }
+        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.5s ease-in-out; }
+        .slide.active { opacity: 1; }
+        .project-hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 55%; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.65)); pointer-events: none; z-index: 5; }
+        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 20; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.4); color: white; width: 52px; height: 52px; cursor: pointer; font-size: 1.3rem; display: flex; align-items: center; justify-content: center; transition: background 0.3s; backdrop-filter: blur(4px); }
+        .slider-btn:hover { background: rgba(255,255,255,0.3); }
+        .slider-prev { left: 30px; } .slider-next { right: 30px; }
+        .slide-counter { position: absolute; bottom: 85px; right: 60px; z-index: 10; color: rgba(255,255,255,0.7); font-size: 0.75rem; letter-spacing: 3px; }
+        .hero-caption { position: absolute; bottom: 60px; left: 60px; color: white; z-index: 10; max-width: 620px; border-left: 4px solid white; padding-left: 25px; }
+        .hero-caption .proj-cat { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 3px; color: rgba(255,255,255,0.8); margin-bottom: 8px; }
+        .hero-caption h1 { font-size: 2.5rem; font-weight: 300; text-transform: uppercase; letter-spacing: 3px; text-shadow: 0 2px 15px rgba(0,0,0,0.5); line-height: 1.1; }
+        .hero-caption .proj-meta { font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-top: 8px; letter-spacing: 1px; }
+        .project-content { padding: 100px 0; }
+        .inner { max-width: 1400px; margin: 0 auto; padding: 0 60px; display: grid; grid-template-columns: 280px 1fr; gap: 80px; }
+        .sidebar { border-top: 1px solid #eee; padding-top: 30px; }
+        .meta-item { margin-bottom: 28px; }
+        .meta-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 2px; color: #999; margin-bottom: 5px; }
+        .meta-value { font-size: 0.95rem; color: #1a1a1a; }
+        .back-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 40px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; color: #1a1a1a; border: 1px solid #ddd; padding: 12px 20px; transition: 0.3s; }
+        .back-link:hover { background: #000; color: white; border-color: #000; }
+        .description { border-top: 1px solid #eee; padding-top: 30px; }
+        .description p { margin-bottom: 18px; font-size: 1rem; color: #444; line-height: 1.85; }
+        footer { text-align: center; padding: 50px 0; font-size: 0.7rem; color: #999; border-top: 1px solid #eee; background: #fafafa; text-transform: uppercase; }
+        @media (max-width: 900px) {
+            header { padding: 20px; } header.scrolled { padding: 15px 20px; }
+            .logo img { height: 100px; } nav { display: none; }
+            .inner { grid-template-columns: 1fr; gap: 40px; padding: 0 20px; }
+            .hero-caption { left: 20px; bottom: 40px; } .hero-caption h1 { font-size: 1.8rem; }
+            .slider-btn { width: 40px; height: 40px; } .slide-counter { right: 20px; }
+        }
+    </style>
+</head>
+<body>
+<header id="main-header">
+    <div class="logo">
+        <a href="index.html"><img id="header-logo" src="https://i.imgur.com/VFvbhEb.png" alt="Santamaría Urbanismo"></a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html#proyectos">Proyectos</a></li>
+            <li><a href="index.html#perfil">La Firma</a></li>
+            <li><a href="index.html#premios">Reconocimientos</a></li>
+            <li><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="project-hero" id="project-slider">
+    <div class="slide active" style="background-image: url('https://i.imgur.com/9B4bAJc.jpeg');"></div>
+
+    <button class="slider-btn slider-prev" onclick="changeSlide(-1)">&#8592;</button>
+    <button class="slider-btn slider-next" onclick="changeSlide(1)">&#8594;</button>
+    <div class="slide-counter" id="slide-counter">1 / 1</div>
+
+    <div class="hero-caption">
+        <p class="proj-cat">Transporte · Ordenamiento Territorial</p>
+        <h1>SITM Metro</h1>
+        <p class="proj-meta">Bogotá, Colombia &middot; 1996&ndash;2018</p>
+    </div>
+</div>
+
+<section class="project-content">
+    <div class="inner">
+        <aside class="sidebar">
+            <div class="meta-item"><p class="meta-label">Proyecto</p><p class="meta-value">Sistema Integrado de Transporte Masivo — Primera y Segunda Línea del Metro</p></div>
+            <div class="meta-item"><p class="meta-label">Ubicación</p><p class="meta-value">Bogotá, Colombia</p></div>
+            <div class="meta-item"><p class="meta-label">Año</p><p class="meta-value">1998&ndash;1999 &middot; 2016&ndash;2018</p></div>
+            <div class="meta-item"><p class="meta-label">Tipología</p><p class="meta-value">Transporte · Ordenamiento Territorial</p></div>
+            <div class="meta-item"><p class="meta-label">Imágenes</p><p class="meta-value">Pendientes</p></div>
+            <a href="index.html#proyectos" class="back-link">&#8592; Todos los proyectos</a>
+        </aside>
+        <div class="description">
+            <p>Desde 1996, Camilo Santamaría ha participado de manera continua en la planificación y estructuración urbana de la Primera y Segunda Línea del Metro de Bogotá. Su experiencia abarca estudios conceptuales, planificación urbana, renovación urbana, diseño de estaciones, espacio público y estructuración técnica, consolidando cerca de tres décadas de trayectoria en uno de los proyectos de infraestructura más importantes del país, en colaboración con INGETEC–BECHTEL–SYSTRA, la Financiera de Desarrollo Nacional (FDN) y la Secretaría Distrital de Planeación (SDP).</p>
+        </div>
+    </div>
+</section>
+
+<footer><p>&copy; 2025 Santamaría Urbanismo SAS. Bogotá, Colombia.</p></footer>
+
+<script>
+    let slides = document.querySelectorAll('.slide');
+    let current = 0; let autoPlay;
+    function updateCounter() { document.getElementById('slide-counter').textContent = (current + 1) + ' / ' + slides.length; }
+    function goTo(n) { slides[current].classList.remove('active'); current = (n + slides.length) % slides.length; slides[current].classList.add('active'); updateCounter(); }
+    function changeSlide(dir) { goTo(current + dir); resetAuto(); }
+    function resetAuto() { clearInterval(autoPlay); autoPlay = setInterval(() => goTo(current + 1), 5000); }
+    if (slides.length > 1) resetAuto();
+    updateCounter();
+    window.addEventListener('scroll', function() {
+        const header = document.getElementById('main-header');
+        const logo = document.getElementById('header-logo');
+        if (window.scrollY > window.innerHeight - 100) { header.classList.add('scrolled'); logo.src = "https://lh3.googleusercontent.com/d/1F0iraYRRd3O2ydrTK4Q8iAd4togF1B-7"; }
+        else { header.classList.remove('scrolled'); logo.src = "https://i.imgur.com/VFvbhEb.png"; }
+    });
+</script>
+</body>
+</html>
