@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1F0iraYRRd3O2ydrTK4Q8iAd4togF1B-7">
+    <title>Santamaría Urbanismo | Arquitectura & Planificación</title>
+    <style>
+        /* --- ESTILOS GENERALES --- */
+        :root {
+            --bg-color: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-secondary: #555555;
+            --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        /* --- HEADER INTELIGENTE --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: transparent;
+            padding: 40px 60px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Alineado arriba por el tamaño del logo */
+            transition: all 0.5s ease;
+        }
+
+        header:hover {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
+        }
+
+        /* Estado Scrolled: Reduce drásticamente el logo para navegar */
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 15px 60px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            align-items: center;
+        }
+
+        /* LOGO AUMENTADO (300% ADICIONAL) */
+        .logo {
+            width: auto;
+            max-width: 70%;
+            /* Evita que se salga de la pantalla horizontalmente */
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .logo img {
+            /* Aumentado en 100% */
+            height: 150px;
+            width: auto;
+            display: block;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+            /* Sombra para legibilidad sobre fotos */
+        }
+
+        /* Ajuste drástico del logo al hacer scroll */
+        header.scrolled .logo img {
+            height: 120px;
+            filter: none;
+        }
+
+        /* NAVEGACIÓN */
+        nav {
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.4s ease;
+            margin-top: 20px;
+            /* Separación superior */
+        }
+
+        header:hover nav,
+        header.scrolled nav {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Ajuste de margen nav en scroll */
+        header.scrolled nav {
+            margin-top: 0;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            color: #ffffff;
+            position: relative;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        header.scrolled nav a {
+            color: #1a1a1a;
+            text-shadow: none;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -5px;
+            left: 0;
+            background-color: currentColor;
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* --- HERO SLIDER --- */
+        #inicio {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            animation: zoomEffect 25s infinite alternate;
+        }
+
+        @keyframes zoomEffect {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-caption {
+            position: absolute;
+            bottom: 60px;
+            left: 60px;
+            color: white;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
+            z-index: 10;
+            max-width: 600px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease 0.5s;
+            border-left: 4px solid white;
+            padding-left: 25px;
+        }
+
+        .slide.active .slide-caption {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-caption h2 {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .slide-caption p {
+            font-size: 1rem;
+            color: #f0f0f0;
+            margin: 0;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* --- SECCIÓN DE PROYECTOS (ESTILO MEIER) --- */
+        #proyectos {
+            padding: 150px 0;
+            background: #ffffff;
+        }
+
+        .filters-container {
+            margin-bottom: 80px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .filters-main {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .filter-btn {
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            color: #999;
+            border: none;
+            background: none;
+            transition: 0.3s;
+            padding: 0;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            color: #000;
+            font-weight: 600;
+        }
+
+        .filters-secondary {
+            display: flex;
+            gap: 20px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-trigger {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #1a1a1a;
+            border: 1px solid #ddd;
+            padding: 8px 15px;
+            cursor: pointer;
+            background: white;
+            transition: all 0.3s;
+        }
+
+        .dropdown-trigger:hover {
+            background: #f5f5f5;
+            border-color: #999;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 180px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 100;
+            border: 1px solid #ddd;
+            margin-top: 5px;
+        }
+
+        .dropdown-content.show {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: #1a1a1a;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.2s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f5f5f5;
+        }
+
+        .dropdown-content a.active {
+            background-color: #000;
+            color: white;
+        }
+
+        /* Grid de 2 Columnas */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            /* Espacio muy amplio entre columnas */
+        }
+
+        .project-card {
+            position: relative;
+            background: white;
+            cursor: pointer;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 600px;
+            /* Imágenes grandes y verticales */
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+            filter: grayscale(0%);
+        }
+
+        /* Efecto Hover: Zoom */
+        .project-card:hover .card-img img {
+            transform: scale(1.03);
+        }
+
+        /* Información oculta por defecto */
+        .card-info {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            /* Fondo oscuro */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            text-align: center;
+            padding: 40px;
+        }
+
+        /* Mostrar información al hover */
+        .project-card:hover .card-info {
+            opacity: 1;
+        }
+
+        .card-info h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            font-weight: 400;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .card-info span {
+            font-size: 0.9rem;
+            color: #e0e0e0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* --- OTRAS SECCIONES --- */
+        #perfil {
+            padding: 120px 0;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .intro-img img {
+            width: 100%;
+            filter: grayscale(100%);
+            transition: 0.5s;
+        }
+
+        .intro-img:hover img {
+            filter: grayscale(0%);
+        }
+
+        .intro-caption {
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        .btn-outline {
+            border: 1px solid #ccc;
+            padding: 12px 25px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            margin-top: 10px;
+            display: inline-block;
+            color: #555;
+        }
+
+        .btn-outline:hover {
+            background: #000;
+            color: white;
+            border-color: #000;
+        }
+
+        .clients-section {
+            margin-top: 100px;
+            padding-top: 60px;
+            border-top: 1px solid #eee;
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 50px 30px;
+            margin-top: 40px;
+            align-items: center;
+            justify-items: center;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .client-logo {
+            height: 180px;
+            width: 200px;
+            background: #fcfcfc;
+            border: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .client-logo img {
+            max-height: 100%;
+            max-width: 90%;
+            object-fit: contain;
+        }
+
+        #premios {
+            padding: 100px 0;
+            background: #fafafa;
+        }
+
+        .award-item {
+            display: flex;
+            padding: 20px 0;
+            border-bottom: 1px solid #ddd;
+            align-items: baseline;
+        }
+
+        .award-year {
+            font-weight: 700;
+            width: 100px;
+            flex-shrink: 0;
+        }
+
+        .award-desc {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        #contacto {
+            padding: 100px 0;
+            border-top: 1px solid #eee;
+            background: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        form {
+            display: grid;
+            gap: 20px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            background: #fafafa;
+        }
+
+        button[type="submit"] {
+            background: #000;
+            color: white;
+            border: none;
+            padding: 18px;
+            text-transform: uppercase;
+            cursor: pointer;
+            width: auto;
+            justify-self: start;
+            min-width: 200px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px 0;
+            font-size: 0.7rem;
+            color: #999;
+            border-top: 1px solid #eee;
+            background: #fafafa;
+            text-transform: uppercase;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .logo img {
+                height: 100px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .intro-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .card-img {
+                height: 400px;
+            }
+
+            .filters-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            header {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header id="main-header">
+        <div class="logo">
+            <img id="header-logo" src="https://i.imgur.com/VFvbhEb.png" alt="SANTAMARÍA URBANISMO">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#perfil">La Firma</a></li>
+                <li><a href="#premios">Reconocimientos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- INICIO (SLIDER) -->
+    <section id="inicio">
+        <!-- Slides con las imágenes originales -->
+        <div class="slide active" style="background-image: url('https://i.imgur.com/9B4bAJc.jpeg');">
+            <div class="slide-caption">
+                <h2>Diseño Metro de Bogotá</h2>
+                <p>Bogotá, Colombia</p>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('https://i.imgur.com/W1wgglX.jpeg');">
+            <div class="slide-caption">
+                <h2>Ciudad Salitre</h2>
+                <p>Bogotá | Planificación Urbana</p>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('https://i.imgur.com/2cNfIB2.jpeg');">
+            <div class="slide-caption">
+                <h2>Villas de San Pablo</h2>
+                <p>Barranquilla | Vivienda Social</p>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('https://i.imgur.com/nPblur9.jpeg');">
+            <div class="slide-caption">
+                <h2>Reserva de Madrid</h2>
+                <p>Madrid | Urbanismo</p>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('https://i.imgur.com/w41AmUr.jpeg');">
+            <div class="slide-caption">
+                <h2>La Loma</h2>
+                <p>Barranquilla | Renovación Urbana</p>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('https://i.imgur.com/gxlvMxk.jpeg');">
+            <div class="slide-caption">
+                <h2>Reserva de Madrid</h2>
+                <p>Madrid | Urbanismo</p>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('https://i.imgur.com/Yvt017o.jpeg');">
+            <div class="slide-caption">
+                <h2>Ciudad Verde</h2>
+                <p>Soacha | Macroproyecto de Vivienda</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section id="proyectos">
+        <div class="container">
+            <h2 class="section-title">Proyectos Seleccionados</h2>
+
+            <div class="filters-container">
+                <div class="filters-main">
+                    <button class="filter-btn active" onclick="filterProjects('all', this)">Todos</button>
+                    <button class="filter-btn" onclick="filterProjects('arquitectura', this)">Arquitectura</button>
+                    <button class="filter-btn" onclick="filterProjects('urbanismo', this)">Urbanismo y
+                        Paisajismo</button>
+                    <button class="filter-btn" onclick="filterProjects('master', this)">Planes Maestros</button>
+                    <button class="filter-btn" onclick="filterProjects('ordenamiento', this)">Ordenamiento
+                        Territorial</button>
+                    <button class="filter-btn" onclick="filterProjects('transporte', this)">Transporte</button>
+                </div>
+                <div class="filters-secondary">
+                    <div class="dropdown">
+                        <button class="dropdown-trigger" onclick="toggleDropdown('region')">Región ▼</button>
+                        <div id="region-dropdown" class="dropdown-content">
+                            <a href="#" onclick="filterByRegion('all', event)">Todas</a>
+                            <a href="#" onclick="filterByRegion('Bogotá', event)">Bogotá</a>
+                            <a href="#" onclick="filterByRegion('Soacha', event)">Soacha</a>
+                            <a href="#" onclick="filterByRegion('Madrid', event)">Madrid</a>
+                            <a href="#" onclick="filterByRegion('Barranquilla', event)">Barranquilla</a>
+                            <a href="#" onclick="filterByRegion('Norte de Santander', event)">Norte de Santander</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropdown-trigger" onclick="toggleDropdown('year')">Año ▼</button>
+                        <div id="year-dropdown" class="dropdown-content">
+                            <a href="#" onclick="filterByYear('all', event)">Todos</a>
+                            <a href="#" onclick="filterByYear('2020', event)">2020</a>
+                            <a href="#" onclick="filterByYear('2018', event)">2018</a>
+                            <a href="#" onclick="filterByYear('2015', event)">2015</a>
+                            <a href="#" onclick="filterByYear('2012', event)">2012</a>
+                            <a href="#" onclick="filterByYear('2010', event)">2010</a>
+                            <a href="#" onclick="filterByYear('2008', event)">2008</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="projects-grid">
+                <!-- 1. CIUDAD VERDE (Soacha) - Urbanismo -->
+                <a href="ciudad-verde.html" class="project-card" data-category="urbanismo" data-region="Soacha"
+                    data-year="2020" style="display: block; color: inherit;">
+                    <div class="card-img"><img src="https://i.imgur.com/qYr0YgY.jpg" alt="Ciudad Verde"></div>
+                    <div class="card-info">
+                        <h3>Ciudad Verde</h3>
+                        <span>Soacha | Urbanismo y Paisajismo</span>
+                    </div>
+                </a>
+
+                <!-- 2. RESERVA DE MADRID - Urbanismo -->
+                <a href="reserva-madrid.html" class="project-card" data-category="urbanismo" data-region="Madrid"
+                    data-year="2018" style="display: block; color: inherit;">
+                    <div class="card-img"><img src="https://i.imgur.com/gxlvMxk.jpeg" alt="Reserva de Madrid"></div>
+                    <div class="card-info">
+                        <h3>Reserva de Madrid</h3>
+                        <span>Madrid | Urbanismo</span>
+                    </div>
+                </a>
+
+                <!-- 3. ALAMEDA DEL RÍO - Urbanismo -->
+                <a href="alameda-del-rio.html" class="project-card" data-category="urbanismo" data-region="Barranquilla"
+                    data-year="2015" style="display: block; color: inherit;">
+                    <div class="card-img"><img src="https://i.imgur.com/w41AmUr.jpeg" alt="Alameda del Río"></div>
+                    <div class="card-info">
+                        <h3>Alameda del Río</h3>
+                        <span>Barranquilla | Urbanismo</span>
+                    </div>
+                </a>
+
+                <!-- 4. HACIENDA CASABLANCA - Urbanismo -->
+                <a href="hacienda-casablanca.html" class="project-card" data-category="urbanismo" data-region="Madrid"
+                    data-year="2012" style="display: block; color: inherit;">
+                    <div class="card-img"><img src="https://i.imgur.com/6BfJjEJ.jpeg" alt="Hacienda Casablanca"></div>
+                    <div class="card-info">
+                        <h3>Hacienda Casablanca</h3>
+                        <span>Madrid | Urbanismo</span>
+                    </div>
+                </a>
+
+                <!-- 5. GRAMALOTE - Planes Maestros / Urbanismo -->
+                <a href="gramalote.html" class="project-card" data-category="master" data-region="Norte de Santander"
+                    data-year="2015" style="display: block; color: inherit;">
+                    <div class="card-img"><img src="https://i.imgur.com/krKLAHU.jpeg" alt="Gramalote"></div>
+                    <div class="card-info">
+                        <h3>Gramalote</h3>
+                        <span>Norte de Santander | Planes Maestros</span>
+                    </div>
+                </a>
+
+                <!-- 6. PARQUE TERCER MILENIO - Espacio Público -->
+                <a href="parque-tercer-milenio.html" class="project-card" data-category="master" data-region="Bogotá"
+                    data-year="2008" style="display: block; color: inherit;">
+                    <div class="card-img"><img src="https://i.imgur.com/VdIo46z.jpeg" alt="Parque Tercer Milenio"></div>
+                    <div class="card-info">
+                        <h3>Parque Tercer Milenio</h3>
+                        <span>Bogotá | Planes Maestros</span>
+                    </div>
+                </a>
+
+                <!-- 7. VILLAS DE SAN PABLO - Arquitectura / Vivienda -->
+                <a href="villas-san-pablo.html" class="project-card" data-category="arquitectura"
+                    data-region="Barranquilla" data-year="2010" style="display: block; color: inherit;">
+                    <div class="card-img"><img src="https://i.imgur.com/tNAXWHJ.jpeg" alt="Villas de San Pablo"></div>
+                    <div class="card-info">
+                        <h3>Villas de San Pablo</h3>
+                        <span>Barranquilla | Arquitectura</span>
+                    </div>
+                </a>
+
+                <!-- 8. PADUA RDM - Urbanismo -->
+                <a href="padua-rdm.html" class="project-card" data-category="urbanismo" data-region="Madrid"
+                    data-year="2018" style="display: block; color: inherit;">
+                    <div class="card-img"><img
+                            src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=80&w=2070&auto=format&fit=crop"
+                            alt="Padua RDM"></div>
+                    <div class="card-info">
+                        <h3>Padua RDM</h3>
+                        <span>Urbanismo</span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PERFIL -->
+    <section id="perfil">
+        <div class="container">
+            <h2 class="section-title">La Firma</h2>
+            <div class="intro-grid">
+                <div class="intro-img">
+                    <img src="https://i.imgur.com/Lsu341O.jpeg" alt="Camilo Santamaría">
+                    <p class="intro-caption">Camilo Santamaría</p>
+                </div>
+                <div class="intro-text">
+                    <h3>Camilo Santamaría – Arquitectura Urbanismo</h3>
+                    <p>La compañía de diseño y planificación urbana <strong>SANTAMARÍA URBANISMO SAS</strong>, está
+                        conformada por más de 30 profesionales especializados en arquitectura, urbanismo, transporte y
+                        ordenamiento territorial.</p>
+                    <p>Su fundador, Camilo Santamaría es arquitecto de la Universidad de Los Andes, con posgrado en
+                        Planificación Urbana para países en Desarrollo del University College London (UCL).</p>
+                    <p>Desde su creación en 1992, ha liderado proyectos de gran escala entre los que se destacan el
+                        Diseño de la Primera Línea del Metro de Bogotá (1998), el diseño de TransMilenio por la Carrera
+                        Séptima, el Plan Maestro de Parqueaderos de Bogotá, el Trazado de la Malla Vial Intermedia para
+                        Bogotá y la definición de la estructura espacial del suelo urbano y de expansión del modelo de
+                        ciudad del POT de Bogotá.</p>
+                    <p>La firma ha desarrollado múltiples instrumentos de planificación, tales como Planes de
+                        Ordenamiento Territorial, Planes Parciales, Planes Zonales, Planes de Regularización y Manejo y
+                        Planes Maestros. Entre los proyectos o grandes urbanismos más representativos se encuentran
+                        Ciudad Salitre en Bogotá, Ciudad Verde en Soacha, Ciudad Florecer en Mosquera, La Loma en
+                        Barranquilla y el nuevo Casco Urbano del municipio de Gramalote.</p>
+                    <p>En el área de arquitectura, Santamaría ha diseñado más de 40.000 viviendas de interés social,
+                        actualmente construidas en Barranquilla, Cartagena, Bogotá y sus municipios cercanos.</p>
+                    <p>La firma ha participado en importantes estudios de movilidad y transporte, entre ellos, los
+                        planes de movilidad de Cartagena y Leticia, la caracterización de tráfico y transporte de carga
+                        de las ciudades en Barranquilla y Bucaramanga; el estudio de patios para el SITP de Bogotá y
+                        varias Interventorías de Troncales, de Patios y de Portales de Transmilenio en las Fases I, II y
+                        III.</p>
+                    <p>En 2002, Camilo Santamaría ganó la Bienal de Arquitectura de Colombia con el Parque Tercer
+                        Milenio, proyecto que también revivió el segundo puesto en la Bienal Latinoamericana de
+                        Arquitectura de Quito.</p>
+                    <div style="margin-top: 40px;">
+                        <a href="#" class="btn-outline">Descargar Curriculum Vitae</a>
+                        <a href="#" class="btn-outline">Descargar Portafolio</a>
+                    </div>
+                </div>
+            </div>
+            <div class="clients-section">
+                <h3
+                    style="font-size: 0.9rem; color: #999; text-transform: uppercase; letter-spacing: 2px; text-align: center;">
+                    Nuestros Clientes</h3>
+                <div class="clients-grid">
+                    <div class="client-logo"><img src="https://i.imgur.com/X9B46xQ.jpeg" alt="Cliente"></div>
+                    <div class="client-logo"><img src="https://i.imgur.com/5kMdmco.jpeg" alt="Cliente"></div>
+                    <div class="client-logo"><img src="https://i.imgur.com/7LZAJ0w.jpeg" alt="Cliente"></div>
+                    <div class="client-logo"><img src="https://i.imgur.com/YZ1hrXJ.jpeg" alt="Cliente"></div>
+                    <div class="client-logo"><img src="https://i.imgur.com/kssqyM4.jpeg" alt="Cliente"></div>
+                    <div class="client-logo"><img src="https://i.imgur.com/BKk8aCL.jpeg" alt="Cliente"></div>
+                    <div class="client-logo"><img src="https://i.imgur.com/BSSkqPw.jpeg" alt="Cliente"></div>
+                    <div class="client-logo"><img src="https://i.imgur.com/YKYfwsd.jpeg" alt="Cliente"></div>
+                    <div class="client-logo"><img src="https://i.imgur.com/0LXx0Vx.jpeg" alt="Cliente"></div>
+                    <div class="client-logo"><img src="https://i.imgur.com/FitDo48.jpeg" alt="Cliente"></div>
+                    <div class="client-logo"><img src="https://i.imgur.com/7owJ1Mi.jpeg" alt="Cliente"></div>
+                    <div class="client-logo"><img src="https://i.imgur.com/bbHu1ot.jpeg" alt="Cliente"></div>
+                    <div class="client-logo"><img src="https://i.imgur.com/n2Id76O.jpeg" alt="Cliente"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREMIOS -->
+    <section id="premios">
+        <div class="container">
+            <h2 class="section-title">Reconocimientos</h2>
+            <div class="awards-list">
+                <div class="award-item">
+                    <div class="award-year">2002</div>
+                    <div class="award-desc">Ganador Bienal de Arquitectura de Colombia – Proyecto Parque Tercer Milenio.
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-year">Menciones</div>
+                    <div class="award-desc">SCA – CPNAA | CEMEX | FIABCI</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+        <div class="container">
+            <h2 class="section-title">Contacto</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <p><strong>Santamaría Urbanismo SAS</strong></p>
+                    <p>info@santamariaurbanismo.com</p>
+                    <p>+57 (601) 000 0000</p>
+                </div>
+                <form action="#">
+                    <input type="text" placeholder="Nombre" required>
+                    <input type="email" placeholder="Correo" required>
+                    <textarea rows="4" placeholder="Mensaje"></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Santamaría Urbanismo.</p>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // 1. ROTACIÓN DE SLIDES
+        let slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        setInterval(nextSlide, 5000);
+
+        // 2. FILTRO PROYECTOS
+        let currentCategory = 'all';
+        let currentRegion = 'all';
+        let currentYear = 'all';
+
+        function filterProjects(category, btn) {
+            currentCategory = category;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            applyFilters();
+        }
+
+        function filterByRegion(region, event) {
+            event.preventDefault();
+            currentRegion = region;
+            document.querySelectorAll('#region-dropdown a').forEach(a => a.classList.remove('active'));
+            event.target.classList.add('active');
+            toggleDropdown('region');
+            applyFilters();
+        }
+
+        function filterByYear(year, event) {
+            event.preventDefault();
+            currentYear = year;
+            document.querySelectorAll('#year-dropdown a').forEach(a => a.classList.remove('active'));
+            event.target.classList.add('active');
+            toggleDropdown('year');
+            applyFilters();
+        }
+
+        function applyFilters() {
+            let items = document.querySelectorAll('.project-card');
+            items.forEach(item => {
+                const category = item.getAttribute('data-category');
+                const region = item.getAttribute('data-region');
+                const year = item.getAttribute('data-year');
+
+                const categoryMatch = currentCategory === 'all' || category === currentCategory;
+                const regionMatch = currentRegion === 'all' || region === currentRegion;
+                const yearMatch = currentYear === 'all' || year === currentYear;
+
+                if (categoryMatch && regionMatch && yearMatch) {
+                    item.style.display = 'block';
+                    item.style.opacity = '0';
+                    setTimeout(() => item.style.opacity = '1', 50);
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function toggleDropdown(dropdownId) {
+            const dropdown = document.getElementById(dropdownId + '-dropdown');
+            dropdown.classList.toggle('show');
+        }
+
+        // Cerrar dropdowns al hacer click fuera
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropdown-trigger')) {
+                const dropdowns = document.getElementsByClassName('dropdown-content');
+                for (let i = 0; i < dropdowns.length; i++) {
+                    const openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        // 3. EFECTOS DE SCROLL (Cambio de Logo y Navbar)
+        window.addEventListener('scroll', function () {
+            const header = document.getElementById('main-header');
+            const logoImg = document.getElementById('header-logo');
+
+            // URLs de los logos
+            const logoWhite = "https://i.imgur.com/VFvbhEb.png";
+            const logoColor = "https://i.imgur.com/8DyY7Vd.png";
+
+            if (window.scrollY > window.innerHeight - 100) {
+                header.classList.add('scrolled');
+                logoImg.src = logoColor;
+            } else {
+                header.classList.remove('scrolled');
+                logoImg.src = logoWhite;
+            }
+        });
+    </script>
+</body>
+
+</html>
