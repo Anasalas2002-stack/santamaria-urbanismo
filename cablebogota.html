@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1F0iraYRRd3O2ydrTK4Q8iAd4togF1B-7">
-    <title>Gramalote | Santamaría Urbanismo</title>
+    <title>TransMiCable | Santamaría Urbanismo</title>
     <style>
         :root { --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -46,6 +46,10 @@
         .back-link:hover { background: #000; color: white; border-color: #000; }
         .description { border-top: 1px solid #eee; padding-top: 30px; }
         .description p { margin-bottom: 18px; font-size: 1rem; color: #444; line-height: 1.85; }
+        .description-grid { display: grid; grid-template-columns: 1fr 320px; gap: 60px; align-items: start; }
+        .planos-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 2px; color: #999; margin-bottom: 15px; }
+        .planos img { width: 100%; display: block; border: 1px solid #eee; margin-bottom: 20px; }
+        @media (max-width: 1100px) { .description-grid { grid-template-columns: 1fr; } }
         footer { text-align: center; padding: 50px 0; font-size: 0.7rem; color: #999; border-top: 1px solid #eee; background: #fafafa; text-transform: uppercase; }
         @media (max-width: 900px) {
             header { padding: 20px; } header.scrolled { padding: 15px 20px; }
@@ -72,43 +76,49 @@
 </header>
 
 <div class="project-hero" id="project-slider">
-    <div class="slide active" style="background-image: url('https://lh3.googleusercontent.com/d/1Uu-7jiomtqzNpypP-bydjdMdUE4vVBIh');"></div>
-    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1j1r6RBa4qgPBtSNfaiAJP2RE96RE78Be');"></div>
-    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1s4USVmiwxbEpIf8SH8l0dpo43odlRVK-');"></div>
-    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1RTl3c9IYo54_0zHqZYPTu6r0kevDsZnH');"></div>
-    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1wdT-vOiIps5tv2iLZ09VI5KmVtv9wR6i');"></div>
-    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1a5BGbpv-ObCVvm9BDHx6laYCr8MPZxKB');"></div>
-    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/11euoWzaPMdQFyyojnBaerQGbWuBcNVVW');"></div>
-    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1mBUE7JeN1Qi8GSjH9dVMf1p6UFZeLQi4');"></div>
-    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1M_sfavpT1soEX9TtzkVVEvBV2XQNNwzV');"></div>
+    <div class="slide active" style="background-image: url('https://lh3.googleusercontent.com/d/1Q-K_3qVmLBO1julSs3pD9aUF4Yrylnz7');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1fHEus2-SM3R-8eKgUtrnU7c5F6bc-CtY');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1E8Fwy6xe9M4uRcfuxIJ8j-MPsVJiqiS0');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1PRziwJuLKm1KQGy_adVTLlBTDfOaLLzw');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1Peqm_xhd_8E4aB5kbwlZI69nIe8DUrDk');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1yMUyKLjzfAa18Pk5GjBPdVLPXtpmDFjb');"></div>
 
     <button class="slider-btn slider-prev" onclick="changeSlide(-1)">&#8592;</button>
     <button class="slider-btn slider-next" onclick="changeSlide(1)">&#8594;</button>
-    <div class="slide-counter" id="slide-counter">1 / 9</div>
+    <div class="slide-counter" id="slide-counter">1 / 6</div>
 
     <div class="hero-caption">
-        <p class="proj-cat">Ordenamiento Territorial · Planes Maestros · Diseño Urbano</p>
-        <h1>Gramalote</h1>
-        <p class="proj-meta">Norte de Santander, Colombia &middot; 2011–2019</p>
+        <p class="proj-cat">Transporte · Movilidad Urbana Sostenible</p>
+        <h1>TransMiCable</h1>
+        <p class="proj-meta">Bogotá, Colombia &middot; 2019</p>
     </div>
 </div>
 
 <section class="project-content">
     <div class="inner">
         <aside class="sidebar">
-            <div class="meta-item"><p class="meta-label">Proyecto</p><p class="meta-value">Diseño y Ordenamiento del Nuevo Casco Urbano de Gramalote</p></div>
-            <div class="meta-item"><p class="meta-label">Ubicación</p><p class="meta-value">Norte de Santander, Colombia</p></div>
-            <div class="meta-item"><p class="meta-label">Año</p><p class="meta-value">2011–2019</p></div>
-            <div class="meta-item"><p class="meta-label">Tipología</p><p class="meta-value">Ordenamiento Territorial · Planes Maestros · Diseño Urbano</p></div>
-            <div class="meta-item"><p class="meta-label">Área</p><p class="meta-value">60 ha</p></div>
-            <div class="meta-item"><p class="meta-label">Cliente</p><p class="meta-value">Cámara de Comercio de Cúcuta / Fondo Adaptación</p></div>
+            <div class="meta-item"><p class="meta-label">Proyecto</p><p class="meta-value">TransMiCable — Cable Aéreo Bogotá</p></div>
+            <div class="meta-item"><p class="meta-label">Ubicación</p><p class="meta-value">Bogotá, Colombia</p></div>
+            <div class="meta-item"><p class="meta-label">Año</p><p class="meta-value">2019</p></div>
+            <div class="meta-item"><p class="meta-label">Tipología</p><p class="meta-value">Transporte · Movilidad Urbana Sostenible</p></div>
+            <div class="meta-item"><p class="meta-label">Cliente</p><p class="meta-value">Unión Temporal Cable Bogotá</p></div>
             <a href="index.html#proyectos" class="back-link">&#8592; Todos los proyectos</a>
         </aside>
         <div class="description">
-            <p>El municipio de Gramalote, fundado en 1840 y de tradición cafetera, fue totalmente destruido el 17 de diciembre de 2010 como consecuencia de un desastre natural asociado a un prolongado invierno, aguas subterráneas y un movimiento sísmico. Ante la imposibilidad de reconstruir el casco urbano original, el Gobierno Nacional decidió reasentar el municipio en un nuevo emplazamiento localizado a 6 km del antiguo pueblo, garantizando condiciones de seguridad física y ambiental para su población.</p>
-            <p>El proceso de diseño y reconstrucción del nuevo Gramalote se desarrolló entre 2011 y 2019 y se basó en una metodología de urbanismo participativo, mediante la cual la comunidad tuvo un rol activo en la definición del modelo urbano, la localización de los principales hitos y la configuración de los barrios. El proyecto abarca un área aproximada de 60 hectáreas, con una población estimada de 5.000 habitantes, 1.100 viviendas, 43 lotes de uso mixto, más de 25 zonas verdes y 17 equipamientos. Además, incluyó el diseño integral de la infraestructura urbana: acueducto y saneamiento, energía, gas, telecomunicaciones y equipamientos de escala municipal.</p>
-            <p>El ordenamiento territorial respondió a las condiciones ambientales del predio —quebradas, corredores ecológicos y fuertes pendientes—, proponiendo un trazado urbano sinuoso que respeta la topografía y minimiza los movimientos de tierra. El modelo urbano buscó mantener el tejido social del antiguo Gramalote, reproduciendo la lógica de barrios, la cercanía entre vecinos y la relación histórica con la plaza principal.</p>
-            <p>El espacio público más representativo es la plaza principal, de aproximadamente 8.500 m², ubicada en el centro del nuevo Gramalote. Su diseño resuelve una diferencia de nivel de cerca de 15 metros mediante una gradería orientada hacia el paisaje montañoso de Norte de Santander, articulada por terrazas comerciales, zonas duras arborizadas, rampas peatonales y una cascada de agua. El uso de materiales regionales y especies vegetales nativas refuerza la identidad local y consolida la plaza como el corazón cívico y social del nuevo municipio.</p>
+            <div class="description-grid">
+                <div class="description-text">
+                    <p>TransMiCable Bogotá es un sistema de transporte por cable diseñado para mejorar la movilidad y la calidad de vida de los habitantes de Ciudad Bolívar, integrando infraestructura de transporte, espacio público y equipamientos urbanos. El proyecto comprende cuatro estaciones (Portal Tunal, Juan Pablo II, Manitas y Mirador del Paraíso), 24 torres y 160 cabinas, a lo largo de 3,25 km de recorrido y un desnivel de 263 metros. Tiene capacidad para transportar 3.600 pasajeros por hora y reduce los tiempos de viaje desde las zonas altas de la localidad hasta el Portal Tunal de aproximadamente 45 minutos a solo 13 minutos.</p>
+                    <p>Más allá de la solución de movilidad, el proyecto se concibió como una estrategia de transformación urbana. Las estaciones funcionan como hitos arquitectónicos y puntos de encuentro comunitario, articulados con amplias plazas, terrazas, miradores, zonas verdes, arborización, graderías y espacios peatonales que promueven la apropiación del espacio público. Su diseño combina estructuras de concreto y cubiertas metálicas con envolventes de bajo mantenimiento, generando una imagen contemporánea. Las estaciones incorporan además áreas destinadas a equipamientos y servicios institucionales, facilitando el acceso de la comunidad a servicios públicos.</p>
+                    <p>El impacto social del proyecto se refleja en tres aspectos: movilidad, acceso a equipamientos y recuperación del espacio público. La sustitución de buses alimentadores diésel por un sistema totalmente eléctrico contribuye a la reducción de emisiones contaminantes y al mejoramiento de la calidad del aire. La intervención generó nuevos espacios públicos alrededor de las estaciones y torres —plazoletas, andenes accesibles, zonas comunitarias, parques y zonas verdes—, impulsando la revitalización urbana y favoreciendo el mejoramiento de fachadas, la consolidación de actividades comerciales y una mayor percepción de seguridad. TransMiCable ha contribuido además a posicionar a Ciudad Bolívar como un nuevo referente urbano y turístico de Bogotá.</p>
+                </div>
+                <div class="planos">
+                    <p class="planos-label">Planos</p>
+                    <img src="https://lh3.googleusercontent.com/d/1NMOlvp0yMCOPwImMu0Z7WCZgc69W_sJA" alt="Planta general estación Manitas - TransMiCable">
+                    <img src="https://lh3.googleusercontent.com/d/15-Go3PvJmuer9289QQvNIFZFtx9kta1L" alt="Planta general estación Paraíso - TransMiCable">
+                    <img src="https://lh3.googleusercontent.com/d/1BkNPJFfgYzwSHki1Gf04Z_0awLrODiDu" alt="Corte estación Paraíso - TransMiCable">
+                    <img src="https://lh3.googleusercontent.com/d/1sjUD2bfvhiA-GxF0QtFmG6GZRCjaE92P" alt="Fachada estación Paraíso - TransMiCable">
+                </div>
+            </div>
         </div>
     </div>
 </section>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1F0iraYRRd3O2ydrTK4Q8iAd4togF1B-7">
-    <title>Gramalote | Santamaría Urbanismo</title>
+    <title>Parque Tercer Milenio | Santamaría Urbanismo</title>
     <style>
         :root { --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -42,10 +42,15 @@
         .meta-item { margin-bottom: 28px; }
         .meta-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 2px; color: #999; margin-bottom: 5px; }
         .meta-value { font-size: 0.95rem; color: #1a1a1a; }
+        .award-badge { display: inline-block; margin-top: 8px; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1.5px; color: #555; border: 1px solid #ddd; padding: 5px 10px; }
         .back-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 40px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; color: #1a1a1a; border: 1px solid #ddd; padding: 12px 20px; transition: 0.3s; }
         .back-link:hover { background: #000; color: white; border-color: #000; }
         .description { border-top: 1px solid #eee; padding-top: 30px; }
         .description p { margin-bottom: 18px; font-size: 1rem; color: #444; line-height: 1.85; }
+        .description-grid { display: grid; grid-template-columns: 1fr 320px; gap: 60px; align-items: start; }
+        .planos-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 2px; color: #999; margin-bottom: 15px; }
+        .planos img { width: 100%; display: block; border: 1px solid #eee; margin-bottom: 20px; }
+        @media (max-width: 1100px) { .description-grid { grid-template-columns: 1fr; } }
         footer { text-align: center; padding: 50px 0; font-size: 0.7rem; color: #999; border-top: 1px solid #eee; background: #fafafa; text-transform: uppercase; }
         @media (max-width: 900px) {
             header { padding: 20px; } header.scrolled { padding: 15px 20px; }
@@ -72,43 +77,55 @@
 </header>
 
 <div class="project-hero" id="project-slider">
-    <div class="slide active" style="background-image: url('https://lh3.googleusercontent.com/d/1Uu-7jiomtqzNpypP-bydjdMdUE4vVBIh');"></div>
-    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1j1r6RBa4qgPBtSNfaiAJP2RE96RE78Be');"></div>
-    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1s4USVmiwxbEpIf8SH8l0dpo43odlRVK-');"></div>
-    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1RTl3c9IYo54_0zHqZYPTu6r0kevDsZnH');"></div>
-    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1wdT-vOiIps5tv2iLZ09VI5KmVtv9wR6i');"></div>
-    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1a5BGbpv-ObCVvm9BDHx6laYCr8MPZxKB');"></div>
-    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/11euoWzaPMdQFyyojnBaerQGbWuBcNVVW');"></div>
-    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1mBUE7JeN1Qi8GSjH9dVMf1p6UFZeLQi4');"></div>
-    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1M_sfavpT1soEX9TtzkVVEvBV2XQNNwzV');"></div>
+    <div class="slide active" style="background-image: url('https://lh3.googleusercontent.com/d/1Vuhd5IyIuXX8H-aL1hm9Gz_PfuYhomqL');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1QPEnzCBarTGYEtqhxPw0xP2wb9GmAlvt');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1a5a4epwqJ0BUAT1e0nMFDlfGFSYUOuQv');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1Wp0vYaSDLPSmQS0K7u_kvXczEASa_FmH');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1yrxRYVaG0Mq2eCKB6FFN8373T80dPSA4');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1FZhROKlXTpopNuquLk30SfMUIpDbazuk');"></div>
 
     <button class="slider-btn slider-prev" onclick="changeSlide(-1)">&#8592;</button>
     <button class="slider-btn slider-next" onclick="changeSlide(1)">&#8594;</button>
-    <div class="slide-counter" id="slide-counter">1 / 9</div>
+    <div class="slide-counter" id="slide-counter">1 / 6</div>
 
     <div class="hero-caption">
-        <p class="proj-cat">Ordenamiento Territorial · Planes Maestros · Diseño Urbano</p>
-        <h1>Gramalote</h1>
-        <p class="proj-meta">Norte de Santander, Colombia &middot; 2011–2019</p>
+        <p class="proj-cat">Urbanismo y Espacio Público</p>
+        <h1>Parque Tercer Milenio</h1>
+        <p class="proj-meta">Bogotá, Colombia &middot; 2008</p>
     </div>
 </div>
 
 <section class="project-content">
     <div class="inner">
         <aside class="sidebar">
-            <div class="meta-item"><p class="meta-label">Proyecto</p><p class="meta-value">Diseño y Ordenamiento del Nuevo Casco Urbano de Gramalote</p></div>
-            <div class="meta-item"><p class="meta-label">Ubicación</p><p class="meta-value">Norte de Santander, Colombia</p></div>
-            <div class="meta-item"><p class="meta-label">Año</p><p class="meta-value">2011–2019</p></div>
-            <div class="meta-item"><p class="meta-label">Tipología</p><p class="meta-value">Ordenamiento Territorial · Planes Maestros · Diseño Urbano</p></div>
-            <div class="meta-item"><p class="meta-label">Área</p><p class="meta-value">60 ha</p></div>
-            <div class="meta-item"><p class="meta-label">Cliente</p><p class="meta-value">Cámara de Comercio de Cúcuta / Fondo Adaptación</p></div>
+            <div class="meta-item"><p class="meta-label">Proyecto</p><p class="meta-value">Parque Tercer Milenio</p></div>
+            <div class="meta-item"><p class="meta-label">Ubicación</p><p class="meta-value">Bogotá, Colombia</p></div>
+            <div class="meta-item"><p class="meta-label">Año</p><p class="meta-value">2008</p></div>
+            <div class="meta-item"><p class="meta-label">Tipología</p><p class="meta-value">Urbanismo y Espacio Público</p></div>
+            <div class="meta-item"><p class="meta-label">Área intervenida</p><p class="meta-value">16,7 ha</p></div>
+            <div class="meta-item"><p class="meta-label">Cliente</p><p class="meta-value">Instituto de Desarrollo Urbano (IDU)</p></div>
+            <div class="meta-item">
+                <p class="meta-label">Reconocimientos</p>
+                <span class="award-badge">Bienal de Arq. Colombia 2002</span><br>
+                <span class="award-badge">2.° Bienal Latinoam. Quito 2002</span>
+            </div>
             <a href="index.html#proyectos" class="back-link">&#8592; Todos los proyectos</a>
         </aside>
         <div class="description">
-            <p>El municipio de Gramalote, fundado en 1840 y de tradición cafetera, fue totalmente destruido el 17 de diciembre de 2010 como consecuencia de un desastre natural asociado a un prolongado invierno, aguas subterráneas y un movimiento sísmico. Ante la imposibilidad de reconstruir el casco urbano original, el Gobierno Nacional decidió reasentar el municipio en un nuevo emplazamiento localizado a 6 km del antiguo pueblo, garantizando condiciones de seguridad física y ambiental para su población.</p>
-            <p>El proceso de diseño y reconstrucción del nuevo Gramalote se desarrolló entre 2011 y 2019 y se basó en una metodología de urbanismo participativo, mediante la cual la comunidad tuvo un rol activo en la definición del modelo urbano, la localización de los principales hitos y la configuración de los barrios. El proyecto abarca un área aproximada de 60 hectáreas, con una población estimada de 5.000 habitantes, 1.100 viviendas, 43 lotes de uso mixto, más de 25 zonas verdes y 17 equipamientos. Además, incluyó el diseño integral de la infraestructura urbana: acueducto y saneamiento, energía, gas, telecomunicaciones y equipamientos de escala municipal.</p>
-            <p>El ordenamiento territorial respondió a las condiciones ambientales del predio —quebradas, corredores ecológicos y fuertes pendientes—, proponiendo un trazado urbano sinuoso que respeta la topografía y minimiza los movimientos de tierra. El modelo urbano buscó mantener el tejido social del antiguo Gramalote, reproduciendo la lógica de barrios, la cercanía entre vecinos y la relación histórica con la plaza principal.</p>
-            <p>El espacio público más representativo es la plaza principal, de aproximadamente 8.500 m², ubicada en el centro del nuevo Gramalote. Su diseño resuelve una diferencia de nivel de cerca de 15 metros mediante una gradería orientada hacia el paisaje montañoso de Norte de Santander, articulada por terrazas comerciales, zonas duras arborizadas, rampas peatonales y una cascada de agua. El uso de materiales regionales y especies vegetales nativas refuerza la identidad local y consolida la plaza como el corazón cívico y social del nuevo municipio.</p>
+            <div class="description-grid">
+                <div class="description-text">
+                    <p>El Parque Tercer Milenio es un parque Distrital de 16,7 hectáreas, de escala metropolitana, destinado a la recreación activa. Está ubicado en el centro de Bogotá a dos cuadras de la Plaza de Bolívar, entre la Carrera 10 y la Avenida Caracas y entre la Avenida Comuneros (Calle 6) y la Calle 9, sobre la antigua zona denominada "El Cartucho".</p>
+                    <p>El proyecto fue producto de un proceso de renovación urbana en el cual la ciudad, a través del IDU y con la coordinación de la oficina de Renovación Urbana, compró un total de 20 hectáreas (640 predios) que se encontraban en un grado avanzado de deterioro. Al estar inscrito en un lugar con alta carga histórica para la ciudad, el diseño rescata elementos de la memoria del sector a través del paisajismo y el ordenamiento, con una propuesta contemporánea.</p>
+                    <p>Entre los elementos paisajísticos más relevantes se encuentran la construcción de una topografía artificial por medio de taludes, que contribuye a la zonificación y a la creación de microespacios; la incorporación del agua en estanques, piletas y fuentes interactivas, como memoria de los antiguos ríos que atravesaban la zona; y la conformación de jardines temáticos con especies nativas propias del bosque andino de los Cerros Orientales.</p>
+                    <p>El parque se divide en 17 zonas destinadas a la recreación, contemplación y ocio, articuladas por la Alameda Tercer Milenio —32 metros de ancho y 400 metros de largo— que lo atraviesa de norte a sur y comunica la Calle 6 con la Plaza de San Victorino. Es peatonal en su totalidad, con ciclorrutas, vías de tráfico restringido y una reserva de 3 hectáreas para un futuro centro comercial y cultural que beneficiará la valorización del sector.</p>
+                    <p>El proyecto obtuvo el primer lugar en la Bienal de Arquitectura de Colombia en 2002 y el segundo puesto en la Bienal Latinoamericana de Arquitectura de Quito, siendo reconocido como uno de los proyectos urbanos más significativos de Colombia en las últimas décadas.</p>
+                </div>
+                <div class="planos">
+                    <p class="planos-label">Planos</p>
+                    <img src="https://lh3.googleusercontent.com/d/1wDTiCsECM2CkloKnpEP5S5KgEAyyfelz" alt="Planta general - Parque Tercer Milenio">
+                    <img src="https://lh3.googleusercontent.com/d/1mgrJhUKRVG640Gado5AaLR5wlJcgyMAe" alt="Sistema de taludes y zonas verdes - Parque Tercer Milenio">
+                </div>
+            </div>
         </div>
     </div>
 </section>
