@@ -183,7 +183,63 @@
             opacity: 0;
             transition: opacity 1.5s ease-in-out;
             animation: zoomEffect 25s infinite alternate;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
         }
+
+        .hero-controls {
+            position: absolute;
+            bottom: 60px;
+            right: 60px;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hero-prev, .hero-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 20;
+            width: 56px;
+            height: 56px;
+        }
+
+        .hero-prev { left: 30px; }
+        .hero-next { right: 30px; }
+
+        .hero-btn {
+            background: transparent;
+            border: none;
+            color: #fff;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.7;
+            border-radius: 50%;
+            transition: opacity 0.3s ease, background 0.3s ease;
+        }
+
+        .hero-btn:hover {
+            opacity: 1;
+            background: rgba(255,255,255,0.12);
+        }
+
+        .hero-btn svg {
+            width: 18px;
+            height: 18px;
+            filter: drop-shadow(0 1px 3px rgba(0,0,0,0.6));
+        }
+
+        .hero-btn .icon-pause { display: none; }
+        .hero-controls.paused .hero-btn .icon-play { display: none; }
+        .hero-controls.paused .hero-btn .icon-pause { display: block; }
 
         @keyframes zoomEffect {
             0% { transform: scale(1); }
@@ -334,24 +390,25 @@
             color: white;
         }
 
-        /* Grid de 2 Columnas */
+        /* Mosaico Meier 4 columnas */
         .projects-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 100px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3px;
         }
 
         .project-card {
             position: relative;
-            background: white;
+            background: #000;
             cursor: pointer;
             overflow: hidden;
-            margin-bottom: 40px;
+            margin-bottom: 0;
+            aspect-ratio: 3 / 4;
         }
 
         .card-img {
             width: 100%;
-            height: 600px;
+            height: 100%;
             background-color: #f0f0f0;
             overflow: hidden;
         }
@@ -360,48 +417,56 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.8s ease;
+            transition: transform 0.8s ease, filter 0.4s ease;
+            filter: brightness(0.72);
         }
 
         .project-card:hover .card-img img {
-            transform: scale(1.03);
+            transform: scale(1.06);
+            filter: brightness(0.5);
         }
 
         .card-info {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            inset: 0;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            text-align: center;
-            padding: 40px;
-        }
-
-        .project-card:hover .card-info {
+            justify-content: flex-end;
+            align-items: flex-start;
             opacity: 1;
+            transition: all 0.4s ease;
+            text-align: left;
+            padding: 24px;
+            background: linear-gradient(to bottom, transparent 55%, rgba(0,0,0,0.55) 100%);
         }
 
         .card-info h3 {
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-            font-weight: 400;
+            font-size: 1rem;
+            margin-bottom: 0;
+            font-weight: 700;
             color: #ffffff;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
+            transition: transform 0.4s ease;
         }
 
         .card-info span {
-            font-size: 0.9rem;
+            font-size: 0.7rem;
             color: #e0e0e0;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            max-height: 0;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.4s ease, transform 0.4s ease, max-height 0.4s ease;
+        }
+
+        .project-card:hover .card-info span {
+            max-height: 30px;
+            opacity: 1;
+            transform: translateY(0);
+            margin-top: 6px;
         }
 
         /* --- OTRAS SECCIONES --- */
@@ -615,14 +680,20 @@
         }
 
         /* RESPONSIVE */
+        @media (max-width: 1200px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 900px) {
             .logo img {
                 height: 100px;
             }
 
             .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2px;
             }
 
             .intro-grid,
@@ -633,10 +704,6 @@
 
             nav {
                 display: none;
-            }
-
-            .card-img {
-                height: 400px;
             }
 
             .filters-container {
@@ -716,47 +783,56 @@
 
     <!-- INICIO (SLIDER) -->
     <section id="inicio">
-        <div class="slide active" style="background-image: url('https://lh3.googleusercontent.com/d/1rrnFEEqZJYkA-YB8Pt-TkKqo4PXQEZkP');">
+        <a class="slide active" href="ciudad-verde.html" style="background-image: url('https://lh3.googleusercontent.com/d/1rrnFEEqZJYkA-YB8Pt-TkKqo4PXQEZkP');">
             <div class="slide-caption">
                 <h2>Ciudad Verde</h2>
                 <p>Soacha, Cundinamarca | Macroproyecto Urbano</p>
             </div>
-        </div>
-        <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1C2A0MnF0lX-9gJixncxbLKJYd_lpN43Z');">
+        </a>
+        <a class="slide" href="reserva-madrid.html" style="background-image: url('https://lh3.googleusercontent.com/d/1C2A0MnF0lX-9gJixncxbLKJYd_lpN43Z');">
             <div class="slide-caption">
                 <h2>Reserva de Madrid</h2>
                 <p>Cundinamarca | Planificación Urbana</p>
             </div>
-        </div>
-        <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1R_7LMvU5PJ5RZlPqru2XULrX_ux9Jhbh');">
+        </a>
+        <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1R_7LMvU5PJ5RZlPqru2XULrX_ux9Jhbh'); cursor: default;">
             <div class="slide-caption">
                 <h2>La Loma</h2>
                 <p>Barranquilla | Planificación Urbana</p>
             </div>
         </div>
-        <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1Z09EHXftflumz9T4RV2bSBrgwCRADAj2');">
+        <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1Z09EHXftflumz9T4RV2bSBrgwCRADAj2'); cursor: default;">
             <div class="slide-caption">
                 <h2>Ciudad Salitre</h2>
                 <p>Bogotá | Planificación Urbana (Coautor)</p>
             </div>
         </div>
-        <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/186yv6fd2ooG7a-bbtMcDzddCzWoScISd');">
+        <a class="slide" href="ciudad-verde.html" style="background-image: url('https://lh3.googleusercontent.com/d/186yv6fd2ooG7a-bbtMcDzddCzWoScISd');">
             <div class="slide-caption">
                 <h2>Ciudad Verde</h2>
                 <p>Soacha, Cundinamarca | Macroproyecto de Vivienda</p>
             </div>
-        </div>
-        <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1hdM3spqGdJ3qqzmIV1xji9j4SJ3YYazi');">
+        </a>
+        <a class="slide" href="parque-tercer-milenio.html" style="background-image: url('https://lh3.googleusercontent.com/d/1hdM3spqGdJ3qqzmIV1xji9j4SJ3YYazi');">
             <div class="slide-caption">
                 <h2>Parque Tercer Milenio</h2>
                 <p>Bogotá | Urbanismo y Espacio Público</p>
             </div>
-        </div>
-        <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1SJVUMCO9_3jKHiBLegdx1kMp5uHd4eGl');">
+        </a>
+        <a class="slide" href="villas-san-pablo.html" style="background-image: url('https://lh3.googleusercontent.com/d/1SJVUMCO9_3jKHiBLegdx1kMp5uHd4eGl');">
             <div class="slide-caption">
                 <h2>Villas de San Pablo</h2>
                 <p>Barranquilla | Vivienda Social</p>
             </div>
+        </a>
+
+        <button class="hero-btn hero-prev" onclick="heroChangeSlide(-1)" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button class="hero-btn hero-next" onclick="heroChangeSlide(1)" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+        <div class="hero-controls" id="hero-controls">
+            <button class="hero-btn hero-pause" onclick="heroTogglePause()" aria-label="Pausar / reanudar">
+                <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>
+                <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </button>
         </div>
     </section>
 
@@ -1183,13 +1259,38 @@
         // 1. ROTACIÓN DE SLIDES
         let slides = document.querySelectorAll('.slide');
         let currentSlide = 0;
+        let heroPaused = false;
+        let heroInterval;
 
         function nextSlide() {
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
         }
-        setInterval(nextSlide, 5000);
+
+        function heroGoTo(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        function heroChangeSlide(dir) {
+            heroGoTo(currentSlide + dir);
+            heroResetInterval();
+        }
+
+        function heroResetInterval() {
+            clearInterval(heroInterval);
+            if (!heroPaused) heroInterval = setInterval(nextSlide, 5000);
+        }
+
+        function heroTogglePause() {
+            heroPaused = !heroPaused;
+            document.getElementById('hero-controls').classList.toggle('paused', heroPaused);
+            heroResetInterval();
+        }
+
+        heroResetInterval();
 
         // 2. FILTRO PROYECTOS (soporta múltiples categorías por proyecto)
         let currentCategory = 'all';

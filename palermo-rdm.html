@@ -24,10 +24,11 @@
         header.scrolled nav a { color: #1a1a1a; text-shadow: none; }
         nav a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -5px; left: 0; background: currentColor; transition: width 0.3s; }
         nav a:hover::after { width: 100%; }
-        .project-hero { height: 100vh; width: 100%; position: relative; overflow: hidden; background: #000; }
+        .project-hero-fixed { height: 100vh; width: 100%; position: relative; overflow: hidden; background-size: cover; background-position: center; background-color: #000; }
+        .project-hero-fixed::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 55%; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.65)); pointer-events: none; z-index: 5; }
         .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.5s ease-in-out; }
         .slide.active { opacity: 1; }
-        .project-hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 55%; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.65)); pointer-events: none; z-index: 5; }
+        .project-carousel-strip { height: 65vh; width: 100%; position: relative; overflow: hidden; background: #000; }
         .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 20; background: transparent; border: none; color: #fff; width: 56px; height: 56px; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0.6; border-radius: 50%; transition: opacity 0.35s ease, background 0.35s ease; padding: 0; }
         .slider-btn:hover { opacity: 1; background: rgba(255,255,255,0.1); }
         .slider-btn svg { width: 20px; height: 20px; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.6)); }
@@ -52,10 +53,11 @@
         .lightbox-overlay img { max-width: 90vw; max-height: 90vh; object-fit: contain; box-shadow: 0 10px 40px rgba(0,0,0,0.5); cursor: default; }
         .lightbox-close { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 2.2rem; font-weight: 300; cursor: pointer; line-height: 1; }
         .slide-video-embed { width: 100%; height: 100%; border: 0; }
-        .description-grid { display: grid; grid-template-columns: 1fr 320px; gap: 60px; align-items: start; }
+        .planos { margin-top: 50px; }
         .planos-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 2px; color: #999; margin-bottom: 15px; }
-        .planos img { width: 100%; display: block; border: 1px solid #eee; margin-bottom: 20px; }
-        @media (max-width: 1100px) { .description-grid { grid-template-columns: 1fr; } }
+        .planos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .planos-grid img { width: 100%; display: block; border: 1px solid #eee; cursor: zoom-in; }
+        @media (max-width: 700px) { .planos-grid { grid-template-columns: 1fr; } }
         footer { text-align: center; padding: 50px 0; font-size: 0.7rem; color: #999; border-top: 1px solid #eee; background: #fafafa; text-transform: uppercase; }
         @media (max-width: 900px) {
             header { padding: 20px; } header.scrolled { padding: 15px 20px; }
@@ -81,9 +83,16 @@
     </nav>
 </header>
 
-<div class="project-hero" id="project-slider">
-    <div class="slide active" style="background-image: url('https://lh3.googleusercontent.com/d/1QEOt79WR9bmGE39py0FrM435Ftq47_-X');"></div>
-    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1m060CYlx4CeKsT2kqoMpvVFDtDFQpP_r');"></div>
+<div class="project-hero-fixed" style="background-image: url('https://lh3.googleusercontent.com/d/1QEOt79WR9bmGE39py0FrM435Ftq47_-X');">
+    <div class="hero-caption">
+        <p class="proj-cat">Arquitectura</p>
+        <h1>Palermo RDM</h1>
+        <p class="proj-meta">Madrid, Cundinamarca &middot; 2015</p>
+    </div>
+</div>
+
+<div class="project-carousel-strip" id="project-slider">
+    <div class="slide active" style="background-image: url('https://lh3.googleusercontent.com/d/1m060CYlx4CeKsT2kqoMpvVFDtDFQpP_r');"></div>
     <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/12YiAjYBN1Pfo3hrgyTiqlKStAhp57mNN');"></div>
     <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1IVuzL5GuKxiHRbhwT_6Phdmtx-Clrirg');"></div>
     <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1Iu3Oi5uRvSgIWR6MzIw8iA2HS0pOHP2b');"></div>
@@ -91,13 +100,7 @@
 
     <button class="slider-btn slider-prev" onclick="changeSlide(-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
     <button class="slider-btn slider-next" onclick="changeSlide(1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
-    <div class="slide-counter" id="slide-counter">1 / 6</div>
-
-    <div class="hero-caption">
-        <p class="proj-cat">Arquitectura</p>
-        <h1>Palermo RDM</h1>
-        <p class="proj-meta">Madrid, Cundinamarca &middot; 2015</p>
-    </div>
+    <div class="slide-counter" id="slide-counter">1 / 5</div>
 </div>
 
 <section class="project-content">
@@ -111,14 +114,14 @@
             <a href="index.html#proyectos" class="back-link">&#8592; Todos los proyectos</a>
         </aside>
         <div class="description">
-            <div class="description-grid">
-                <div class="description-text">
+            <div class="description-text">
                     <p>Palermo es un proyecto mixto de vivienda VIS y No VIS ubicado en la Supermanzana 5 de Reserva de Madrid, con 420 unidades distribuidas en 21 torres de apartamentos de cinco pisos, un edificio de parqueaderos de cinco pisos y un edificio comunal-comercial de tres pisos. Las torres se disponen alrededor de recintos verdes arborizados con zonas de juegos, y todos los apartamentos cuentan con balcón en la sala o el comedor.</p>
                     <p>El proyecto logra una adecuada integración de estratos, combinando en una misma manzana torres VIS y No VIS, zonas comunales internas y una esquina comercial conformada por dos edificios que rodean una plaza, con seis locales entre los que se cuentan un supermercado, una panadería y varios restaurantes. Sobre los locales se ubicaron los salones comunales, organizados a manera de un pequeño "club" con salones de juegos, de fiesta, de estudio, espacios para niños y un cine.</p>
                     <p>Un edificio de parqueaderos de cuatro niveles permitió liberar espacio para parques internos, de modo que los niños puedan jugar sin exposición a vías vehiculares. Los edificios de cinco pisos garantizan una escala humana tanto al interior del conjunto como hacia la calle, mientras la mezcla de fachadas, balcones y ventanas —incluso en las culatas— da variedad y vida al espacio público de manzanas totalmente paramentadas.</p>
                 </div>
-                <div class="planos">
-                    <p class="planos-label">Planos</p>
+            <div class="planos">
+                <p class="planos-label">Planos</p>
+                <div class="planos-grid">
                     <img src="https://lh3.googleusercontent.com/d/1nH3G2Xtm_HVnqhmFeTAu7USSdPU6LQ31" alt="Planos - Palermo RDM" onclick="openLightbox(this.src)">
                 </div>
             </div>

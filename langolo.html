@@ -24,10 +24,11 @@
         header.scrolled nav a { color: #1a1a1a; text-shadow: none; }
         nav a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -5px; left: 0; background: currentColor; transition: width 0.3s; }
         nav a:hover::after { width: 100%; }
-        .project-hero { height: 100vh; width: 100%; position: relative; overflow: hidden; background: #000; }
+        .project-hero-fixed { height: 100vh; width: 100%; position: relative; overflow: hidden; background-size: cover; background-position: center; background-color: #000; }
+        .project-hero-fixed::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 55%; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.65)); pointer-events: none; z-index: 5; }
         .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.5s ease-in-out; }
         .slide.active { opacity: 1; }
-        .project-hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 55%; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.65)); pointer-events: none; z-index: 5; }
+        .project-carousel-strip { height: 65vh; width: 100%; position: relative; overflow: hidden; background: #000; }
         .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 20; background: transparent; border: none; color: #fff; width: 56px; height: 56px; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0.6; border-radius: 50%; transition: opacity 0.35s ease, background 0.35s ease; padding: 0; }
         .slider-btn:hover { opacity: 1; background: rgba(255,255,255,0.1); }
         .slider-btn svg { width: 20px; height: 20px; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.6)); }
@@ -51,10 +52,11 @@
         .lightbox-overlay.active { display: flex; }
         .lightbox-overlay img { max-width: 90vw; max-height: 90vh; object-fit: contain; box-shadow: 0 10px 40px rgba(0,0,0,0.5); cursor: default; }
         .lightbox-close { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 2.2rem; font-weight: 300; cursor: pointer; line-height: 1; }
-        .description-grid { display: grid; grid-template-columns: 1fr 320px; gap: 60px; align-items: start; }
+        .planos { margin-top: 50px; }
         .planos-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 2px; color: #999; margin-bottom: 15px; }
-        .planos img { width: 100%; display: block; border: 1px solid #eee; margin-bottom: 20px; }
-        @media (max-width: 1100px) { .description-grid { grid-template-columns: 1fr; } }
+        .planos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .planos-grid img { width: 100%; display: block; border: 1px solid #eee; cursor: zoom-in; }
+        @media (max-width: 700px) { .planos-grid { grid-template-columns: 1fr; } }
         footer { text-align: center; padding: 50px 0; font-size: 0.7rem; color: #999; border-top: 1px solid #eee; background: #fafafa; text-transform: uppercase; }
         @media (max-width: 900px) {
             header { padding: 20px; } header.scrolled { padding: 15px 20px; }
@@ -80,9 +82,16 @@
     </nav>
 </header>
 
-<div class="project-hero" id="project-slider">
-    <div class="slide active" style="background-image: url('https://lh3.googleusercontent.com/d/16DrbefbxG_uUzbcOi0DR2-xIJgA1V1qT');"></div>
-    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1WKRj3NzVu2-EOquRU_T-BNZl9Iw8xFWC');"></div>
+<div class="project-hero-fixed" style="background-image: url('https://lh3.googleusercontent.com/d/16DrbefbxG_uUzbcOi0DR2-xIJgA1V1qT');">
+    <div class="hero-caption">
+        <p class="proj-cat">Arquitectura</p>
+        <h1>L'Angolo 59</h1>
+        <p class="proj-meta">Barranquilla, Atlántico &middot; 2019</p>
+    </div>
+</div>
+
+<div class="project-carousel-strip" id="project-slider">
+    <div class="slide active" style="background-image: url('https://lh3.googleusercontent.com/d/1WKRj3NzVu2-EOquRU_T-BNZl9Iw8xFWC');"></div>
     <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1oviVzYbbZ4FZZHtdFlOopDy2eBjWFzBk');"></div>
     <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1XK-bM1B6TguqR-8LwBKr0ybcs-MT8T3a');"></div>
     <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1gIyqJFoSeWlQs7pkw3Rz5LMTOTpxZmrS');"></div>
@@ -91,13 +100,7 @@
 
     <button class="slider-btn slider-prev" onclick="changeSlide(-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
     <button class="slider-btn slider-next" onclick="changeSlide(1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
-    <div class="slide-counter" id="slide-counter">1 / 7</div>
-
-    <div class="hero-caption">
-        <p class="proj-cat">Arquitectura</p>
-        <h1>L'Angolo 59</h1>
-        <p class="proj-meta">Barranquilla, Atlántico &middot; 2019</p>
-    </div>
+    <div class="slide-counter" id="slide-counter">1 / 6</div>
 </div>
 
 <section class="project-content">
@@ -111,15 +114,15 @@
             <a href="index.html#proyectos" class="back-link">&#8592; Todos los proyectos</a>
         </aside>
         <div class="description">
-            <div class="description-grid">
-                <div class="description-text">
+            <div class="description-text">
                     <p>L'Angolo 59 es un edificio multifamiliar ubicado en el barrio Prado Norte de Barranquilla, desarrollado sobre un lote esquinero de 1.521 m². El proyecto fue concebido como una respuesta contemporánea a las condiciones urbanas y climáticas del sector, integrándose a un entorno residencial de densidades y alturas diversas mediante una torre de 17 pisos que evita la generación de culatas y aporta una imagen urbana completa sobre ambas vías que delimitan el predio.</p>
                     <p>La implantación del edificio privilegió la relación con el espacio exterior y la calidad ambiental de las viviendas. A través de amplios retiros perimetrales se garantizó la iluminación y ventilación natural de todos los espacios interiores, conservando árboles existentes y generando áreas libres ajardinadas que enriquecen el paisaje urbano. El acceso peatonal, la recepción y las zonas comunes se ubicaron estratégicamente en la esquina, fortaleciendo la conexión visual entre el edificio y la ciudad.</p>
                     <p>El diseño de las fachadas respondió a un detallado estudio de asoleación, incorporando balcones en todos los niveles para controlar la incidencia solar, mejorar el confort térmico y proporcionar espacios exteriores privados. La variación de los balcones genera una composición volumétrica dinámica de luces y sombras, complementada por el uso de ladrillo de gran formato color arena como material predominante, aportando identidad, durabilidad y eficiencia ambiental.</p>
                     <p>El edificio alberga 60 viviendas con áreas que van desde apartaestudios hasta amplios apartamentos familiares, ofreciendo una amplia diversidad tipológica y altos niveles de flexibilidad. La estructura aporticada en concreto permitió adaptar diferentes configuraciones interiores. El proyecto incorporó además un piso completo de zonas comunales —espacios recreativos, deportivos y de encuentro—, fortaleciendo la vida colectiva y la calidad de vida de sus residentes.</p>
                 </div>
-                <div class="planos">
-                    <p class="planos-label">Planos</p>
+            <div class="planos">
+                <p class="planos-label">Planos</p>
+                <div class="planos-grid">
                     <img src="https://lh3.googleusercontent.com/d/1sZfgWpUC72TV9GN8M4FMSNDCoIEoRrSR" alt="Planos - L'Angolo 59" onclick="openLightbox(this.src)">
                 </div>
             </div>
