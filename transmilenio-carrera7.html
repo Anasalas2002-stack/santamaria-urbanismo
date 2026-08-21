@@ -24,12 +24,14 @@
         header.scrolled nav a { color: #1a1a1a; text-shadow: none; }
         nav a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -5px; left: 0; background: currentColor; transition: width 0.3s; }
         nav a:hover::after { width: 100%; }
-        .project-hero { height: 100vh; width: 100%; position: relative; overflow: hidden; background: #000; }
+        .project-hero-fixed { height: 100vh; width: 100%; position: relative; overflow: hidden; background-size: cover; background-position: center; background-color: #000; }
+        .project-hero-fixed::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 55%; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.65)); pointer-events: none; z-index: 5; }
         .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.5s ease-in-out; }
         .slide.active { opacity: 1; }
-        .project-hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 55%; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.65)); pointer-events: none; z-index: 5; }
-        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 20; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.4); color: white; width: 52px; height: 52px; cursor: pointer; font-size: 1.3rem; display: flex; align-items: center; justify-content: center; transition: background 0.3s; backdrop-filter: blur(4px); }
-        .slider-btn:hover { background: rgba(255,255,255,0.3); }
+        .project-carousel-strip { height: 65vh; width: 100%; position: relative; overflow: hidden; background: #000; }
+        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 20; background: transparent; border: none; color: #fff; width: 56px; height: 56px; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0.6; border-radius: 50%; transition: opacity 0.35s ease, background 0.35s ease; padding: 0; }
+        .slider-btn:hover { opacity: 1; background: rgba(255,255,255,0.1); }
+        .slider-btn svg { width: 20px; height: 20px; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.6)); }
         .slider-prev { left: 30px; } .slider-next { right: 30px; }
         .slide-counter { position: absolute; bottom: 85px; right: 60px; z-index: 10; color: rgba(255,255,255,0.7); font-size: 0.75rem; letter-spacing: 3px; }
         .hero-caption { position: absolute; bottom: 60px; left: 60px; color: white; z-index: 10; max-width: 620px; border-left: 4px solid white; padding-left: 25px; }
@@ -52,7 +54,7 @@
             .logo img { height: 100px; } nav { display: none; }
             .inner { grid-template-columns: 1fr; gap: 40px; padding: 0 20px; }
             .hero-caption { left: 20px; bottom: 40px; } .hero-caption h1 { font-size: 1.8rem; }
-            .slider-btn { width: 40px; height: 40px; } .slide-counter { right: 20px; }
+            .slider-btn { width: 44px; height: 44px; } .slide-counter { right: 20px; } .project-carousel-strip { height: 40vh; }
         }
     </style>
 </head>
@@ -71,14 +73,33 @@
     </nav>
 </header>
 
-<div class="project-hero" id="project-slider">
-    <div class="slide active" style="background-image: url('https://lh3.googleusercontent.com/d/1UqSKP2SJBRwOJrAfP57wssOah8OEP1Zz');"></div>
-
+<div class="project-hero-fixed" style="background-image: url('https://lh3.googleusercontent.com/d/1UqSKP2SJBRwOJrAfP57wssOah8OEP1Zz');">
     <div class="hero-caption">
         <p class="proj-cat">Transporte · Renovación Urbana</p>
         <h1>TransMilenio Carrera 7</h1>
         <p class="proj-meta">Bogotá, Colombia &middot; 2007–2017</p>
     </div>
+</div>
+
+<div class="project-carousel-strip" id="project-slider">
+    <div class="slide active" style="background-image: url('https://lh3.googleusercontent.com/d/1doqnbh51lHVNnu5CoVUhpsYQTFpAhnW3');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1TCTKjFJUBYTbbFc3rv_cLl-8d1mvRE1s');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1r0zbOKSpq4HpYl24Yg8wGthqBGx59cLO');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1NQ8mMO6QCPsmocFUSJUk_ESrV-WubaPK');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1Rx7yGs6DQhPWpHFOkhy7seB9hjQtZXid');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/12Gv1BpmFXQ5Wh_-vFErBSYTTO1JmBc_f');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1t_p9Tqf1oAzWA1ER3PH_7iJi96VAlUE2');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/11L4NZYmKgBgIj5lVkmX_hi3ie-0DktqC');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1_DR0rUUVxVu3ldeCyVx_ubDkfjFIjIOs');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1KMFfc8u_xDKsE9NsNQesg29Pdyo8ZlXi');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1YUwtaTNKJsfS5rC7T_W5Cq37986ZZXbD');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1_EfmY-PF77SbSpR6yCES_SfdvdBHnB38');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1x5i3QYISMfQk0gWx9WbFkBrJGtGqCwyn');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1QnH704197W2MMuEBBEicqgPXbaZ_1Axo');"></div>
+
+    <button class="slider-btn slider-prev" onclick="changeSlide(-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button class="slider-btn slider-next" onclick="changeSlide(1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+    <div class="slide-counter" id="slide-counter">1 / 14</div>
 </div>
 
 <section class="project-content">

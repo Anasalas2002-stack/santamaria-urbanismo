@@ -24,10 +24,11 @@
         header.scrolled nav a { color: #1a1a1a; text-shadow: none; }
         nav a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -5px; left: 0; background: currentColor; transition: width 0.3s; }
         nav a:hover::after { width: 100%; }
-        .project-hero { height: 100vh; width: 100%; position: relative; overflow: hidden; background: #000; }
+        .project-hero-fixed { height: 100vh; width: 100%; position: relative; overflow: hidden; background-size: cover; background-position: center; background-color: #000; }
+        .project-hero-fixed::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 55%; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.65)); pointer-events: none; z-index: 5; }
         .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.5s ease-in-out; }
         .slide.active { opacity: 1; }
-        .project-hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 55%; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.65)); pointer-events: none; z-index: 5; }
+        .project-carousel-strip { height: 65vh; width: 100%; position: relative; overflow: hidden; background: #000; }
         .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 20; background: transparent; border: none; color: #fff; width: 56px; height: 56px; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0.6; border-radius: 50%; transition: opacity 0.35s ease, background 0.35s ease; padding: 0; }
         .slider-btn:hover { opacity: 1; background: rgba(255,255,255,0.1); }
         .slider-btn svg { width: 20px; height: 20px; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.6)); }
@@ -53,7 +54,7 @@
             .logo img { height: 100px; } nav { display: none; }
             .inner { grid-template-columns: 1fr; gap: 40px; padding: 0 20px; }
             .hero-caption { left: 20px; bottom: 40px; } .hero-caption h1 { font-size: 1.8rem; }
-            .slider-btn { width: 44px; height: 44px; } .slide-counter { right: 20px; }
+            .slider-btn { width: 44px; height: 44px; } .slide-counter { right: 20px; } .project-carousel-strip { height: 40vh; }
         }
     </style>
 </head>
@@ -72,14 +73,26 @@
     </nav>
 </header>
 
-<div class="project-hero" id="project-slider">
-    <div class="slide active" style="background-image: url('https://lh3.googleusercontent.com/d/1BBeShQq93rp2t_NKlfjppGi317FVgtcX');"></div>
-
+<div class="project-hero-fixed" style="background-image: url('https://lh3.googleusercontent.com/d/1BBeShQq93rp2t_NKlfjppGi317FVgtcX');">
     <div class="hero-caption">
         <p class="proj-cat">Transporte · Ordenamiento Territorial</p>
         <h1>SITM Metro</h1>
         <p class="proj-meta">Bogotá, Colombia &middot; 1996&ndash;2018</p>
     </div>
+</div>
+
+<div class="project-carousel-strip" id="project-slider">
+    <div class="slide active" style="background-image: url('https://lh3.googleusercontent.com/d/1p6u9WkRK43ut5hhXQLxF0LRux0xSch4N');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/18lFN2vtFIvVDR5Zl2DtyWlmcBNFI-vmz');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/13p3THZjosqrIYow0qgwRXNr89zqaS_J-');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1-BDzRJS9MIIHwC4IqCeoR38JEP5mz9rX');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1-i9Is0S7Y1hBChSvA03RdFNiH9TOuVbE');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1kylLHPtZGLyYaX_wYmu9H0tV273q0ZBT');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1noppEjbN-H1GNRv-r5F6AR5gYMNxmLCT');"></div>
+
+    <button class="slider-btn slider-prev" onclick="changeSlide(-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button class="slider-btn slider-next" onclick="changeSlide(1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+    <div class="slide-counter" id="slide-counter">1 / 7</div>
 </div>
 
 <section class="project-content">
