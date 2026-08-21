@@ -16,7 +16,7 @@
         header.scrolled { background: rgba(255,255,255,0.98); padding: 15px 60px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); align-items: center; }
         .logo img { height: 150px; width: auto; display: block; transition: all 0.5s cubic-bezier(0.25,1,0.5,1); filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); }
         header.scrolled .logo img { height: 120px; filter: none; }
-        nav { opacity: 0; transform: translateY(-10px); transition: all 0.4s ease; margin-top: 20px; }
+        nav { opacity: 1; transform: translateY(0); transition: all 0.4s ease; margin-top: 20px; }
         header:hover nav, header.scrolled nav { opacity: 1; transform: translateY(0); }
         header.scrolled nav { margin-top: 0; }
         nav ul { display: flex; gap: 30px; }
@@ -47,6 +47,10 @@
         .back-link:hover { background: #000; color: white; border-color: #000; }
         .description { border-top: 1px solid #eee; padding-top: 30px; }
         .description p { margin-bottom: 18px; font-size: 1rem; color: #444; line-height: 1.85; }
+        .description-grid { display: grid; grid-template-columns: 1fr 320px; gap: 60px; align-items: start; }
+        .planos-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 2px; color: #999; margin-bottom: 15px; }
+        .planos img { width: 100%; display: block; border: 1px solid #eee; margin-bottom: 20px; }
+        @media (max-width: 1100px) { .description-grid { grid-template-columns: 1fr; } }
         footer { text-align: center; padding: 50px 0; font-size: 0.7rem; color: #999; border-top: 1px solid #eee; background: #fafafa; text-transform: uppercase; }
         @media (max-width: 900px) {
             header { padding: 20px; } header.scrolled { padding: 15px 20px; }
@@ -73,12 +77,16 @@
 </header>
 
 <div class="project-hero" id="project-slider">
-    <div class="slide active" style="background-image: url('https://i.imgur.com/VdIo46z.jpeg');"></div>
-    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1hdM3spqGdJ3qqzmIV1xji9j4SJ3YYazi');"></div>
+    <div class="slide active" style="background-image: url('https://lh3.googleusercontent.com/d/1Vuhd5IyIuXX8H-aL1hm9Gz_PfuYhomqL');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1QPEnzCBarTGYEtqhxPw0xP2wb9GmAlvt');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1a5a4epwqJ0BUAT1e0nMFDlfGFSYUOuQv');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1Wp0vYaSDLPSmQS0K7u_kvXczEASa_FmH');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1yrxRYVaG0Mq2eCKB6FFN8373T80dPSA4');"></div>
+    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1FZhROKlXTpopNuquLk30SfMUIpDbazuk');"></div>
 
     <button class="slider-btn slider-prev" onclick="changeSlide(-1)">&#8592;</button>
     <button class="slider-btn slider-next" onclick="changeSlide(1)">&#8594;</button>
-    <div class="slide-counter" id="slide-counter">1 / 2</div>
+    <div class="slide-counter" id="slide-counter">1 / 6</div>
 
     <div class="hero-caption">
         <p class="proj-cat">Urbanismo y Espacio Público</p>
@@ -94,6 +102,8 @@
             <div class="meta-item"><p class="meta-label">Ubicación</p><p class="meta-value">Bogotá, Colombia</p></div>
             <div class="meta-item"><p class="meta-label">Año</p><p class="meta-value">2008</p></div>
             <div class="meta-item"><p class="meta-label">Tipología</p><p class="meta-value">Urbanismo y Espacio Público</p></div>
+            <div class="meta-item"><p class="meta-label">Área intervenida</p><p class="meta-value">16,7 ha</p></div>
+            <div class="meta-item"><p class="meta-label">Cliente</p><p class="meta-value">Instituto de Desarrollo Urbano (IDU)</p></div>
             <div class="meta-item">
                 <p class="meta-label">Reconocimientos</p>
                 <span class="award-badge">Bienal de Arq. Colombia 2002</span><br>
@@ -102,9 +112,20 @@
             <a href="index.html#proyectos" class="back-link">&#8592; Todos los proyectos</a>
         </aside>
         <div class="description">
-            <p>El Parque Tercer Milenio es una intervención de renovación urbana y espacio público de escala metropolitana en el corazón de Bogotá. El proyecto transformó un sector de alta complejidad social —anteriormente conocido como el Cartucho— en un parque urbano de 16 hectáreas que actúa como pulmón verde y espacio de encuentro ciudadano en el centro de la ciudad.</p>
-            <p>El diseño integra grandes explanadas, zonas de vegetación, equipamientos deportivos y culturales, y un sistema de recorridos peatonales que conectan el parque con el tejido urbano circundante. La propuesta concilió la escala monumental propia de un parque metropolitano con espacios de proximidad pensados para el habitante cotidiano del sector.</p>
-            <p>El proyecto obtuvo el primer lugar en la Bienal de Arquitectura de Colombia en 2002 y el segundo puesto en la Bienal Latinoamericana de Arquitectura de Quito, siendo reconocido como uno de los proyectos urbanos más significativos de Colombia en las últimas décadas.</p>
+            <div class="description-grid">
+                <div class="description-text">
+                    <p>El Parque Tercer Milenio es un parque Distrital de 16,7 hectáreas, de escala metropolitana, destinado a la recreación activa. Está ubicado en el centro de Bogotá a dos cuadras de la Plaza de Bolívar, entre la Carrera 10 y la Avenida Caracas y entre la Avenida Comuneros (Calle 6) y la Calle 9, sobre la antigua zona denominada "El Cartucho".</p>
+                    <p>El proyecto fue producto de un proceso de renovación urbana en el cual la ciudad, a través del IDU y con la coordinación de la oficina de Renovación Urbana, compró un total de 20 hectáreas (640 predios) que se encontraban en un grado avanzado de deterioro. Al estar inscrito en un lugar con alta carga histórica para la ciudad, el diseño rescata elementos de la memoria del sector a través del paisajismo y el ordenamiento, con una propuesta contemporánea.</p>
+                    <p>Entre los elementos paisajísticos más relevantes se encuentran la construcción de una topografía artificial por medio de taludes, que contribuye a la zonificación y a la creación de microespacios; la incorporación del agua en estanques, piletas y fuentes interactivas, como memoria de los antiguos ríos que atravesaban la zona; y la conformación de jardines temáticos con especies nativas propias del bosque andino de los Cerros Orientales.</p>
+                    <p>El parque se divide en 17 zonas destinadas a la recreación, contemplación y ocio, articuladas por la Alameda Tercer Milenio —32 metros de ancho y 400 metros de largo— que lo atraviesa de norte a sur y comunica la Calle 6 con la Plaza de San Victorino. Es peatonal en su totalidad, con ciclorrutas, vías de tráfico restringido y una reserva de 3 hectáreas para un futuro centro comercial y cultural que beneficiará la valorización del sector.</p>
+                    <p>El proyecto obtuvo el primer lugar en la Bienal de Arquitectura de Colombia en 2002 y el segundo puesto en la Bienal Latinoamericana de Arquitectura de Quito, siendo reconocido como uno de los proyectos urbanos más significativos de Colombia en las últimas décadas.</p>
+                </div>
+                <div class="planos">
+                    <p class="planos-label">Planos</p>
+                    <img src="https://lh3.googleusercontent.com/d/1wDTiCsECM2CkloKnpEP5S5KgEAyyfelz" alt="Planta general - Parque Tercer Milenio">
+                    <img src="https://lh3.googleusercontent.com/d/1mgrJhUKRVG640Gado5AaLR5wlJcgyMAe" alt="Sistema de taludes y zonas verdes - Parque Tercer Milenio">
+                </div>
+            </div>
         </div>
     </div>
 </section>
