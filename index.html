@@ -566,12 +566,83 @@
             text-transform: uppercase;
             letter-spacing: 1.5px;
             color: #999;
-            margin-top: 50px;
+            margin-top: 0;
             margin-bottom: 5px;
         }
 
-        .award-group-title:first-child {
-            margin-top: 0;
+        .awards-mosaic {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .award-tile {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+            background: #000;
+        }
+
+        .award-tile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.6);
+            transition: filter 0.4s ease, transform 0.6s ease;
+        }
+
+        .award-tile:hover img {
+            transform: scale(1.05);
+        }
+
+        .award-tile.active img {
+            filter: brightness(0.4);
+        }
+
+        .award-tile.active {
+            box-shadow: inset 0 0 0 3px #fff;
+        }
+
+        .award-tile-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 12px;
+        }
+
+        .award-tile-overlay h4 {
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        .award-tile-overlay p {
+            color: #ddd;
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .award-group-detail {
+            display: none;
+        }
+
+        .award-group-detail.active {
+            display: block;
+        }
+
+        @media (max-width: 900px) {
+            .awards-mosaic { grid-template-columns: repeat(2, 1fr); }
         }
 
         .award-item {
@@ -748,7 +819,13 @@
             object-fit: cover;
             display: block;
             transition: transform 0.4s ease;
+            cursor: zoom-in;
         }
+
+        .lightbox-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 5000; align-items: center; justify-content: center; cursor: zoom-out; }
+        .lightbox-overlay.active { display: flex; }
+        .lightbox-overlay img { max-width: 90vw; max-height: 90vh; object-fit: contain; box-shadow: 0 10px 40px rgba(0,0,0,0.5); cursor: default; }
+        .lightbox-close { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 2.2rem; font-weight: 300; cursor: pointer; line-height: 1; }
 
         .apunte-item:hover img {
             transform: scale(1.05);
@@ -971,7 +1048,7 @@
                 <!-- 10. SITM METRO -->
                 <a href="sitm-metro.html" class="project-card" data-category="transporte ordenamiento"
                     data-region="Bogotá" data-year="2018" style="display: block; color: inherit;">
-                    <div class="card-img"><img src="https://i.imgur.com/9B4bAJc.jpeg" alt="SITM Metro"></div>
+                    <div class="card-img"><img src="https://lh3.googleusercontent.com/d/1BBeShQq93rp2t_NKlfjppGi317FVgtcX" alt="SITM Metro"></div>
                     <div class="card-info">
                         <h3>SITM Metro</h3>
                         <span>Bogotá | Transporte · Ordenamiento Territorial</span>
@@ -981,7 +1058,7 @@
                 <!-- 11. TRANSMILENIO CARRERA 7 -->
                 <a href="transmilenio-carrera7.html" class="project-card" data-category="transporte"
                     data-region="Bogotá" data-year="2018" style="display: block; color: inherit;">
-                    <div class="card-img"><img src="https://i.imgur.com/W1wgglX.jpeg" alt="TransMilenio Carrera 7"></div>
+                    <div class="card-img"><img src="https://lh3.googleusercontent.com/d/1UqSKP2SJBRwOJrAfP57wssOah8OEP1Zz" alt="TransMilenio Carrera 7"></div>
                     <div class="card-info">
                         <h3>TransMilenio Carrera 7</h3>
                         <span>Bogotá | Transporte</span>
@@ -991,7 +1068,7 @@
                 <!-- 12. MALLA VIAL SECUNDARIA -->
                 <a href="malla-vial-secundaria.html" class="project-card" data-category="ordenamiento transporte"
                     data-region="Bogotá" data-year="2012" style="display: block; color: inherit;">
-                    <div class="card-img"><img src="https://lh3.googleusercontent.com/d/1obWSF92XUFDKQm652s-ilJJATd2WOS5b" alt="Malla Vial Secundaria"></div>
+                    <div class="card-img"><img src="https://lh3.googleusercontent.com/d/1By6l8wLINjpzLKa6iJqmMkPo2yF_NUme" alt="Malla Vial Secundaria"></div>
                     <div class="card-info">
                         <h3>Malla Vial Secundaria</h3>
                         <span>Bogotá | Ordenamiento Territorial · Transporte</span>
@@ -1018,7 +1095,7 @@
             <h2 class="section-title">La Firma</h2>
             <div class="intro-grid">
                 <div class="intro-img">
-                    <img src="https://i.imgur.com/Lsu341O.jpeg" alt="Camilo Santamaría">
+                    <img src="https://lh3.googleusercontent.com/d/1zhBm9p7gf8qznyHekbAOYAlFGbJ6tqgf" alt="Camilo Santamaría">
                     <p class="intro-caption">Camilo Santamaría</p>
                 </div>
                 <div class="intro-text">
@@ -1079,79 +1156,79 @@
                 <h3 style="font-size: 1.2rem; margin-bottom: 30px; color: var(--text-primary);">Apuntes de Viaje</h3>
                 <div class="apuntes-grid">
                     <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1QKdNrDgWh-bqKAkSBE4lcte7XTsENjr6" alt="Praha" loading="lazy">
+                        <img src="https://lh3.googleusercontent.com/d/1QKdNrDgWh-bqKAkSBE4lcte7XTsENjr6" alt="Praha" loading="lazy" onclick="openLightbox(this.src)">
                         <p class="apunte-caption">Praha</p>
                     </div>
                     <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1uqC_pUXXyuv79FXB5jvMEViWBIXLJ4ii" alt="Bruxelles" loading="lazy">
+                        <img src="https://lh3.googleusercontent.com/d/1uqC_pUXXyuv79FXB5jvMEViWBIXLJ4ii" alt="Bruxelles" loading="lazy" onclick="openLightbox(this.src)">
                         <p class="apunte-caption">Bruxelles</p>
                     </div>
                     <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1Acnjfnn1BUPiimgsPhAAB7W70HjPIH81" alt="Amsterdam" loading="lazy">
+                        <img src="https://lh3.googleusercontent.com/d/1Acnjfnn1BUPiimgsPhAAB7W70HjPIH81" alt="Amsterdam" loading="lazy" onclick="openLightbox(this.src)">
                         <p class="apunte-caption">Amsterdam</p>
                     </div>
                     <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1YO-lFBvHVFlGjPmakw94gW88rEma51ue" alt="Glasgow" loading="lazy">
+                        <img src="https://lh3.googleusercontent.com/d/1YO-lFBvHVFlGjPmakw94gW88rEma51ue" alt="Glasgow" loading="lazy" onclick="openLightbox(this.src)">
                         <p class="apunte-caption">Glasgow</p>
                     </div>
                     <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1yCzlfyx_cfc8VSuqqeo5svotUOf0zqMp" alt="Londres" loading="lazy">
+                        <img src="https://lh3.googleusercontent.com/d/1yCzlfyx_cfc8VSuqqeo5svotUOf0zqMp" alt="Londres" loading="lazy" onclick="openLightbox(this.src)">
                         <p class="apunte-caption">Londres</p>
                     </div>
                     <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1tUS1T3zdWP2X1pYrxyLeI2rCVlkFumUg" alt="Cartagena" loading="lazy">
+                        <img src="https://lh3.googleusercontent.com/d/1tUS1T3zdWP2X1pYrxyLeI2rCVlkFumUg" alt="Cartagena" loading="lazy" onclick="openLightbox(this.src)">
                         <p class="apunte-caption">Cartagena</p>
                     </div>
                     <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1-tv9bJ95zMfeuqeyS3oWU4_B1K_IK0_a" alt="Cartagena" loading="lazy">
+                        <img src="https://lh3.googleusercontent.com/d/1-tv9bJ95zMfeuqeyS3oWU4_B1K_IK0_a" alt="Cartagena" loading="lazy" onclick="openLightbox(this.src)">
                         <p class="apunte-caption">Cartagena</p>
                     </div>
                     <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1_R24bdbOlCTs6CXy6QdKpG-Z6dVNUzwy" alt="Cartagena" loading="lazy">
+                        <img src="https://lh3.googleusercontent.com/d/1_R24bdbOlCTs6CXy6QdKpG-Z6dVNUzwy" alt="Cartagena" loading="lazy" onclick="openLightbox(this.src)">
                         <p class="apunte-caption">Cartagena</p>
                     </div>
                     <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/16OFSICz6G-0xmE8YDKOLI_rVBLbe_e4f" alt="Cartagena" loading="lazy">
+                        <img src="https://lh3.googleusercontent.com/d/16OFSICz6G-0xmE8YDKOLI_rVBLbe_e4f" alt="Cartagena" loading="lazy" onclick="openLightbox(this.src)">
                         <p class="apunte-caption">Cartagena</p>
                     </div>
                     <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1dUmFoUFTgSfch9BkDHAXJb3M7ODugVre" alt="Cartagena" loading="lazy">
+                        <img src="https://lh3.googleusercontent.com/d/1dUmFoUFTgSfch9BkDHAXJb3M7ODugVre" alt="Cartagena" loading="lazy" onclick="openLightbox(this.src)">
                         <p class="apunte-caption">Cartagena</p>
                     </div>
                     <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1hBJSNccYoAzs9Rc49q4-rwJBAZ8xUkgT" alt="Roma" loading="lazy">
+                        <img src="https://lh3.googleusercontent.com/d/1hBJSNccYoAzs9Rc49q4-rwJBAZ8xUkgT" alt="Roma" loading="lazy" onclick="openLightbox(this.src)">
                         <p class="apunte-caption">Roma</p>
                     </div>
                     <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1a3OMjC7Bdqz5YuaC0ShB8Rxe29gbmYCr" alt="Venecia" loading="lazy">
+                        <img src="https://lh3.googleusercontent.com/d/1a3OMjC7Bdqz5YuaC0ShB8Rxe29gbmYCr" alt="Venecia" loading="lazy" onclick="openLightbox(this.src)">
                         <p class="apunte-caption">Venecia</p>
                     </div>
                     <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1kulv4NYtkQRk-NBOU-SYyirlkq8L28NG" alt="San Gimignano" loading="lazy">
+                        <img src="https://lh3.googleusercontent.com/d/1kulv4NYtkQRk-NBOU-SYyirlkq8L28NG" alt="San Gimignano" loading="lazy" onclick="openLightbox(this.src)">
                         <p class="apunte-caption">San Gimignano</p>
                     </div>
                     <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1yvMkV4vPBGxUCUMk8aQW2P4Lc6bQsU4e" alt="Boston" loading="lazy">
+                        <img src="https://lh3.googleusercontent.com/d/1yvMkV4vPBGxUCUMk8aQW2P4Lc6bQsU4e" alt="Boston" loading="lazy" onclick="openLightbox(this.src)">
                         <p class="apunte-caption">Boston</p>
                     </div>
                     <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1NqzYkRsgMzX3KS1-ZQkM1xVgr8lzQWrM" alt="Nueva York" loading="lazy">
+                        <img src="https://lh3.googleusercontent.com/d/1NqzYkRsgMzX3KS1-ZQkM1xVgr8lzQWrM" alt="Nueva York" loading="lazy" onclick="openLightbox(this.src)">
                         <p class="apunte-caption">Nueva York</p>
                     </div>
                     <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1htruOuaeKpLorfOaCvD1gUf2EcNngOoh" alt="Bogotá" loading="lazy">
+                        <img src="https://lh3.googleusercontent.com/d/1htruOuaeKpLorfOaCvD1gUf2EcNngOoh" alt="Bogotá" loading="lazy" onclick="openLightbox(this.src)">
                         <p class="apunte-caption">Bogotá</p>
                     </div>
                     <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/19njQuGCffcgErVsOS4lpct6bVtFaM7uA" alt="Bogotá – Parque Tercer Milenio" loading="lazy">
+                        <img src="https://lh3.googleusercontent.com/d/19njQuGCffcgErVsOS4lpct6bVtFaM7uA" alt="Bogotá – Parque Tercer Milenio" loading="lazy" onclick="openLightbox(this.src)">
                         <p class="apunte-caption">Bogotá – Parque Tercer Milenio</p>
                     </div>
                     <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1HUb2cfB9zpVfRETW_O9x9SxrlY0IpE8Q" alt="Bogotá – Calle 13" loading="lazy">
+                        <img src="https://lh3.googleusercontent.com/d/1HUb2cfB9zpVfRETW_O9x9SxrlY0IpE8Q" alt="Bogotá – Calle 13" loading="lazy" onclick="openLightbox(this.src)">
                         <p class="apunte-caption">Bogotá – Calle 13</p>
                     </div>
                     <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/10-4i1hsgpNStaQwoO_NTBID0UydJFFiy" alt="Bogotá – San Victorino" loading="lazy">
+                        <img src="https://lh3.googleusercontent.com/d/10-4i1hsgpNStaQwoO_NTBID0UydJFFiy" alt="Bogotá – San Victorino" loading="lazy" onclick="openLightbox(this.src)">
                         <p class="apunte-caption">Bogotá – San Victorino</p>
                     </div>
                 </div>
@@ -1163,7 +1240,29 @@
     <section id="premios">
         <div class="container">
             <h2 class="section-title">Reconocimientos</h2>
-            <div class="awards-list">
+            <div class="awards-mosaic">
+                <div class="award-tile active" data-group="group-sca" onclick="toggleAwardGroup('group-sca')">
+                    <img src="https://lh3.googleusercontent.com/d/1BA83RLFqGAXZ9rAWW89uP6XHrkzrVVJ8" alt="SCA / CPNAA" loading="lazy">
+                    <div class="award-tile-overlay"><h4>SCA / CPNAA</h4><p>Bienal Nacional de Arquitectura</p></div>
+                </div>
+                <div class="award-tile" data-group="group-quito" onclick="toggleAwardGroup('group-quito')">
+                    <img src="https://lh3.googleusercontent.com/d/1hdM3spqGdJ3qqzmIV1xji9j4SJ3YYazi" alt="Bienal Panamericana" loading="lazy">
+                    <div class="award-tile-overlay"><h4>Bienal Panamericana</h4><p>Quito</p></div>
+                </div>
+                <div class="award-tile" data-group="group-sci" onclick="toggleAwardGroup('group-sci')">
+                    <img src="https://lh3.googleusercontent.com/d/1zhBm9p7gf8qznyHekbAOYAlFGbJ6tqgf" alt="Soc. Colombiana" loading="lazy">
+                    <div class="award-tile-overlay"><h4>Soc. Colombiana</h4><p>de Ingenieros</p></div>
+                </div>
+                <div class="award-tile" data-group="group-cemex" onclick="toggleAwardGroup('group-cemex')">
+                    <img src="https://lh3.googleusercontent.com/d/1Ls2XuVK0vpxTd6Si1WdD5eza8Mz7BtsG" alt="CEMEX" loading="lazy">
+                    <div class="award-tile-overlay"><h4>CEMEX</h4><p>Premio Obras Cemex</p></div>
+                </div>
+                <div class="award-tile" data-group="group-fiabci" onclick="toggleAwardGroup('group-fiabci')">
+                    <img src="https://lh3.googleusercontent.com/d/15vbDdj9XjLBhbxLbphuih-ubjDjwzghA" alt="FIABCI" loading="lazy">
+                    <div class="award-tile-overlay"><h4>FIABCI</h4><p>Excelencia Inmobiliaria</p></div>
+                </div>
+            </div>
+            <div class="award-group-detail active" id="group-sca">
                 <p class="award-group-title">SCA / CPNAA &middot; Bienal Nacional de Arquitectura</p>
                 <div class="award-item"><div class="award-year">2025</div><div class="award-desc">Villas de San Pablo, Barranquilla (Fundación Santo Domingo / Prodesa) — II Salones Regionales de Arquitectura y Urbanismo, ganador Vivienda Colectiva – VIP.</div></div>
                 <div class="award-item"><div class="award-year">2023</div><div class="award-desc">Palermo Sm5, Reserva de Madrid (Prodesa) — Salones Regionales de Arquitectura, mención Categoría Hábitat Social.</div></div>
@@ -1175,12 +1274,18 @@
                 <div class="award-item"><div class="award-year">1999</div><div class="award-desc">Las Mercedes de Suba, Bogotá (Prodesa) — XVII Bienal Colombiana de Arquitectura, Mención de Honor Premio Nacional al Hábitat Popular.</div></div>
                 <div class="award-item"><div class="award-year">1998</div><div class="award-desc">Aragón, Bogotá (Prodesa) — XVI Bienal Colombiana de Arquitectura, Premio Obra Seleccionada, Diseño Arquitectónico.</div></div>
 
+            </div>
+            <div class="award-group-detail" id="group-quito">
                 <p class="award-group-title">Colegio de Arquitectos del Ecuador &middot; Bienal Panamericana de Quito</p>
                 <div class="award-item"><div class="award-year">2008</div><div class="award-desc">Parque Tercer Milenio, Bogotá (IDU) — XVI Bienal Panamericana de Arquitectura de Quito, segundo puesto Arquitectura Paisajista.</div></div>
 
+            </div>
+            <div class="award-group-detail" id="group-sci">
                 <p class="award-group-title">Sociedad Colombiana de Ingenieros</p>
                 <div class="award-item"><div class="award-year">2020</div><div class="award-desc">Arq. Camilo Santamaría — Mención de Honor, Premio José Gómez Pinzón por sus servicios a la arquitectura, la ingeniería y la construcción en Colombia.</div></div>
 
+            </div>
+            <div class="award-group-detail" id="group-cemex">
                 <p class="award-group-title">CEMEX &middot; Premio Obras CEMEX</p>
                 <div class="award-item"><div class="award-year">2016</div><div class="award-desc">Agrupación de Vivienda Palmar, Reserva de Madrid (Prodesa) — Primer lugar Vivienda Interés Social.</div></div>
                 <div class="award-item"><div class="award-year">2016</div><div class="award-desc">Macroproyecto Ciudad Verde, Soacha (Amarilo) — Finalista Premio Especial en Valor Social, edición internacional.</div></div>
@@ -1191,6 +1296,8 @@
                 <div class="award-item"><div class="award-year">2008</div><div class="award-desc">Parque Tercer Milenio, Bogotá (IDU) — IV Premio Obras Cemex Colombia, mención especial Infraestructura / Urbanismo.</div></div>
                 <div class="award-item"><div class="award-year">2008</div><div class="award-desc">Urbanización Senderos de Funza (Prodesa) — IV Premio Obras Cemex Colombia, mención especial Vivienda de Interés Social.</div></div>
 
+            </div>
+            <div class="award-group-detail" id="group-fiabci">
                 <p class="award-group-title">FIABCI &middot; Premios a la Excelencia Inmobiliaria</p>
                 <div class="award-item"><div class="award-year">2024</div><div class="award-desc">HUB de Movilidad Plaza Calle 136, Bogotá — Ganador Categoría Urbanismo.</div></div>
                 <div class="award-item"><div class="award-year">2023</div><div class="award-desc">Macroproyecto Alameda del Río, Barranquilla (Amarilo) — Ganador Categoría Urbanismo.</div></div>
@@ -1250,6 +1357,11 @@
         </div>
     </section>
 
+    <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
+    </div>
+
     <footer>
         <p>&copy; 2025 Santamaría Urbanismo SAS. Bogotá, Colombia.</p>
     </footer>
@@ -1291,6 +1403,16 @@
         }
 
         heroResetInterval();
+
+        // 1b. MOSAICO DE RECONOCIMIENTOS
+        function toggleAwardGroup(id) {
+            document.querySelectorAll('.award-group-detail').forEach(function(el) { el.classList.toggle('active', el.id === id); });
+            document.querySelectorAll('.award-tile').forEach(function(el) { el.classList.toggle('active', el.dataset.group === id); });
+        }
+
+        // 1c. LIGHTBOX (Apuntes de Viaje)
+        function openLightbox(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').classList.add('active'); }
+        function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
 
         // 2. FILTRO PROYECTOS (soporta múltiples categorías por proyecto)
         let currentCategory = 'all';
