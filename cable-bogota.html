@@ -51,9 +51,7 @@
         .lightbox-overlay.active { display: flex; }
         .lightbox-overlay img { max-width: 90vw; max-height: 90vh; object-fit: contain; box-shadow: 0 10px 40px rgba(0,0,0,0.5); cursor: default; }
         .lightbox-close { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 2.2rem; font-weight: 300; cursor: pointer; line-height: 1; }
-        .video-section { margin-top: 60px; }
-        .video-wrapper { position: relative; width: 100%; padding-top: 56.25%; background: #000; }
-        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        .slide-video-embed { width: 100%; height: 100%; border: 0; }
         .description-grid { display: grid; grid-template-columns: 1fr 320px; gap: 60px; align-items: start; }
         .planos-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 2px; color: #999; margin-bottom: 15px; }
         .planos img { width: 100%; display: block; border: 1px solid #eee; margin-bottom: 20px; }
@@ -90,10 +88,11 @@
     <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1PRziwJuLKm1KQGy_adVTLlBTDfOaLLzw');"></div>
     <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1Peqm_xhd_8E4aB5kbwlZI69nIe8DUrDk');"></div>
     <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1yMUyKLjzfAa18Pk5GjBPdVLPXtpmDFjb');"></div>
+    <div class="slide" style="background: #000;"><iframe class="slide-video-embed" src="https://drive.google.com/file/d/1jjnxNuoUbiydCVTfas5JFvRXhdp5w8Hq/preview" allow="autoplay" allowfullscreen></iframe></div>
 
     <button class="slider-btn slider-prev" onclick="changeSlide(-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
     <button class="slider-btn slider-next" onclick="changeSlide(1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
-    <div class="slide-counter" id="slide-counter">1 / 6</div>
+    <div class="slide-counter" id="slide-counter">1 / 7</div>
 
     <div class="hero-caption">
         <p class="proj-cat">Transporte · Movilidad Urbana Sostenible</p>
@@ -125,12 +124,6 @@
                     <img src="https://lh3.googleusercontent.com/d/15-Go3PvJmuer9289QQvNIFZFtx9kta1L" alt="Planta general estación Paraíso - TransMiCable" onclick="openLightbox(this.src)">
                     <img src="https://lh3.googleusercontent.com/d/1BkNPJFfgYzwSHki1Gf04Z_0awLrODiDu" alt="Corte estación Paraíso - TransMiCable" onclick="openLightbox(this.src)">
                     <img src="https://lh3.googleusercontent.com/d/1sjUD2bfvhiA-GxF0QtFmG6GZRCjaE92P" alt="Fachada estación Paraíso - TransMiCable" onclick="openLightbox(this.src)">
-                </div>
-            </div>
-            <div class="video-section">
-                <p class="planos-label">Video</p>
-                <div class="video-wrapper">
-                    <iframe src="https://drive.google.com/file/d/1jjnxNuoUbiydCVTfas5JFvRXhdp5w8Hq/preview" allow="autoplay" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
