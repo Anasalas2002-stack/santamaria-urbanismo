@@ -110,8 +110,7 @@
     function goTo(n) { slides[current].classList.remove('active'); current = (n + slides.length) % slides.length; slides[current].classList.add('active'); updateCounter(); }
     function changeSlide(dir) { goTo(current + dir); resetAuto(); }
     function resetAuto() { clearInterval(autoPlay); autoPlay = setInterval(() => goTo(current + 1), 5000); }
-    if (slides.length > 1) resetAuto();
-    updateCounter();
+    if (slides.length > 1) { resetAuto(); updateCounter(); }
     window.addEventListener('scroll', function() {
         const header = document.getElementById('main-header');
         const logo = document.getElementById('header-logo');

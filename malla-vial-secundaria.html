@@ -46,6 +46,14 @@
         .back-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 40px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; color: #1a1a1a; border: 1px solid #ddd; padding: 12px 20px; transition: 0.3s; }
         .back-link:hover { background: #000; color: white; border-color: #000; }
         .description { border-top: 1px solid #eee; padding-top: 30px; }
+        .lightbox-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 5000; align-items: center; justify-content: center; cursor: zoom-out; }
+        .lightbox-overlay.active { display: flex; }
+        .lightbox-overlay img { max-width: 90vw; max-height: 90vh; object-fit: contain; box-shadow: 0 10px 40px rgba(0,0,0,0.5); cursor: default; }
+        .lightbox-close { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 2.2rem; font-weight: 300; cursor: pointer; line-height: 1; }
+        .planos-full { margin-top: 50px; }
+        .planos-full .planos-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 2px; color: #999; margin-bottom: 15px; }
+        .planos-full-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .planos-full-grid img { width: 100%; display: block; border: 1px solid #eee; cursor: zoom-in; }
         .description p { margin-bottom: 18px; font-size: 1rem; color: #444; line-height: 1.85; }
         footer { text-align: center; padding: 50px 0; font-size: 0.7rem; color: #999; border-top: 1px solid #eee; background: #fafafa; text-transform: uppercase; }
         @media (max-width: 900px) {
@@ -73,18 +81,7 @@
 </header>
 
 <div class="project-hero" id="project-slider">
-    <div class="slide active" style="background-image: url('https://lh3.googleusercontent.com/d/1obWSF92XUFDKQm652s-ilJJATd2WOS5b');"></div>
-    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/17WGaAhrexEHGEd-cKIiiEV8g2eEmSWIK');"></div>
-    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1S7h-BMdHp1OdYctxlBkNjRNGnutO8FSo');"></div>
-    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1Pd0Xmah2DSHUzOf9Nf7ZhKPfZ76UQ_9e');"></div>
-    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1By6l8wLINjpzLKa6iJqmMkPo2yF_NUme');"></div>
-    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1VqI_hYV8DlMaOw_kTBWzMxzYGGgUzmad');"></div>
-    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1mudVgkOCh97kbNl92byGs-xbW52qEp2z');"></div>
-    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1A1IVlV5Q7tFAJLbyYZykq57qGi6lv6yx');"></div>
-
-    <button class="slider-btn slider-prev" onclick="changeSlide(-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
-    <button class="slider-btn slider-next" onclick="changeSlide(1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
-    <div class="slide-counter" id="slide-counter">1 / 8</div>
+    <div class="slide active" style="background: linear-gradient(135deg, #1a1a1a, #3a3a3a);"></div>
 
     <div class="hero-caption">
         <p class="proj-cat">Ordenamiento Territorial · Transporte</p>
@@ -107,21 +104,40 @@
             <p>La Malla Vial Intermedia fue concebida como un componente estratégico del sistema de movilidad de Bogotá, destinado a complementar la red arterial principal y fortalecer la conectividad entre las diferentes piezas urbanas de la ciudad. Su formulación abarcó el Centro Metropolitano, el Tejido Residencial Norte, el Tejido Residencial Sur y la Ciudad Sur, territorios que concentran gran parte del desarrollo urbano de la capital.</p>
             <p>La propuesta entendió la movilidad como un elemento estructurador del territorio, definiendo una red de corredores de escala zonal capaz de distribuir los flujos de tránsito, mejorar la accesibilidad a los barrios y conectar centralidades, equipamientos y sistemas de transporte. Desde el punto de vista urbanístico, el estudio propuso una red articulada con la estructura territorial definida por el Plan de Ordenamiento Territorial, favoreciendo la integración entre áreas residenciales, zonas de actividad económica, equipamientos y centralidades urbanas. La propuesta incorporó también criterios relacionados con la morfología urbana, la preservación patrimonial, la ciudad de ladera y la relación entre movilidad, espacio público y desarrollo urbano.</p>
             <p>La propuesta consideró la articulación con los sistemas de transporte público y las rutas alimentadoras, fortaleciendo la cobertura territorial y optimizando los desplazamientos urbanos. Como resultado, se definió una red de aproximadamente 3.300 kilómetros-carril que complementaba la capacidad de la malla arterial y contribuía a una estructura urbana más integrada, accesible y eficiente para Bogotá.</p>
+            <div class="planos-full">
+                <p class="planos-label">Planos</p>
+                <div class="planos-full-grid">
+                    <img src="https://lh3.googleusercontent.com/d/1obWSF92XUFDKQm652s-ilJJATd2WOS5b" alt="Plano general - Malla Vial Intermedia" onclick="openLightbox(this.src)">
+                    <img src="https://lh3.googleusercontent.com/d/17WGaAhrexEHGEd-cKIiiEV8g2eEmSWIK" alt="Plano 2 - Malla Vial Intermedia" onclick="openLightbox(this.src)">
+                    <img src="https://lh3.googleusercontent.com/d/1S7h-BMdHp1OdYctxlBkNjRNGnutO8FSo" alt="Plano 3 - Malla Vial Intermedia" onclick="openLightbox(this.src)">
+                    <img src="https://lh3.googleusercontent.com/d/1Pd0Xmah2DSHUzOf9Nf7ZhKPfZ76UQ_9e" alt="Plano 4 - Malla Vial Intermedia" onclick="openLightbox(this.src)">
+                    <img src="https://lh3.googleusercontent.com/d/1By6l8wLINjpzLKa6iJqmMkPo2yF_NUme" alt="Plano 6 - Malla Vial Intermedia" onclick="openLightbox(this.src)">
+                    <img src="https://lh3.googleusercontent.com/d/1VqI_hYV8DlMaOw_kTBWzMxzYGGgUzmad" alt="Plano 7 - Malla Vial Intermedia" onclick="openLightbox(this.src)">
+                    <img src="https://lh3.googleusercontent.com/d/1mudVgkOCh97kbNl92byGs-xbW52qEp2z" alt="Plano 8 - Malla Vial Intermedia" onclick="openLightbox(this.src)">
+                    <img src="https://lh3.googleusercontent.com/d/1A1IVlV5Q7tFAJLbyYZykq57qGi6lv6yx" alt="Plano 9 - Malla Vial Intermedia" onclick="openLightbox(this.src)">
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
+</div>
+
 <footer><p>&copy; 2025 Santamaría Urbanismo SAS. Bogotá, Colombia.</p></footer>
 
 <script>
+    function openLightbox(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').classList.add('active'); }
+    function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
     let slides = document.querySelectorAll('.slide');
     let current = 0; let autoPlay;
     function updateCounter() { document.getElementById('slide-counter').textContent = (current + 1) + ' / ' + slides.length; }
     function goTo(n) { slides[current].classList.remove('active'); current = (n + slides.length) % slides.length; slides[current].classList.add('active'); updateCounter(); }
     function changeSlide(dir) { goTo(current + dir); resetAuto(); }
     function resetAuto() { clearInterval(autoPlay); autoPlay = setInterval(() => goTo(current + 1), 5000); }
-    if (slides.length > 1) resetAuto();
-    updateCounter();
+    if (slides.length > 1) { resetAuto(); updateCounter(); }
     window.addEventListener('scroll', function() {
         const header = document.getElementById('main-header');
         const logo = document.getElementById('header-logo');
