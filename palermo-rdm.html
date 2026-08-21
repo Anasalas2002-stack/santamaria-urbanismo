@@ -16,7 +16,7 @@
         header.scrolled { background: rgba(255,255,255,0.98); padding: 15px 60px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); align-items: center; }
         .logo img { height: 150px; width: auto; display: block; transition: all 0.5s cubic-bezier(0.25,1,0.5,1); filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); }
         header.scrolled .logo img { height: 120px; filter: none; }
-        nav { opacity: 0; transform: translateY(-10px); transition: all 0.4s ease; margin-top: 20px; }
+        nav { opacity: 1; transform: translateY(0); transition: all 0.4s ease; margin-top: 20px; }
         header:hover nav, header.scrolled nav { opacity: 1; transform: translateY(0); }
         header.scrolled nav { margin-top: 0; }
         nav ul { display: flex; gap: 30px; }
@@ -46,6 +46,10 @@
         .back-link:hover { background: #000; color: white; border-color: #000; }
         .description { border-top: 1px solid #eee; padding-top: 30px; }
         .description p { margin-bottom: 18px; font-size: 1rem; color: #444; line-height: 1.85; }
+        .description-grid { display: grid; grid-template-columns: 1fr 320px; gap: 60px; align-items: start; }
+        .planos-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 2px; color: #999; margin-bottom: 15px; }
+        .planos img { width: 100%; display: block; border: 1px solid #eee; margin-bottom: 20px; }
+        @media (max-width: 1100px) { .description-grid { grid-template-columns: 1fr; } }
         footer { text-align: center; padding: 50px 0; font-size: 0.7rem; color: #999; border-top: 1px solid #eee; background: #fafafa; text-transform: uppercase; }
         @media (max-width: 900px) {
             header { padding: 20px; } header.scrolled { padding: 15px 20px; }
@@ -96,12 +100,21 @@
             <div class="meta-item"><p class="meta-label">Ubicación</p><p class="meta-value">Madrid, Cundinamarca</p></div>
             <div class="meta-item"><p class="meta-label">Año</p><p class="meta-value">2015</p></div>
             <div class="meta-item"><p class="meta-label">Tipología</p><p class="meta-value">Arquitectura &middot; Vivienda VIS y No VIS</p></div>
+            <div class="meta-item"><p class="meta-label">Cliente</p><p class="meta-value">PRODESA</p></div>
             <a href="index.html#proyectos" class="back-link">&#8592; Todos los proyectos</a>
         </aside>
         <div class="description">
-            <p>Palermo es un proyecto mixto de vivienda VIS y No VIS ubicado en la Supermanzana 5 de Reserva de Madrid, con 420 unidades distribuidas en 21 torres de apartamentos de cinco pisos, un edificio de parqueaderos de cinco pisos y un edificio comunal-comercial de tres pisos. Las torres se disponen alrededor de recintos verdes arborizados con zonas de juegos, y todos los apartamentos cuentan con balcón en la sala o el comedor.</p>
-            <p>El proyecto logra una adecuada integración de estratos, combinando en una misma manzana torres VIS y No VIS, zonas comunales internas y una esquina comercial conformada por dos edificios que rodean una plaza, con seis locales entre los que se cuentan un supermercado, una panadería y varios restaurantes. Sobre los locales se ubicaron los salones comunales, organizados a manera de un pequeño "club" con salones de juegos, de fiesta, de estudio, espacios para niños y un cine.</p>
-            <p>Un edificio de parqueaderos de cuatro niveles permitió liberar espacio para parques internos, de modo que los niños puedan jugar sin exposición a vías vehiculares. Los edificios de cinco pisos garantizan una escala humana tanto al interior del conjunto como hacia la calle, mientras la mezcla de fachadas, balcones y ventanas —incluso en las culatas— da variedad y vida al espacio público de manzanas totalmente paramentadas.</p>
+            <div class="description-grid">
+                <div class="description-text">
+                    <p>Palermo es un proyecto mixto de vivienda VIS y No VIS ubicado en la Supermanzana 5 de Reserva de Madrid, con 420 unidades distribuidas en 21 torres de apartamentos de cinco pisos, un edificio de parqueaderos de cinco pisos y un edificio comunal-comercial de tres pisos. Las torres se disponen alrededor de recintos verdes arborizados con zonas de juegos, y todos los apartamentos cuentan con balcón en la sala o el comedor.</p>
+                    <p>El proyecto logra una adecuada integración de estratos, combinando en una misma manzana torres VIS y No VIS, zonas comunales internas y una esquina comercial conformada por dos edificios que rodean una plaza, con seis locales entre los que se cuentan un supermercado, una panadería y varios restaurantes. Sobre los locales se ubicaron los salones comunales, organizados a manera de un pequeño "club" con salones de juegos, de fiesta, de estudio, espacios para niños y un cine.</p>
+                    <p>Un edificio de parqueaderos de cuatro niveles permitió liberar espacio para parques internos, de modo que los niños puedan jugar sin exposición a vías vehiculares. Los edificios de cinco pisos garantizan una escala humana tanto al interior del conjunto como hacia la calle, mientras la mezcla de fachadas, balcones y ventanas —incluso en las culatas— da variedad y vida al espacio público de manzanas totalmente paramentadas.</p>
+                </div>
+                <div class="planos">
+                    <p class="planos-label">Planos</p>
+                    <img src="https://lh3.googleusercontent.com/d/1nH3G2Xtm_HVnqhmFeTAu7USSdPU6LQ31" alt="Planos - Palermo RDM">
+                </div>
+            </div>
         </div>
     </div>
 </section>
