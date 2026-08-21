@@ -28,8 +28,9 @@
         .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.5s ease-in-out; }
         .slide.active { opacity: 1; }
         .project-hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 55%; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.65)); pointer-events: none; z-index: 5; }
-        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 20; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.4); color: white; width: 52px; height: 52px; cursor: pointer; font-size: 1.3rem; display: flex; align-items: center; justify-content: center; transition: background 0.3s; backdrop-filter: blur(4px); }
-        .slider-btn:hover { background: rgba(255,255,255,0.3); }
+        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 20; background: transparent; border: none; color: #fff; width: 56px; height: 56px; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0.6; border-radius: 50%; transition: opacity 0.35s ease, background 0.35s ease; padding: 0; }
+        .slider-btn:hover { opacity: 1; background: rgba(255,255,255,0.1); }
+        .slider-btn svg { width: 20px; height: 20px; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.6)); }
         .slider-prev { left: 30px; } .slider-next { right: 30px; }
         .slide-counter { position: absolute; bottom: 85px; right: 60px; z-index: 10; color: rgba(255,255,255,0.7); font-size: 0.75rem; letter-spacing: 3px; }
         .hero-caption { position: absolute; bottom: 60px; left: 60px; color: white; z-index: 10; max-width: 620px; border-left: 4px solid white; padding-left: 25px; }
@@ -52,7 +53,7 @@
             .logo img { height: 100px; } nav { display: none; }
             .inner { grid-template-columns: 1fr; gap: 40px; padding: 0 20px; }
             .hero-caption { left: 20px; bottom: 40px; } .hero-caption h1 { font-size: 1.8rem; }
-            .slider-btn { width: 40px; height: 40px; } .slide-counter { right: 20px; }
+            .slider-btn { width: 44px; height: 44px; } .slide-counter { right: 20px; }
         }
     </style>
 </head>
@@ -82,8 +83,8 @@
     <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1mBUE7JeN1Qi8GSjH9dVMf1p6UFZeLQi4');"></div>
     <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1M_sfavpT1soEX9TtzkVVEvBV2XQNNwzV');"></div>
 
-    <button class="slider-btn slider-prev" onclick="changeSlide(-1)">&#8592;</button>
-    <button class="slider-btn slider-next" onclick="changeSlide(1)">&#8594;</button>
+    <button class="slider-btn slider-prev" onclick="changeSlide(-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button class="slider-btn slider-next" onclick="changeSlide(1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
     <div class="slide-counter" id="slide-counter">1 / 9</div>
 
     <div class="hero-caption">

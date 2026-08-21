@@ -28,8 +28,9 @@
         .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.5s ease-in-out; }
         .slide.active { opacity: 1; }
         .project-hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 55%; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.65)); pointer-events: none; z-index: 5; }
-        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 20; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.4); color: white; width: 52px; height: 52px; cursor: pointer; font-size: 1.3rem; display: flex; align-items: center; justify-content: center; transition: background 0.3s; backdrop-filter: blur(4px); }
-        .slider-btn:hover { background: rgba(255,255,255,0.3); }
+        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 20; background: transparent; border: none; color: #fff; width: 56px; height: 56px; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0.6; border-radius: 50%; transition: opacity 0.35s ease, background 0.35s ease; padding: 0; }
+        .slider-btn:hover { opacity: 1; background: rgba(255,255,255,0.1); }
+        .slider-btn svg { width: 20px; height: 20px; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.6)); }
         .slider-prev { left: 30px; } .slider-next { right: 30px; }
         .slide-counter { position: absolute; bottom: 85px; right: 60px; z-index: 10; color: rgba(255,255,255,0.7); font-size: 0.75rem; letter-spacing: 3px; }
         .hero-caption { position: absolute; bottom: 60px; left: 60px; color: white; z-index: 10; max-width: 620px; border-left: 4px solid white; padding-left: 25px; }
@@ -45,6 +46,14 @@
         .back-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 40px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; color: #1a1a1a; border: 1px solid #ddd; padding: 12px 20px; transition: 0.3s; }
         .back-link:hover { background: #000; color: white; border-color: #000; }
         .description { border-top: 1px solid #eee; padding-top: 30px; }
+        .lightbox-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 5000; align-items: center; justify-content: center; cursor: zoom-out; }
+        .lightbox-overlay.active { display: flex; }
+        .lightbox-overlay img { max-width: 90vw; max-height: 90vh; object-fit: contain; box-shadow: 0 10px 40px rgba(0,0,0,0.5); cursor: default; }
+        .lightbox-close { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 2.2rem; font-weight: 300; cursor: pointer; line-height: 1; }
+        .description-grid { display: grid; grid-template-columns: 1fr 320px; gap: 60px; align-items: start; }
+        .planos-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 2px; color: #999; margin-bottom: 15px; }
+        .planos img { width: 100%; display: block; border: 1px solid #eee; margin-bottom: 20px; cursor: zoom-in; }
+        @media (max-width: 1100px) { .description-grid { grid-template-columns: 1fr; } }
         .description p { margin-bottom: 18px; font-size: 1rem; color: #444; line-height: 1.85; }
         footer { text-align: center; padding: 50px 0; font-size: 0.7rem; color: #999; border-top: 1px solid #eee; background: #fafafa; text-transform: uppercase; }
         @media (max-width: 900px) {
@@ -52,7 +61,7 @@
             .logo img { height: 100px; } nav { display: none; }
             .inner { grid-template-columns: 1fr; gap: 40px; padding: 0 20px; }
             .hero-caption { left: 20px; bottom: 40px; } .hero-caption h1 { font-size: 1.8rem; }
-            .slider-btn { width: 40px; height: 40px; } .slide-counter { right: 20px; }
+            .slider-btn { width: 44px; height: 44px; } .slide-counter { right: 20px; }
         }
     </style>
 </head>
@@ -74,16 +83,15 @@
 <div class="project-hero" id="project-slider">
     <div class="slide active" style="background-image: url('https://lh3.googleusercontent.com/d/1sN5ODM170RFjW7Q0dgDDohX0EpYcYiIz');"></div>
     <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1fdp-6KMRCgltCJQIALXxrX1LppFdHFUE');"></div>
-    <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1k22VZYMpm9yJFVZ-4Z0wdRryioBdLpe5');"></div>
     <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1IF2A91JgfZqktIPH-2CS_KRRUl2rjBaC');"></div>
     <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/19q_zAw-QffOciQzlkAjx7l7sRyKN7LgE');"></div>
     <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/120B3FTJwWuhvSciCJlZQ0vi9zt4UvoJt');"></div>
     <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1sbtMXQB1RssMjMIvHpFpvhldo1On_53r');"></div>
     <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1syvOQ4wIawxubni3cpT4TaOrNanaDIUy');"></div>
 
-    <button class="slider-btn slider-prev" onclick="changeSlide(-1)">&#8592;</button>
-    <button class="slider-btn slider-next" onclick="changeSlide(1)">&#8594;</button>
-    <div class="slide-counter" id="slide-counter">1 / 8</div>
+    <button class="slider-btn slider-prev" onclick="changeSlide(-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button class="slider-btn slider-next" onclick="changeSlide(1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+    <div class="slide-counter" id="slide-counter">1 / 7</div>
 
     <div class="hero-caption">
         <p class="proj-cat">Ordenamiento Territorial · Urbanismo</p>
@@ -104,17 +112,33 @@
             <a href="index.html#proyectos" class="back-link">&#8592; Todos los proyectos</a>
         </aside>
         <div class="description">
-            <p>El proyecto se ubica en terrenos que formaron parte de una de las más reconocidas haciendas de la Sabana de Bogotá, contigua al casco urbano de Madrid y al cerro Casablanca, en un sector de importante desarrollo residencial, industrial, comercial y recreativo, con una estrecha integración urbana con el municipio de Mosquera. Dentro de un Plan Maestro de largo plazo para el desarrollo de toda la Hacienda (cerca de 1.000 hectáreas), se planteó en 2006 la expansión urbana del municipio mediante la incorporación de un terreno de 41 hectáreas a solo 600 metros de la plaza principal, urbanizado entre 2010 y 2020.</p>
-            <p>El diseño urbano del Plan Parcial se estructuró a partir de elementos naturales y patrimoniales: la Calle 7 (antigua Troncal de Occidente), el río Subachoque que rodea el predio en tres de sus costados, el cerro Casablanca y la histórica alameda de acacias que conducía a la casa principal de la Hacienda. Sobre esta alameda se consolidó la Avenida Casablanca, principal acceso al proyecto, concebida como un "parkway" de 54 metros de ancho con un separador central de 30 metros donde se preservaron las acacias y el antiguo camino, transformado en paseo urbano para peatones y ciclistas.</p>
-            <p>En sentido transversal se desarrolló el Parque Casablanca, un parque lineal de 45 metros de ancho y cerca de 330 metros de longitud que integra ambiental y paisajísticamente dos tramos del río. Hacia la Calle 7 se dispuso una vía paralela acompañada de una alameda como barrera ambiental y corredor peatonal y ciclístico; en la glorieta de acceso se conservaron el antiguo muro de piedra y la portada de la Hacienda como elementos representativos de su historia.</p>
-            <p>El plan parcial se concibió bajo criterios de proximidad y accesibilidad: sus habitantes pueden acceder a la mayoría de servicios a menos de 600 metros, con un centro comercial, un colegio y un hospital conectados mediante paseos urbanos, ciclorrutas y senderos peatonales. La norma permitió una mezcla de casas, town houses y edificios de 6 pisos entremezclados con parques y zonas verdes, dando al proyecto un carácter de "ciudad jardín" muy cercana al centro del municipio.</p>
+            <div class="description-grid">
+                <div class="description-text">
+                    <p>El proyecto se ubica en terrenos que formaron parte de una de las más reconocidas haciendas de la Sabana de Bogotá, contigua al casco urbano de Madrid y al cerro Casablanca, en un sector de importante desarrollo residencial, industrial, comercial y recreativo, con una estrecha integración urbana con el municipio de Mosquera. Dentro de un Plan Maestro de largo plazo para el desarrollo de toda la Hacienda (cerca de 1.000 hectáreas), se planteó en 2006 la expansión urbana del municipio mediante la incorporación de un terreno de 41 hectáreas a solo 600 metros de la plaza principal, urbanizado entre 2010 y 2020.</p>
+                    <p>El diseño urbano del Plan Parcial se estructuró a partir de elementos naturales y patrimoniales: la Calle 7 (antigua Troncal de Occidente), el río Subachoque que rodea el predio en tres de sus costados, el cerro Casablanca y la histórica alameda de acacias que conducía a la casa principal de la Hacienda. Sobre esta alameda se consolidó la Avenida Casablanca, principal acceso al proyecto, concebida como un "parkway" de 54 metros de ancho con un separador central de 30 metros donde se preservaron las acacias y el antiguo camino, transformado en paseo urbano para peatones y ciclistas.</p>
+                    <p>En sentido transversal se desarrolló el Parque Casablanca, un parque lineal de 45 metros de ancho y cerca de 330 metros de longitud que integra ambiental y paisajísticamente dos tramos del río. Hacia la Calle 7 se dispuso una vía paralela acompañada de una alameda como barrera ambiental y corredor peatonal y ciclístico; en la glorieta de acceso se conservaron el antiguo muro de piedra y la portada de la Hacienda como elementos representativos de su historia.</p>
+                    <p>El plan parcial se concibió bajo criterios de proximidad y accesibilidad: sus habitantes pueden acceder a la mayoría de servicios a menos de 600 metros, con un centro comercial, un colegio y un hospital conectados mediante paseos urbanos, ciclorrutas y senderos peatonales. La norma permitió una mezcla de casas, town houses y edificios de 6 pisos entremezclados con parques y zonas verdes, dando al proyecto un carácter de "ciudad jardín" muy cercana al centro del municipio.</p>
+                </div>
+                <div class="planos">
+                    <p class="planos-label">Planos</p>
+                    <img src="https://lh3.googleusercontent.com/d/1k22VZYMpm9yJFVZ-4Z0wdRryioBdLpe5" alt="Plano general de implantación - Hacienda Casablanca" onclick="openLightbox(this.src)">
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
+
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
+</div>
+
 <footer><p>&copy; 2025 Santamaría Urbanismo SAS. Bogotá, Colombia.</p></footer>
 
 <script>
+    function openLightbox(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').classList.add('active'); }
+    function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
     let slides = document.querySelectorAll('.slide');
     let current = 0; let autoPlay;
     function updateCounter() { document.getElementById('slide-counter').textContent = (current + 1) + ' / ' + slides.length; }
