@@ -16,7 +16,7 @@
         header.scrolled { background: rgba(255,255,255,0.98); padding: 15px 60px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); align-items: center; }
         .logo img { height: 150px; width: auto; display: block; transition: all 0.5s cubic-bezier(0.25,1,0.5,1); filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); }
         header.scrolled .logo img { height: 120px; filter: none; }
-        nav { opacity: 0; transform: translateY(-10px); transition: all 0.4s ease; margin-top: 20px; }
+        nav { opacity: 1; transform: translateY(0); transition: all 0.4s ease; margin-top: 20px; }
         header:hover nav, header.scrolled nav { opacity: 1; transform: translateY(0); }
         header.scrolled nav { margin-top: 0; }
         nav ul { display: flex; gap: 30px; }
@@ -46,6 +46,10 @@
         .back-link:hover { background: #000; color: white; border-color: #000; }
         .description { border-top: 1px solid #eee; padding-top: 30px; }
         .description p { margin-bottom: 18px; font-size: 1rem; color: #444; line-height: 1.85; }
+        .description-grid { display: grid; grid-template-columns: 1fr 320px; gap: 60px; align-items: start; }
+        .planos-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 2px; color: #999; margin-bottom: 15px; }
+        .planos img { width: 100%; display: block; border: 1px solid #eee; margin-bottom: 20px; }
+        @media (max-width: 1100px) { .description-grid { grid-template-columns: 1fr; } }
         footer { text-align: center; padding: 50px 0; font-size: 0.7rem; color: #999; border-top: 1px solid #eee; background: #fafafa; text-transform: uppercase; }
         @media (max-width: 900px) {
             header { padding: 20px; } header.scrolled { padding: 15px 20px; }
@@ -97,12 +101,24 @@
             <div class="meta-item"><p class="meta-label">Ubicación</p><p class="meta-value">Bogotá, Colombia</p></div>
             <div class="meta-item"><p class="meta-label">Año</p><p class="meta-value">2019</p></div>
             <div class="meta-item"><p class="meta-label">Tipología</p><p class="meta-value">Transporte · Movilidad Urbana Sostenible</p></div>
+            <div class="meta-item"><p class="meta-label">Cliente</p><p class="meta-value">Unión Temporal Cable Bogotá</p></div>
             <a href="index.html#proyectos" class="back-link">&#8592; Todos los proyectos</a>
         </aside>
         <div class="description">
-            <p>TransMiCable Bogotá es un sistema de transporte por cable diseñado para mejorar la movilidad y la calidad de vida de los habitantes de Ciudad Bolívar, integrando infraestructura de transporte, espacio público y equipamientos urbanos. El proyecto comprende cuatro estaciones (Portal Tunal, Juan Pablo II, Manitas y Mirador del Paraíso), 24 torres y 160 cabinas, a lo largo de 3,25 km de recorrido y un desnivel de 263 metros. Tiene capacidad para transportar 3.600 pasajeros por hora y reduce los tiempos de viaje desde las zonas altas de la localidad hasta el Portal Tunal de aproximadamente 45 minutos a solo 13 minutos.</p>
-            <p>Más allá de la solución de movilidad, el proyecto se concibió como una estrategia de transformación urbana. Las estaciones funcionan como hitos arquitectónicos y puntos de encuentro comunitario, articulados con amplias plazas, terrazas, miradores, zonas verdes, arborización, graderías y espacios peatonales que promueven la apropiación del espacio público. Su diseño combina estructuras de concreto y cubiertas metálicas con envolventes de bajo mantenimiento, generando una imagen contemporánea. Las estaciones incorporan además áreas destinadas a equipamientos y servicios institucionales, facilitando el acceso de la comunidad a servicios públicos.</p>
-            <p>El impacto social del proyecto se refleja en tres aspectos: movilidad, acceso a equipamientos y recuperación del espacio público. La sustitución de buses alimentadores diésel por un sistema totalmente eléctrico contribuye a la reducción de emisiones contaminantes y al mejoramiento de la calidad del aire. La intervención generó nuevos espacios públicos alrededor de las estaciones y torres —plazoletas, andenes accesibles, zonas comunitarias, parques y zonas verdes—, impulsando la revitalización urbana y favoreciendo el mejoramiento de fachadas, la consolidación de actividades comerciales y una mayor percepción de seguridad. TransMiCable ha contribuido además a posicionar a Ciudad Bolívar como un nuevo referente urbano y turístico de Bogotá.</p>
+            <div class="description-grid">
+                <div class="description-text">
+                    <p>TransMiCable Bogotá es un sistema de transporte por cable diseñado para mejorar la movilidad y la calidad de vida de los habitantes de Ciudad Bolívar, integrando infraestructura de transporte, espacio público y equipamientos urbanos. El proyecto comprende cuatro estaciones (Portal Tunal, Juan Pablo II, Manitas y Mirador del Paraíso), 24 torres y 160 cabinas, a lo largo de 3,25 km de recorrido y un desnivel de 263 metros. Tiene capacidad para transportar 3.600 pasajeros por hora y reduce los tiempos de viaje desde las zonas altas de la localidad hasta el Portal Tunal de aproximadamente 45 minutos a solo 13 minutos.</p>
+                    <p>Más allá de la solución de movilidad, el proyecto se concibió como una estrategia de transformación urbana. Las estaciones funcionan como hitos arquitectónicos y puntos de encuentro comunitario, articulados con amplias plazas, terrazas, miradores, zonas verdes, arborización, graderías y espacios peatonales que promueven la apropiación del espacio público. Su diseño combina estructuras de concreto y cubiertas metálicas con envolventes de bajo mantenimiento, generando una imagen contemporánea. Las estaciones incorporan además áreas destinadas a equipamientos y servicios institucionales, facilitando el acceso de la comunidad a servicios públicos.</p>
+                    <p>El impacto social del proyecto se refleja en tres aspectos: movilidad, acceso a equipamientos y recuperación del espacio público. La sustitución de buses alimentadores diésel por un sistema totalmente eléctrico contribuye a la reducción de emisiones contaminantes y al mejoramiento de la calidad del aire. La intervención generó nuevos espacios públicos alrededor de las estaciones y torres —plazoletas, andenes accesibles, zonas comunitarias, parques y zonas verdes—, impulsando la revitalización urbana y favoreciendo el mejoramiento de fachadas, la consolidación de actividades comerciales y una mayor percepción de seguridad. TransMiCable ha contribuido además a posicionar a Ciudad Bolívar como un nuevo referente urbano y turístico de Bogotá.</p>
+                </div>
+                <div class="planos">
+                    <p class="planos-label">Planos</p>
+                    <img src="https://lh3.googleusercontent.com/d/1NMOlvp0yMCOPwImMu0Z7WCZgc69W_sJA" alt="Planta general estación Manitas - TransMiCable">
+                    <img src="https://lh3.googleusercontent.com/d/15-Go3PvJmuer9289QQvNIFZFtx9kta1L" alt="Planta general estación Paraíso - TransMiCable">
+                    <img src="https://lh3.googleusercontent.com/d/1BkNPJFfgYzwSHki1Gf04Z_0awLrODiDu" alt="Corte estación Paraíso - TransMiCable">
+                    <img src="https://lh3.googleusercontent.com/d/1sjUD2bfvhiA-GxF0QtFmG6GZRCjaE92P" alt="Fachada estación Paraíso - TransMiCable">
+                </div>
+            </div>
         </div>
     </div>
 </section>
