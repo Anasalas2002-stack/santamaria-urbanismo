@@ -73,11 +73,7 @@
 </header>
 
 <div class="project-hero" id="project-slider">
-    <div class="slide active" style="background-image: url('https://i.imgur.com/9B4bAJc.jpeg');"></div>
-
-    <button class="slider-btn slider-prev" onclick="changeSlide(-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
-    <button class="slider-btn slider-next" onclick="changeSlide(1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
-    <div class="slide-counter" id="slide-counter">1 / 1</div>
+    <div class="slide active" style="background-image: url('https://lh3.googleusercontent.com/d/1BBeShQq93rp2t_NKlfjppGi317FVgtcX');"></div>
 
     <div class="hero-caption">
         <p class="proj-cat">Transporte · Ordenamiento Territorial</p>
@@ -112,8 +108,7 @@
     function goTo(n) { slides[current].classList.remove('active'); current = (n + slides.length) % slides.length; slides[current].classList.add('active'); updateCounter(); }
     function changeSlide(dir) { goTo(current + dir); resetAuto(); }
     function resetAuto() { clearInterval(autoPlay); autoPlay = setInterval(() => goTo(current + 1), 5000); }
-    if (slides.length > 1) resetAuto();
-    updateCounter();
+    if (slides.length > 1) { resetAuto(); updateCounter(); }
     window.addEventListener('scroll', function() {
         const header = document.getElementById('main-header');
         const logo = document.getElementById('header-logo');
