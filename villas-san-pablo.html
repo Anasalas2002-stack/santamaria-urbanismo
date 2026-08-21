@@ -16,7 +16,7 @@
         header.scrolled { background: rgba(255,255,255,0.98); padding: 15px 60px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); align-items: center; }
         .logo img { height: 150px; width: auto; display: block; transition: all 0.5s cubic-bezier(0.25,1,0.5,1); filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); }
         header.scrolled .logo img { height: 120px; filter: none; }
-        nav { opacity: 0; transform: translateY(-10px); transition: all 0.4s ease; margin-top: 20px; }
+        nav { opacity: 1; transform: translateY(0); transition: all 0.4s ease; margin-top: 20px; }
         header:hover nav, header.scrolled nav { opacity: 1; transform: translateY(0); }
         header.scrolled nav { margin-top: 0; }
         nav ul { display: flex; gap: 30px; }
@@ -46,6 +46,10 @@
         .back-link:hover { background: #000; color: white; border-color: #000; }
         .description { border-top: 1px solid #eee; padding-top: 30px; }
         .description p { margin-bottom: 18px; font-size: 1rem; color: #444; line-height: 1.85; }
+        .description-grid { display: grid; grid-template-columns: 1fr 320px; gap: 60px; align-items: start; }
+        .planos-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 2px; color: #999; margin-bottom: 15px; }
+        .planos img { width: 100%; display: block; border: 1px solid #eee; margin-bottom: 20px; }
+        @media (max-width: 1100px) { .description-grid { grid-template-columns: 1fr; } }
         footer { text-align: center; padding: 50px 0; font-size: 0.7rem; color: #999; border-top: 1px solid #eee; background: #fafafa; text-transform: uppercase; }
         @media (max-width: 900px) {
             header { padding: 20px; } header.scrolled { padding: 15px 20px; }
@@ -100,13 +104,22 @@
             <div class="meta-item"><p class="meta-label">Ubicación</p><p class="meta-value">Barranquilla, Atlántico</p></div>
             <div class="meta-item"><p class="meta-label">Año</p><p class="meta-value">2010</p></div>
             <div class="meta-item"><p class="meta-label">Tipología</p><p class="meta-value">Arquitectura · Vivienda de Interés Social</p></div>
+            <div class="meta-item"><p class="meta-label">Cliente</p><p class="meta-value">Fundación Santo Domingo / Prodesa</p></div>
             <a href="index.html#proyectos" class="back-link">&#8592; Todos los proyectos</a>
         </aside>
         <div class="description">
-            <p>El Conjunto Residencial Villas de San Pablo hace parte del macroproyecto urbanístico del mismo nombre, que adelanta desde hace más de una década la Fundación Santo Domingo en el suroccidente de Barranquilla, sobre la Transversal 8 No. 136-407.</p>
-            <p>La manzana N.º 22 tiene un área de 22.454,40 m², donde se localizaron 36 edificios de vivienda de 4 pisos cada uno, con un área construida de 29.749,11 m² distribuida en 576 unidades de vivienda. Los edificios se paramentan siempre contra el espacio público —eliminando cerramientos, salvo en algunas esquinas— y se organizan alrededor de cuatro claustros privados internos que permiten a los niños y a la comunidad caminar entre ellos manteniendo aislada la circulación vehicular, en espacios seguros y abiertos.</p>
-            <p>Los edificios se ubicaron a 45 grados respecto a la asoleación, reduciendo la incidencia solar sobre las fachadas y complementando el confort con balcones y aleros que dan sombra permanente; el diseño paisajístico, con árboles existentes y nuevos, mejora los microclimas de los claustros. Cada claustro tiene un diseño distinto: en algunos la determinante fue conservar árboles existentes, en otros ubicar un kiosco central como punto de encuentro, y en otros disponer una cancha, una zona de juegos infantiles o una plazoleta.</p>
-            <p>La norma permitió un máximo de 4 pisos por edificio, logrando una escala humana en todo el conjunto, tanto hacia la calle como al interior de los claustros de cada manzana.</p>
+            <div class="description-grid">
+                <div class="description-text">
+                    <p>El Conjunto Residencial Villas de San Pablo hace parte del macroproyecto urbanístico del mismo nombre, que adelanta desde hace más de una década la Fundación Santo Domingo en el suroccidente de Barranquilla, sobre la Transversal 8 No. 136-407.</p>
+                    <p>La manzana N.º 22 tiene un área de 22.454,40 m², donde se localizaron 36 edificios de vivienda de 4 pisos cada uno, con un área construida de 29.749,11 m² distribuida en 576 unidades de vivienda. Los edificios se paramentan siempre contra el espacio público —eliminando cerramientos, salvo en algunas esquinas— y se organizan alrededor de cuatro claustros privados internos que permiten a los niños y a la comunidad caminar entre ellos manteniendo aislada la circulación vehicular, en espacios seguros y abiertos.</p>
+                    <p>Los edificios se ubicaron a 45 grados respecto a la asoleación, reduciendo la incidencia solar sobre las fachadas y complementando el confort con balcones y aleros que dan sombra permanente; el diseño paisajístico, con árboles existentes y nuevos, mejora los microclimas de los claustros. Cada claustro tiene un diseño distinto: en algunos la determinante fue conservar árboles existentes, en otros ubicar un kiosco central como punto de encuentro, y en otros disponer una cancha, una zona de juegos infantiles o una plazoleta.</p>
+                    <p>La norma permitió un máximo de 4 pisos por edificio, logrando una escala humana en todo el conjunto, tanto hacia la calle como al interior de los claustros de cada manzana.</p>
+                </div>
+                <div class="planos">
+                    <p class="planos-label">Planos</p>
+                    <img src="https://lh3.googleusercontent.com/d/1xfQMSc3VRZQ4zFqGWymQYji3n5xNNTtz" alt="Planos - Villas de San Pablo">
+                </div>
+            </div>
         </div>
     </div>
 </section>
