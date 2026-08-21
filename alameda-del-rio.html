@@ -16,7 +16,7 @@
         header.scrolled { background: rgba(255,255,255,0.98); padding: 15px 60px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); align-items: center; }
         .logo img { height: 150px; width: auto; display: block; transition: all 0.5s cubic-bezier(0.25,1,0.5,1); filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); }
         header.scrolled .logo img { height: 120px; filter: none; }
-        nav { opacity: 0; transform: translateY(-10px); transition: all 0.4s ease; margin-top: 20px; }
+        nav { opacity: 1; transform: translateY(0); transition: all 0.4s ease; margin-top: 20px; }
         header:hover nav, header.scrolled nav { opacity: 1; transform: translateY(0); }
         header.scrolled nav { margin-top: 0; }
         nav ul { display: flex; gap: 30px; }
@@ -46,6 +46,10 @@
         .back-link:hover { background: #000; color: white; border-color: #000; }
         .description { border-top: 1px solid #eee; padding-top: 30px; }
         .description p { margin-bottom: 18px; font-size: 1rem; color: #444; line-height: 1.85; }
+        .description-grid { display: grid; grid-template-columns: 1fr 320px; gap: 60px; align-items: start; }
+        .planos-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 2px; color: #999; margin-bottom: 15px; }
+        .planos img { width: 100%; display: block; border: 1px solid #eee; margin-bottom: 20px; }
+        @media (max-width: 1100px) { .description-grid { grid-template-columns: 1fr; } }
         footer { text-align: center; padding: 50px 0; font-size: 0.7rem; color: #999; border-top: 1px solid #eee; background: #fafafa; text-transform: uppercase; }
         @media (max-width: 900px) {
             header { padding: 20px; } header.scrolled { padding: 15px 20px; }
@@ -101,12 +105,22 @@
             <div class="meta-item"><p class="meta-label">Ubicación</p><p class="meta-value">Barranquilla, Colombia</p></div>
             <div class="meta-item"><p class="meta-label">Año</p><p class="meta-value">2015</p></div>
             <div class="meta-item"><p class="meta-label">Tipología</p><p class="meta-value">Ordenamiento Territorial · Diseño Urbano</p></div>
+            <div class="meta-item"><p class="meta-label">Área</p><p class="meta-value">180 ha</p></div>
+            <div class="meta-item"><p class="meta-label">Cliente</p><p class="meta-value">AMARILO</p></div>
             <a href="index.html#proyectos" class="back-link">&#8592; Todos los proyectos</a>
         </aside>
         <div class="description">
-            <p>El proyecto se encuentra ubicado en la ciudad de Barranquilla sobre la avenida circunvalar entre carreras 38 y 46, frente al barrio Miramar. El Plan Parcial tiene un área de intervención urbanística de 180 hectáreas, desarrollado sobre unas antiguas minas de propiedad de ARGOS. Es un proyecto donde el 70% del área es de vivienda, distribuida en vivienda de interés prioritario (VIP), vivienda de interés social (VIS) y vivienda No VIS. El otro 30% está conformado por centros comerciales, zonas de actividad múltiple, colegios privados y la sede de la Federación Colombiana de Fútbol.</p>
-            <p>El proyecto se diseñó a partir de dos grandes ejes que hacen parte de las vías arteriales de la ciudad. La calle 43 es el eje principal, que une la avenida circunvalar con el arroyo León: una avenida de 60 metros de ancho que recoge las aguas lluvia y tiene en su separador juegos de niños, canchas deportivas, parques y plazoletas. El proyecto cuenta con 53 hectáreas de parques y zonas verdes y 12 hectáreas de equipamientos, y puede recorrerse de lado a lado mediante una red de ciclorutas y andenes amplios que se conectan con los distintos parques y plazas.</p>
-            <p>Se propusieron manzanas entre 2 y 4 hectáreas, divididas en cuatro lotes donde se localizaron conjuntos de vivienda de 12 pisos de altura. El proyecto tiene tres barrios identificados, cada uno con una centralidad donde convergen un parque, un colegio y una zona comercial, con distintos estratos socioeconómicos en convivencia. El diseño se inspiró en los bulevares del barrio El Prado de Barranquilla y en los parques locales de barrios, con un paisajismo abundante que genera sombra gracias a la colaboración de la entidad "Barranquilla Siembra". A la fecha, el proyecto cuenta con más de 10.000 viviendas construidas con proyección a llegar a 14.000, desarrolladas por cinco constructores distintos.</p>
+            <div class="description-grid">
+                <div class="description-text">
+                    <p>El proyecto se encuentra ubicado en la ciudad de Barranquilla sobre la avenida circunvalar entre carreras 38 y 46, frente al barrio Miramar. El Plan Parcial tiene un área de intervención urbanística de 180 hectáreas, desarrollado sobre unas antiguas minas de propiedad de ARGOS. Es un proyecto donde el 70% del área es de vivienda, distribuida en vivienda de interés prioritario (VIP), vivienda de interés social (VIS) y vivienda No VIS. El otro 30% está conformado por centros comerciales, zonas de actividad múltiple, colegios privados y la sede de la Federación Colombiana de Fútbol.</p>
+                    <p>El proyecto se diseñó a partir de dos grandes ejes que hacen parte de las vías arteriales de la ciudad. La calle 43 es el eje principal, que une la avenida circunvalar con el arroyo León: una avenida de 60 metros de ancho que recoge las aguas lluvia y tiene en su separador juegos de niños, canchas deportivas, parques y plazoletas. El proyecto cuenta con 53 hectáreas de parques y zonas verdes y 12 hectáreas de equipamientos, y puede recorrerse de lado a lado mediante una red de ciclorutas y andenes amplios que se conectan con los distintos parques y plazas.</p>
+                    <p>Se propusieron manzanas entre 2 y 4 hectáreas, divididas en cuatro lotes donde se localizaron conjuntos de vivienda de 12 pisos de altura. El proyecto tiene tres barrios identificados, cada uno con una centralidad donde convergen un parque, un colegio y una zona comercial, con distintos estratos socioeconómicos en convivencia. El diseño se inspiró en los bulevares del barrio El Prado de Barranquilla y en los parques locales de barrios, con un paisajismo abundante que genera sombra gracias a la colaboración de la entidad "Barranquilla Siembra". A la fecha, el proyecto cuenta con más de 10.000 viviendas construidas con proyección a llegar a 14.000, desarrolladas por cinco constructores distintos.</p>
+                </div>
+                <div class="planos">
+                    <p class="planos-label">Planos</p>
+                    <img src="https://lh3.googleusercontent.com/d/1-tcVkXAsTtYhs9EtKaWUypikrlzWdYVL" alt="Plano - Alameda del Río">
+                </div>
+            </div>
         </div>
     </div>
 </section>
