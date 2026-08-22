@@ -16,9 +16,9 @@
         header.scrolled { background: rgba(255,255,255,0.98); padding: 15px 60px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); align-items: center; }
         .logo img { height: 75px; width: auto; display: block; transition: all 0.5s cubic-bezier(0.25,1,0.5,1); filter: drop-shadow(0 0 4px rgba(255,255,255,0.85)) drop-shadow(0 0 8px rgba(255,255,255,0.5)) drop-shadow(0 2px 4px rgba(0,0,0,0.4)); }
         header.scrolled .logo img { height: 60px; filter: none; }
-        .logo-scrolled { display: none; }
-        header.scrolled .logo-top { display: none; }
-        header.scrolled .logo-scrolled { display: block; }
+        .logo img.logo-scrolled { display: none; }
+        header.scrolled .logo img.logo-top { display: none; }
+        header.scrolled .logo img.logo-scrolled { display: block; }
         nav { opacity: 1; transform: translateY(0); transition: all 0.4s ease; margin-top: 20px; }
         header:hover nav, header.scrolled nav { opacity: 1; transform: translateY(0); }
         header.scrolled nav { margin-top: 0; }
@@ -61,12 +61,51 @@
         .planos-grid img { width: 100%; display: block; border: 1px solid #eee; cursor: zoom-in; }
         @media (max-width: 700px) { .planos-grid { grid-template-columns: 1fr; } }
         footer { text-align: center; padding: 50px 0; font-size: 0.7rem; color: #999; border-top: 1px solid #eee; background: #fafafa; text-transform: uppercase; }
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 32px;
+            height: 32px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1100;
+            padding: 0;
+        }
+        .nav-toggle span { display: block; width: 100%; height: 2px; background: #fff; transition: 0.3s; }
+        header.scrolled .nav-toggle span { background: #1a1a1a; }
+        header.nav-open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        header.nav-open .nav-toggle span:nth-child(2) { opacity: 0; }
+        header.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        header.nav-open .nav-toggle span { background: #1a1a1a; }
         @media (max-width: 900px) {
             header { padding: 20px; } header.scrolled { padding: 15px 20px; }
-            .logo img { height: 100px; } nav { display: none; }
+            .logo img { height: 55px; } header.scrolled .logo img { height: 48px; }
+            .nav-toggle { display: flex; }
+            nav {
+                position: fixed; top: 0; right: -100%; width: 260px; max-width: 80%; height: 100vh;
+                background: #fff; opacity: 1; transform: none; margin-top: 0;
+                display: flex; align-items: flex-start; padding: 100px 30px;
+                box-shadow: -4px 0 24px rgba(0,0,0,0.15); transition: right 0.4s ease; z-index: 1050;
+            }
+            header.nav-open nav { right: 0; }
+            nav ul { flex-direction: column; gap: 26px; width: 100%; }
+            nav a { color: #1a1a1a; text-shadow: none; font-size: 0.9rem; }
             .inner { grid-template-columns: 1fr; gap: 40px; padding: 0 20px; }
-            .hero-caption { left: 20px; bottom: 40px; } .hero-caption h1 { font-size: 1.8rem; }
+            .hero-caption { left: 20px; bottom: 40px; max-width: calc(100% - 40px); } .hero-caption h1 { font-size: 1.8rem; }
             .slider-btn { width: 44px; height: 44px; } .slide-counter { right: 20px; } .project-carousel-strip { height: 40vh; }
+        }
+        @media (max-width: 480px) {
+            header, header.scrolled { padding: 15px; }
+            .logo img { height: 42px; } header.scrolled .logo img { height: 38px; }
+            .hero-caption { bottom: 25px; left: 15px; padding-left: 18px; }
+            .hero-caption h1 { font-size: 1.3rem; letter-spacing: 1.5px; }
+            .hero-caption .proj-meta { font-size: 0.78rem; }
+            .project-carousel-strip { height: 32vh; }
+            .slider-btn { width: 36px; height: 36px; }
+            .slider-prev { left: 12px; } .slider-next { right: 12px; }
         }
     </style>
 </head>
@@ -83,6 +122,9 @@
             <li><a href="index.html#contacto">Contacto</a></li>
         </ul>
     </nav>
+    <button class="nav-toggle" onclick="document.getElementById('main-header').classList.toggle('nav-open')" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
 </header>
 
 <div class="project-hero-fixed" style="background-image: url('https://lh3.googleusercontent.com/d/1BA83RLFqGAXZ9rAWW89uP6XHrkzrVVJ8');">
