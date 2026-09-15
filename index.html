@@ -208,12 +208,17 @@
             background-color: #000;
             opacity: 0;
             transition: opacity 1.5s ease-in-out;
-            animation: zoomEffect 28s infinite alternate;
             display: block;
             text-decoration: none;
             color: inherit;
             cursor: pointer;
         }
+
+        .slide.active.anim-zoom { animation: zoomEffect 30s ease-out forwards; }
+        .slide.active.anim-pan-lr { animation: panLR 30s ease-out forwards; }
+        .slide.active.anim-pan-rl { animation: panRL 30s ease-out forwards; }
+        .slide.active.anim-pan-tb { animation: panTB 30s ease-out forwards; }
+        .slide.active.anim-pan-bt { animation: panBT 30s ease-out forwards; }
 
         .hero-controls {
             position: absolute;
@@ -259,19 +264,19 @@
         }
 
         .hero-btn svg {
-            width: 26px;
-            height: 26px;
+            width: 30px;
+            height: 30px;
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
         }
 
         .hero-controls .hero-btn {
-            width: 48px;
-            height: 48px;
+            width: 50px;
+            height: 50px;
         }
 
         .hero-controls .hero-btn svg {
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
         }
 
         .hero-btn .icon-pause { display: none; }
@@ -280,7 +285,27 @@
 
         @keyframes zoomEffect {
             0% { transform: scale(1); }
-            100% { transform: scale(1.06); }
+            100% { transform: scale(1.08); }
+        }
+
+        @keyframes panLR {
+            0% { transform: translateX(-2%) scale(1.02); }
+            100% { transform: translateX(2%) scale(1.02); }
+        }
+
+        @keyframes panRL {
+            0% { transform: translateX(2%) scale(1.02); }
+            100% { transform: translateX(-2%) scale(1.02); }
+        }
+
+        @keyframes panTB {
+            0% { transform: translateY(-2%) scale(1.02); }
+            100% { transform: translateY(2%) scale(1.02); }
+        }
+
+        @keyframes panBT {
+            0% { transform: translateY(2%) scale(1.02); }
+            100% { transform: translateY(-2%) scale(1.02); }
         }
 
         .slide.active {
@@ -1091,55 +1116,55 @@
 
     <!-- INICIO (SLIDER) -->
     <section id="inicio">
-        <a class="slide active" href="ciudad-verde.html" style="background-image: url('https://lh3.googleusercontent.com/d/1rrnFEEqZJYkA-YB8Pt-TkKqo4PXQEZkP');">
+        <a class="slide active anim-zoom" href="ciudad-verde.html" style="background-image: url('https://lh3.googleusercontent.com/d/1rrnFEEqZJYkA-YB8Pt-TkKqo4PXQEZkP');">
             <div class="slide-caption">
                 <h2>Ciudad Verde</h2>
                 <p>Soacha, Cundinamarca | Macroproyecto Urbano</p>
             </div>
         </a>
-        <a class="slide" href="reserva-madrid.html" style="background-image: url('https://lh3.googleusercontent.com/d/1C2A0MnF0lX-9gJixncxbLKJYd_lpN43Z');">
+        <a class="slide anim-pan-lr" href="reserva-madrid.html" style="background-image: url('https://lh3.googleusercontent.com/d/1C2A0MnF0lX-9gJixncxbLKJYd_lpN43Z');">
             <div class="slide-caption">
                 <h2>Reserva de Madrid</h2>
                 <p>Cundinamarca | Planificación Urbana</p>
             </div>
         </a>
-        <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1R_7LMvU5PJ5RZlPqru2XULrX_ux9Jhbh'); cursor: default;">
+        <div class="slide anim-pan-tb" style="background-image: url('https://lh3.googleusercontent.com/d/1R_7LMvU5PJ5RZlPqru2XULrX_ux9Jhbh'); cursor: default;">
             <div class="slide-caption">
                 <h2>La Loma</h2>
                 <p>Barranquilla | Planificación Urbana</p>
             </div>
         </div>
-        <div class="slide" style="background-image: url('https://lh3.googleusercontent.com/d/1Z09EHXftflumz9T4RV2bSBrgwCRADAj2'); cursor: default;">
+        <div class="slide anim-pan-bt" style="background-image: url('https://lh3.googleusercontent.com/d/1Z09EHXftflumz9T4RV2bSBrgwCRADAj2'); cursor: default;">
             <div class="slide-caption">
                 <h2>Ciudad Salitre</h2>
                 <p>Bogotá | Planificación Urbana (Coautor)</p>
             </div>
         </div>
-        <a class="slide" href="ciudad-verde.html" style="background-image: url('https://lh3.googleusercontent.com/d/186yv6fd2ooG7a-bbtMcDzddCzWoScISd');">
+        <a class="slide anim-zoom" href="ciudad-verde.html" style="background-image: url('https://lh3.googleusercontent.com/d/186yv6fd2ooG7a-bbtMcDzddCzWoScISd');">
             <div class="slide-caption">
                 <h2>Ciudad Verde</h2>
                 <p>Soacha, Cundinamarca | Macroproyecto de Vivienda</p>
             </div>
         </a>
-        <a class="slide" href="parque-tercer-milenio.html" style="background-image: url('https://lh3.googleusercontent.com/d/1hdM3spqGdJ3qqzmIV1xji9j4SJ3YYazi');">
+        <a class="slide anim-pan-rl" href="parque-tercer-milenio.html" style="background-image: url('https://lh3.googleusercontent.com/d/1hdM3spqGdJ3qqzmIV1xji9j4SJ3YYazi');">
             <div class="slide-caption">
                 <h2>Parque Tercer Milenio</h2>
                 <p>Bogotá | Urbanismo y Espacio Público</p>
             </div>
         </a>
-        <a class="slide" href="villas-san-pablo.html" style="background-image: url('https://lh3.googleusercontent.com/d/1SJVUMCO9_3jKHiBLegdx1kMp5uHd4eGl');">
+        <a class="slide anim-pan-lr" href="villas-san-pablo.html" style="background-image: url('https://lh3.googleusercontent.com/d/1SJVUMCO9_3jKHiBLegdx1kMp5uHd4eGl');">
             <div class="slide-caption">
                 <h2>Villas de San Pablo</h2>
                 <p>Barranquilla | Vivienda Social</p>
             </div>
         </a>
 
-        <button class="hero-btn hero-prev" onclick="heroChangeSlide(-1)" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
-        <button class="hero-btn hero-next" onclick="heroChangeSlide(1)" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+        <button class="hero-btn hero-prev" onclick="heroChangeSlide(-1)" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button class="hero-btn hero-next" onclick="heroChangeSlide(1)" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
         <div class="hero-controls" id="hero-controls">
             <button class="hero-btn hero-pause" onclick="heroTogglePause()" aria-label="Pausar / reanudar">
-                <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>
-                <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="5" y="4" width="5.5" height="16" rx="1"/><rect x="13.5" y="4" width="5.5" height="16" rx="1"/></svg>
+                <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M6 3v18l16-9z"/></svg>
             </button>
         </div>
     </section>
