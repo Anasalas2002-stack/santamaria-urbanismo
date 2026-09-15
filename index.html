@@ -289,21 +289,21 @@
 
         .slide-caption {
             position: absolute;
-            top: 40px;
-            right: 60px;
+            bottom: 60px;
+            left: 60px;
             color: white;
             z-index: 10;
-            max-width: 500px;
-            text-align: right;
-            border-right: 4px solid white;
-            padding: 18px 25px 18px 25px;
+            max-width: 600px;
+            text-align: left;
+            border-left: 4px solid white;
+            padding: 18px 25px;
         }
 
         .slide-caption::before {
             content: '';
             position: absolute;
-            inset: -20px -20px -20px -60px;
-            background: radial-gradient(ellipse at 65% 50%, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 35%, rgba(0,0,0,0.3) 65%, transparent 100%);
+            inset: -30px -45px -20px -20px;
+            background: radial-gradient(ellipse at 35% 50%, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 35%, rgba(0,0,0,0.3) 65%, transparent 100%);
             filter: blur(22px);
             z-index: -1;
         }
@@ -912,18 +912,9 @@
             }
 
             .slide-caption {
-                top: 95px;
-                right: 20px;
                 left: 20px;
+                bottom: 40px;
                 max-width: calc(100% - 40px);
-                text-align: left;
-                border-right: none;
-                border-left: 4px solid white;
-                padding: 14px 0 14px 20px;
-            }
-
-            .slide-caption::before {
-                inset: -20px -20px -20px -20px;
             }
 
             .slide-caption h2 {
@@ -958,8 +949,7 @@
             }
 
             .slide-caption {
-                top: 78px;
-                padding: 12px 0 12px 16px;
+                padding: 14px 18px;
             }
 
             .slide-caption h2 {
@@ -1055,14 +1045,16 @@
         .intro-logo {
             height: 90px;
             width: auto;
-            opacity: 0;
-            transform: scale(0.8);
-            animation: introLogoIn 1s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.15s;
+            clip-path: inset(0 100% 0 0);
+        }
+
+        .intro-logo.reveal {
+            animation: introLogoIn 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
         }
 
         @keyframes introLogoIn {
-            0% { opacity: 0; transform: scale(0.8); }
-            100% { opacity: 1; transform: scale(1); }
+            0% { clip-path: inset(0 100% 0 0); }
+            100% { clip-path: inset(0 0% 0 0); }
         }
 
         @media (max-width: 480px) {
@@ -1628,6 +1620,12 @@
     <script>
         // 0. PANTALLA DE INTRODUCCIÓN
         window.addEventListener('load', function () {
+            var introLogo = document.querySelector('.intro-logo');
+            requestAnimationFrame(function () {
+                requestAnimationFrame(function () {
+                    introLogo.classList.add('reveal');
+                });
+            });
             setTimeout(function () {
                 document.getElementById('intro-screen').classList.add('hide');
             }, 1600);
