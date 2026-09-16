@@ -1081,13 +1081,17 @@
             border-radius: 50%;
             border: 1px solid #ddd;
             background: #fff;
-            font-size: 1.4rem;
             color: #555;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background 0.2s, border-color 0.2s;
+            transition: background 0.2s, border-color 0.2s, color 0.2s;
+        }
+
+        .apuntes-nav svg {
+            width: 20px;
+            height: 20px;
         }
 
         .apuntes-nav:hover {
@@ -1649,12 +1653,12 @@
             <h2 class="section-title">Apuntes de Viaje</h2>
             <div class="apuntes-section">
                 <div class="apuntes-viewer">
-                    <button class="apuntes-nav apuntes-prev" onclick="apunteNav(-1)" aria-label="Anterior">&#8249;</button>
+                    <button class="apuntes-nav apuntes-prev" onclick="apunteNav(-1)" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
                     <div class="apuntes-main">
                         <img id="apunte-main-img" src="" alt="" onclick="openLightbox(this.src)">
                         <p class="apunte-caption" id="apunte-main-caption"></p>
                     </div>
-                    <button class="apuntes-nav apuntes-next" onclick="apunteNav(1)" aria-label="Siguiente">&#8250;</button>
+                    <button class="apuntes-nav apuntes-next" onclick="apunteNav(1)" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
                 </div>
                 <div class="apuntes-thumbs" id="apuntes-thumbs"></div>
             </div>
@@ -1772,12 +1776,12 @@
 
         // 1c. VISOR DE APUNTES DE VIAJE (imagen principal + próximas 5 miniaturas)
         const apuntesData = [
+            { src: 'https://lh3.googleusercontent.com/d/1tUS1T3zdWP2X1pYrxyLeI2rCVlkFumUg', alt: 'Cartagena – Mirador Café La Encantada' },
             { src: 'https://lh3.googleusercontent.com/d/1QKdNrDgWh-bqKAkSBE4lcte7XTsENjr6', alt: 'Praha' },
             { src: 'https://lh3.googleusercontent.com/d/1uqC_pUXXyuv79FXB5jvMEViWBIXLJ4ii', alt: 'Bruxelles' },
             { src: 'https://lh3.googleusercontent.com/d/1Acnjfnn1BUPiimgsPhAAB7W70HjPIH81', alt: 'Amsterdam' },
             { src: 'https://lh3.googleusercontent.com/d/1YO-lFBvHVFlGjPmakw94gW88rEma51ue', alt: 'Glasgow' },
             { src: 'https://lh3.googleusercontent.com/d/1yCzlfyx_cfc8VSuqqeo5svotUOf0zqMp', alt: 'Londres' },
-            { src: 'https://lh3.googleusercontent.com/d/1tUS1T3zdWP2X1pYrxyLeI2rCVlkFumUg', alt: 'Cartagena' },
             { src: 'https://lh3.googleusercontent.com/d/1_R24bdbOlCTs6CXy6QdKpG-Z6dVNUzwy', alt: 'Cartagena' },
             { src: 'https://lh3.googleusercontent.com/d/16OFSICz6G-0xmE8YDKOLI_rVBLbe_e4f', alt: 'Cartagena' },
             { src: 'https://lh3.googleusercontent.com/d/1dUmFoUFTgSfch9BkDHAXJb3M7ODugVre', alt: 'Cartagena' },
