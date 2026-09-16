@@ -54,6 +54,11 @@
             display: inline-block;
         }
 
+        #proyectos .section-title {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
         /* --- HEADER INTELIGENTE --- */
         header {
             position: fixed;
@@ -345,6 +350,14 @@
             text-align: left;
             border-left: 4px solid white;
             padding: 18px 25px;
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.9s ease, transform 0.9s ease;
+        }
+
+        .slide.active .slide-caption {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .slide-caption::before {
@@ -1204,7 +1217,7 @@
     <!-- PROYECTOS -->
     <section id="proyectos">
         <div class="container">
-            <h2 class="section-title">Proyectos Seleccionados</h2>
+            <h2 class="section-title">Proyectos</h2>
 
             <div class="filters-container">
                 <div class="filters-main">
