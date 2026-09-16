@@ -200,11 +200,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
             background-color: #000;
             opacity: 0;
+            overflow: hidden;
             transition: opacity 1.5s ease-in-out;
             display: block;
             text-decoration: none;
@@ -212,14 +210,38 @@
             cursor: pointer;
         }
 
+        .slide-blur {
+            position: absolute;
+            top: -6%;
+            left: -6%;
+            right: -6%;
+            bottom: -6%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            filter: blur(45px) brightness(0.6) saturate(1.15);
+            transform: scale(1.12);
+        }
+
+        .slide-photo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
         .slide.anim-zoom, .slide.anim-pan-lr, .slide.anim-pan-rl, .slide.anim-pan-tb, .slide.anim-pan-bt {
             animation-play-state: paused;
         }
-        .slide.anim-zoom { animation: zoomEffect 4s linear forwards; }
-        .slide.anim-pan-lr { animation: panLR 4s linear forwards; }
-        .slide.anim-pan-rl { animation: panRL 4s linear forwards; }
-        .slide.anim-pan-tb { animation: panTB 4s linear forwards; }
-        .slide.anim-pan-bt { animation: panBT 4s linear forwards; }
+        .slide.anim-zoom { animation: zoomEffect 5s linear forwards; }
+        .slide.anim-pan-lr { animation: panLR 5s linear forwards; }
+        .slide.anim-pan-rl { animation: panRL 5s linear forwards; }
+        .slide.anim-pan-tb { animation: panTB 5s linear forwards; }
+        .slide.anim-pan-bt { animation: panBT 5s linear forwards; }
 
         .hero-controls {
             position: absolute;
@@ -458,7 +480,7 @@
         .projects-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 100px;
+            gap: 60px;
         }
 
         .project-card {
@@ -466,12 +488,11 @@
             background: white;
             cursor: pointer;
             overflow: hidden;
-            margin-bottom: 40px;
         }
 
         .card-img {
             width: 100%;
-            height: 600px;
+            aspect-ratio: 4 / 3;
             background-color: #f0f0f0;
             overflow: hidden;
         }
@@ -832,7 +853,7 @@
 
             .projects-grid {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 35px;
             }
 
             .intro-grid,
@@ -878,10 +899,6 @@
                 color: #1a1a1a;
                 text-shadow: none;
                 font-size: 0.9rem;
-            }
-
-            .card-img {
-                height: 400px;
             }
 
             .filters-container {
@@ -1117,43 +1134,57 @@
 
     <!-- INICIO (SLIDER) -->
     <section id="inicio">
-        <a class="slide active anim-zoom" href="ciudad-verde.html" style="background-image: url('https://lh3.googleusercontent.com/d/1rrnFEEqZJYkA-YB8Pt-TkKqo4PXQEZkP');">
+        <a class="slide active anim-zoom" href="ciudad-verde.html">
+            <div class="slide-blur" style="background-image: url('https://lh3.googleusercontent.com/d/1rrnFEEqZJYkA-YB8Pt-TkKqo4PXQEZkP');"></div>
+            <div class="slide-photo" style="background-image: url('https://lh3.googleusercontent.com/d/1rrnFEEqZJYkA-YB8Pt-TkKqo4PXQEZkP');"></div>
             <div class="slide-caption">
                 <h2>Ciudad Verde</h2>
                 <p>Soacha, Cundinamarca | Macroproyecto Urbano</p>
             </div>
         </a>
-        <a class="slide anim-pan-lr" href="reserva-madrid.html" style="background-image: url('https://lh3.googleusercontent.com/d/1C2A0MnF0lX-9gJixncxbLKJYd_lpN43Z');">
+        <a class="slide anim-pan-lr" href="reserva-madrid.html">
+            <div class="slide-blur" style="background-image: url('https://lh3.googleusercontent.com/d/1C2A0MnF0lX-9gJixncxbLKJYd_lpN43Z');"></div>
+            <div class="slide-photo" style="background-image: url('https://lh3.googleusercontent.com/d/1C2A0MnF0lX-9gJixncxbLKJYd_lpN43Z');"></div>
             <div class="slide-caption">
                 <h2>Reserva de Madrid</h2>
                 <p>Cundinamarca | Planificación Urbana</p>
             </div>
         </a>
-        <div class="slide anim-pan-tb" style="background-image: url('https://lh3.googleusercontent.com/d/1R_7LMvU5PJ5RZlPqru2XULrX_ux9Jhbh'); cursor: default;">
+        <div class="slide anim-pan-tb" style="cursor: default;">
+            <div class="slide-blur" style="background-image: url('https://lh3.googleusercontent.com/d/1R_7LMvU5PJ5RZlPqru2XULrX_ux9Jhbh');"></div>
+            <div class="slide-photo" style="background-image: url('https://lh3.googleusercontent.com/d/1R_7LMvU5PJ5RZlPqru2XULrX_ux9Jhbh');"></div>
             <div class="slide-caption">
                 <h2>La Loma</h2>
                 <p>Barranquilla | Planificación Urbana</p>
             </div>
         </div>
-        <div class="slide anim-pan-bt" style="background-image: url('https://lh3.googleusercontent.com/d/1Z09EHXftflumz9T4RV2bSBrgwCRADAj2'); cursor: default;">
+        <div class="slide anim-pan-bt" style="cursor: default;">
+            <div class="slide-blur" style="background-image: url('https://lh3.googleusercontent.com/d/1Z09EHXftflumz9T4RV2bSBrgwCRADAj2');"></div>
+            <div class="slide-photo" style="background-image: url('https://lh3.googleusercontent.com/d/1Z09EHXftflumz9T4RV2bSBrgwCRADAj2');"></div>
             <div class="slide-caption">
                 <h2>Ciudad Salitre</h2>
                 <p>Bogotá | Planificación Urbana (Coautor)</p>
             </div>
         </div>
-        <a class="slide anim-zoom" href="ciudad-verde.html" style="background-image: url('https://lh3.googleusercontent.com/d/186yv6fd2ooG7a-bbtMcDzddCzWoScISd');">
+        <a class="slide anim-zoom" href="ciudad-verde.html">
+            <div class="slide-blur" style="background-image: url('https://lh3.googleusercontent.com/d/186yv6fd2ooG7a-bbtMcDzddCzWoScISd');"></div>
+            <div class="slide-photo" style="background-image: url('https://lh3.googleusercontent.com/d/186yv6fd2ooG7a-bbtMcDzddCzWoScISd');"></div>
             <div class="slide-caption">
                 <h2>Ciudad Verde</h2>
                 <p>Soacha, Cundinamarca | Macroproyecto de Vivienda</p>
             </div>
         </a>
-        <a class="slide anim-pan-rl" href="parque-tercer-milenio.html" style="background-image: url('https://lh3.googleusercontent.com/d/1hdM3spqGdJ3qqzmIV1xji9j4SJ3YYazi');">
+        <a class="slide anim-pan-rl" href="parque-tercer-milenio.html">
+            <div class="slide-blur" style="background-image: url('https://lh3.googleusercontent.com/d/1hdM3spqGdJ3qqzmIV1xji9j4SJ3YYazi');"></div>
+            <div class="slide-photo" style="background-image: url('https://lh3.googleusercontent.com/d/1hdM3spqGdJ3qqzmIV1xji9j4SJ3YYazi');"></div>
             <div class="slide-caption">
                 <h2>Parque Tercer Milenio</h2>
                 <p>Bogotá | Urbanismo y Espacio Público</p>
             </div>
         </a>
-        <a class="slide anim-pan-lr" href="villas-san-pablo.html" style="background-image: url('https://lh3.googleusercontent.com/d/1SJVUMCO9_3jKHiBLegdx1kMp5uHd4eGl');">
+        <a class="slide anim-pan-lr" href="villas-san-pablo.html">
+            <div class="slide-blur" style="background-image: url('https://lh3.googleusercontent.com/d/1SJVUMCO9_3jKHiBLegdx1kMp5uHd4eGl');"></div>
+            <div class="slide-photo" style="background-image: url('https://lh3.googleusercontent.com/d/1SJVUMCO9_3jKHiBLegdx1kMp5uHd4eGl');"></div>
             <div class="slide-caption">
                 <h2>Villas de San Pablo</h2>
                 <p>Barranquilla | Vivienda Social</p>
@@ -1215,7 +1246,7 @@
                 <!-- 1. CIUDAD VERDE -->
                 <a href="ciudad-verde.html" class="project-card" data-category="ordenamiento urbanismo"
                     data-region="Soacha" data-year="2020" style="display: block; color: inherit;">
-                    <div class="card-img"><img src="https://lh3.googleusercontent.com/d/1Ls2XuVK0vpxTd6Si1WdD5eza8Mz7BtsG" alt="Ciudad Verde"></div>
+                    <div class="card-img"><img src="https://lh3.googleusercontent.com/d/1rrnFEEqZJYkA-YB8Pt-TkKqo4PXQEZkP" alt="Ciudad Verde"></div>
                     <div class="card-info">
                         <h3>Ciudad Verde</h3>
                         <span>Soacha | Ordenamiento Territorial · Urbanismo</span>
@@ -1225,7 +1256,7 @@
                 <!-- 2. RESERVA DE MADRID -->
                 <a href="reserva-madrid.html" class="project-card" data-category="urbanismo arquitectura"
                     data-region="Madrid" data-year="2015" style="display: block; color: inherit;">
-                    <div class="card-img"><img src="https://lh3.googleusercontent.com/d/1uBkBWobasd6F9XtCcWujBYyUi0_2ypQZ" alt="Reserva de Madrid"></div>
+                    <div class="card-img"><img src="https://lh3.googleusercontent.com/d/1C2A0MnF0lX-9gJixncxbLKJYd_lpN43Z" alt="Reserva de Madrid"></div>
                     <div class="card-info">
                         <h3>Reserva de Madrid</h3>
                         <span>Madrid | Urbanismo y Espacio Público · Arquitectura</span>
@@ -1235,7 +1266,7 @@
                 <!-- 3. ALAMEDA DEL RÍO -->
                 <a href="alameda-del-rio.html" class="project-card" data-category="urbanismo ordenamiento"
                     data-region="Barranquilla" data-year="2015" style="display: block; color: inherit;">
-                    <div class="card-img"><img src="https://lh3.googleusercontent.com/d/15vbDdj9XjLBhbxLbphuih-ubjDjwzghA" alt="Alameda del Río"></div>
+                    <div class="card-img"><img src="https://lh3.googleusercontent.com/d/15pyYylhcdn3CTyvH9ujnpF9SX2bTC74n" alt="Alameda del Río"></div>
                     <div class="card-info">
                         <h3>Alameda del Río</h3>
                         <span>Barranquilla | Urbanismo y Espacio Público · Ordenamiento</span>
@@ -1255,7 +1286,7 @@
                 <!-- 5. GRAMALOTE -->
                 <a href="gramalote.html" class="project-card" data-category="ordenamiento urbanismo"
                     data-region="Norte de Santander" data-year="2015" style="display: block; color: inherit;">
-                    <div class="card-img"><img src="https://lh3.googleusercontent.com/d/1Uu-7jiomtqzNpypP-bydjdMdUE4vVBIh" alt="Gramalote"></div>
+                    <div class="card-img"><img src="https://lh3.googleusercontent.com/d/1s4USVmiwxbEpIf8SH8l0dpo43odlRVK-" alt="Gramalote"></div>
                     <div class="card-info">
                         <h3>Gramalote</h3>
                         <span>Norte de Santander | Ordenamiento Territorial · Urbanismo</span>
@@ -1275,7 +1306,7 @@
                 <!-- 7. VILLAS DE SAN PABLO -->
                 <a href="villas-san-pablo.html" class="project-card" data-category="arquitectura"
                     data-region="Barranquilla" data-year="2010" style="display: block; color: inherit;">
-                    <div class="card-img"><img src="https://lh3.googleusercontent.com/d/1BA83RLFqGAXZ9rAWW89uP6XHrkzrVVJ8" alt="Villas de San Pablo"></div>
+                    <div class="card-img"><img src="https://lh3.googleusercontent.com/d/1SJVUMCO9_3jKHiBLegdx1kMp5uHd4eGl" alt="Villas de San Pablo"></div>
                     <div class="card-info">
                         <h3>Villas de San Pablo</h3>
                         <span>Barranquilla | Arquitectura</span>
@@ -1335,7 +1366,7 @@
                 <!-- 13. CABLE BOGOTÁ -->
                 <a href="cable-bogota.html" class="project-card" data-category="transporte"
                     data-region="Bogotá" data-year="2020" style="display: block; color: inherit;">
-                    <div class="card-img"><img src="https://lh3.googleusercontent.com/d/1fHEus2-SM3R-8eKgUtrnU7c5F6bc-CtY" alt="Cable Bogotá"></div>
+                    <div class="card-img"><img src="https://lh3.googleusercontent.com/d/1Q-K_3qVmLBO1julSs3pD9aUF4Yrylnz7" alt="Cable Bogotá"></div>
                     <div class="card-info">
                         <h3>Cable Bogotá</h3>
                         <span>Bogotá | Transporte</span>
@@ -1725,7 +1756,7 @@
 
         function heroResetInterval() {
             clearInterval(heroInterval);
-            if (!heroPaused) heroInterval = setInterval(nextSlide, 4000);
+            if (!heroPaused) heroInterval = setInterval(nextSlide, 5000);
         }
 
         function heroTogglePause() {
