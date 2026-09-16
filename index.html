@@ -215,38 +215,25 @@
             cursor: pointer;
         }
 
-        .slide-blur {
-            position: absolute;
-            top: -6%;
-            left: -6%;
-            right: -6%;
-            bottom: -6%;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            filter: blur(45px) brightness(0.6) saturate(1.15);
-            transform: scale(1.12);
-        }
-
         .slide-photo {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-size: contain;
+            background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
         }
 
-        .slide.anim-zoom, .slide.anim-pan-lr, .slide.anim-pan-rl, .slide.anim-pan-tb, .slide.anim-pan-bt {
+        .slide-photo.anim-zoom, .slide-photo.anim-pan-lr, .slide-photo.anim-pan-rl, .slide-photo.anim-pan-tb, .slide-photo.anim-pan-bt {
             animation-play-state: paused;
         }
-        .slide.anim-zoom { animation: zoomEffect 5s linear forwards; }
-        .slide.anim-pan-lr { animation: panLR 5s linear forwards; }
-        .slide.anim-pan-rl { animation: panRL 5s linear forwards; }
-        .slide.anim-pan-tb { animation: panTB 5s linear forwards; }
-        .slide.anim-pan-bt { animation: panBT 5s linear forwards; }
+        .slide-photo.anim-zoom { animation: zoomEffect 5s linear forwards; }
+        .slide-photo.anim-pan-lr { animation: panLR 5s linear forwards; }
+        .slide-photo.anim-pan-rl { animation: panRL 5s linear forwards; }
+        .slide-photo.anim-pan-tb { animation: panTB 5s linear forwards; }
+        .slide-photo.anim-pan-bt { animation: panBT 5s linear forwards; }
 
         .hero-controls {
             position: absolute;
@@ -350,14 +337,6 @@
             text-align: left;
             border-left: 4px solid white;
             padding: 18px 25px;
-            opacity: 0;
-            transform: translateY(35px);
-            transition: opacity 0.9s ease, transform 0.9s ease;
-        }
-
-        .slide.active .slide-caption {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .slide-caption::before {
@@ -1147,33 +1126,29 @@
 
     <!-- INICIO (SLIDER) -->
     <section id="inicio">
-        <a class="slide active anim-zoom" href="ciudad-verde.html">
-            <div class="slide-blur" style="background-image: url('https://lh3.googleusercontent.com/d/1oVHikFu5rj-58-vBv25FvPW3PU_0lqNn');"></div>
-            <div class="slide-photo" style="background-image: url('https://lh3.googleusercontent.com/d/1oVHikFu5rj-58-vBv25FvPW3PU_0lqNn');"></div>
+        <a class="slide active" href="ciudad-verde.html">
+            <div class="slide-photo anim-zoom" style="background-image: url('https://lh3.googleusercontent.com/d/1oVHikFu5rj-58-vBv25FvPW3PU_0lqNn');"></div>
             <div class="slide-caption">
                 <h2>Ciudad Verde</h2>
                 <p>Soacha, Cundinamarca | Macroproyecto Urbano</p>
             </div>
         </a>
-        <a class="slide anim-pan-lr" href="reserva-madrid.html">
-            <div class="slide-blur" style="background-image: url('https://lh3.googleusercontent.com/d/1VD7GwtzzoY0Qu5QIPBgeO6iwsWlhz4BQ');"></div>
-            <div class="slide-photo" style="background-image: url('https://lh3.googleusercontent.com/d/1VD7GwtzzoY0Qu5QIPBgeO6iwsWlhz4BQ');"></div>
+        <a class="slide" href="reserva-madrid.html">
+            <div class="slide-photo anim-pan-lr" style="background-image: url('https://lh3.googleusercontent.com/d/1VD7GwtzzoY0Qu5QIPBgeO6iwsWlhz4BQ');"></div>
             <div class="slide-caption">
                 <h2>Reserva de Madrid</h2>
                 <p>Cundinamarca | Planificación Urbana</p>
             </div>
         </a>
-        <a class="slide anim-pan-tb" href="parque-tercer-milenio.html">
-            <div class="slide-blur" style="background-image: url('https://lh3.googleusercontent.com/d/1ujQz9w-ZKqCTOur4U_aKzkPmCEsna3_e');"></div>
-            <div class="slide-photo" style="background-image: url('https://lh3.googleusercontent.com/d/1ujQz9w-ZKqCTOur4U_aKzkPmCEsna3_e');"></div>
+        <a class="slide" href="parque-tercer-milenio.html">
+            <div class="slide-photo anim-pan-tb" style="background-image: url('https://lh3.googleusercontent.com/d/1ujQz9w-ZKqCTOur4U_aKzkPmCEsna3_e');"></div>
             <div class="slide-caption">
                 <h2>Parque Tercer Milenio</h2>
                 <p>Bogotá | Urbanismo y Espacio Público</p>
             </div>
         </a>
-        <a class="slide anim-pan-rl" href="villas-san-pablo.html">
-            <div class="slide-blur" style="background-image: url('https://lh3.googleusercontent.com/d/1gXKE7eUK67IMfAxAotrY6qBHuzZZ305-');"></div>
-            <div class="slide-photo" style="background-image: url('https://lh3.googleusercontent.com/d/1gXKE7eUK67IMfAxAotrY6qBHuzZZ305-');"></div>
+        <a class="slide" href="villas-san-pablo.html">
+            <div class="slide-photo anim-pan-rl" style="background-image: url('https://lh3.googleusercontent.com/d/1gXKE7eUK67IMfAxAotrY6qBHuzZZ305-');"></div>
             <div class="slide-caption">
                 <h2>Villas de San Pablo</h2>
                 <p>Barranquilla | Vivienda Social</p>
@@ -1713,16 +1688,17 @@
 
         function activateSlide(el) {
             el.classList.add('active');
+            var photo = el.querySelector('.slide-photo');
             // reinicia la animación de movimiento desde cero, en limpio
-            el.style.animation = 'none';
-            void el.offsetHeight;
-            el.style.animation = '';
-            el.style.animationPlayState = 'running';
+            photo.style.animation = 'none';
+            void photo.offsetHeight;
+            photo.style.animation = '';
+            photo.style.animationPlayState = 'running';
         }
 
         function deactivateSlide(el) {
             // congela la animación exactamente donde iba, sin saltos, mientras se desvanece
-            el.style.animationPlayState = 'paused';
+            el.querySelector('.slide-photo').style.animationPlayState = 'paused';
             el.classList.remove('active');
         }
 
