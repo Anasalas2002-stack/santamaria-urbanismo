@@ -1041,29 +1041,87 @@
                 margin-bottom: 4px;
             }
 
-            .apuntes-grid {
-                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            .apuntes-viewer {
+                flex-direction: column;
+            }
+
+            .apuntes-thumbs {
+                grid-template-columns: repeat(5, 1fr);
+                max-width: 100%;
             }
         }
 
         /* --- APUNTES DE VIAJE --- */
-        .apuntes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 12px;
+        .apuntes-viewer {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
         }
 
-        .apunte-item {
-            overflow: hidden;
+        .apuntes-main {
+            flex: 1;
+            min-width: 0;
+            text-align: center;
         }
 
-        .apunte-item img {
+        .apuntes-main img {
             width: 100%;
-            height: 160px;
+            max-height: 60vh;
+            object-fit: contain;
+            background: #f7f7f7;
+            display: block;
+            cursor: zoom-in;
+        }
+
+        .apuntes-nav {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+            background: #fff;
+            font-size: 1.4rem;
+            color: #555;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .apuntes-nav:hover {
+            background: #000;
+            border-color: #000;
+            color: #fff;
+        }
+
+        .apuntes-thumbs {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 14px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .apunte-thumb {
+            aspect-ratio: 1;
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid #eee;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .apunte-thumb:hover {
+            opacity: 1;
+        }
+
+        .apunte-thumb img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             display: block;
-            transition: transform 0.4s ease;
-            cursor: zoom-in;
         }
 
         .lightbox-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 5000; align-items: center; justify-content: center; cursor: zoom-out; }
@@ -1071,14 +1129,10 @@
         .lightbox-overlay img { max-width: 90vw; max-height: 90vh; object-fit: contain; box-shadow: 0 10px 40px rgba(0,0,0,0.5); cursor: default; }
         .lightbox-close { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 2.2rem; font-weight: 300; cursor: pointer; line-height: 1; }
 
-        .apunte-item:hover img {
-            transform: scale(1.05);
-        }
-
         .apunte-caption {
-            font-size: 0.72rem;
+            font-size: 0.78rem;
             color: #999;
-            margin-top: 5px;
+            margin-top: 10px;
             text-align: center;
             letter-spacing: 0.5px;
         }
@@ -1594,76 +1648,15 @@
         <div class="container">
             <h2 class="section-title">Apuntes de Viaje</h2>
             <div class="apuntes-section">
-                <div class="apuntes-grid">
-                    <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1QKdNrDgWh-bqKAkSBE4lcte7XTsENjr6" alt="Praha" loading="lazy" onclick="openLightbox(this.src)">
-                        <p class="apunte-caption">Praha</p>
+                <div class="apuntes-viewer">
+                    <button class="apuntes-nav apuntes-prev" onclick="apunteNav(-1)" aria-label="Anterior">&#8249;</button>
+                    <div class="apuntes-main">
+                        <img id="apunte-main-img" src="" alt="" onclick="openLightbox(this.src)">
+                        <p class="apunte-caption" id="apunte-main-caption"></p>
                     </div>
-                    <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1uqC_pUXXyuv79FXB5jvMEViWBIXLJ4ii" alt="Bruxelles" loading="lazy" onclick="openLightbox(this.src)">
-                        <p class="apunte-caption">Bruxelles</p>
-                    </div>
-                    <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1Acnjfnn1BUPiimgsPhAAB7W70HjPIH81" alt="Amsterdam" loading="lazy" onclick="openLightbox(this.src)">
-                        <p class="apunte-caption">Amsterdam</p>
-                    </div>
-                    <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1YO-lFBvHVFlGjPmakw94gW88rEma51ue" alt="Glasgow" loading="lazy" onclick="openLightbox(this.src)">
-                        <p class="apunte-caption">Glasgow</p>
-                    </div>
-                    <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1yCzlfyx_cfc8VSuqqeo5svotUOf0zqMp" alt="Londres" loading="lazy" onclick="openLightbox(this.src)">
-                        <p class="apunte-caption">Londres</p>
-                    </div>
-                    <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1tUS1T3zdWP2X1pYrxyLeI2rCVlkFumUg" alt="Cartagena" loading="lazy" onclick="openLightbox(this.src)">
-                        <p class="apunte-caption">Cartagena</p>
-                    </div>
-                    <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1_R24bdbOlCTs6CXy6QdKpG-Z6dVNUzwy" alt="Cartagena" loading="lazy" onclick="openLightbox(this.src)">
-                        <p class="apunte-caption">Cartagena</p>
-                    </div>
-                    <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/16OFSICz6G-0xmE8YDKOLI_rVBLbe_e4f" alt="Cartagena" loading="lazy" onclick="openLightbox(this.src)">
-                        <p class="apunte-caption">Cartagena</p>
-                    </div>
-                    <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1dUmFoUFTgSfch9BkDHAXJb3M7ODugVre" alt="Cartagena" loading="lazy" onclick="openLightbox(this.src)">
-                        <p class="apunte-caption">Cartagena</p>
-                    </div>
-                    <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1hBJSNccYoAzs9Rc49q4-rwJBAZ8xUkgT" alt="Roma" loading="lazy" onclick="openLightbox(this.src)">
-                        <p class="apunte-caption">Roma</p>
-                    </div>
-                    <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1a3OMjC7Bdqz5YuaC0ShB8Rxe29gbmYCr" alt="Venecia" loading="lazy" onclick="openLightbox(this.src)">
-                        <p class="apunte-caption">Venecia</p>
-                    </div>
-                    <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1kulv4NYtkQRk-NBOU-SYyirlkq8L28NG" alt="San Gimignano" loading="lazy" onclick="openLightbox(this.src)">
-                        <p class="apunte-caption">San Gimignano</p>
-                    </div>
-                    <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1yvMkV4vPBGxUCUMk8aQW2P4Lc6bQsU4e" alt="Boston" loading="lazy" onclick="openLightbox(this.src)">
-                        <p class="apunte-caption">Boston</p>
-                    </div>
-                    <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1htruOuaeKpLorfOaCvD1gUf2EcNngOoh" alt="Bogotá" loading="lazy" onclick="openLightbox(this.src)">
-                        <p class="apunte-caption">Bogotá</p>
-                    </div>
-                    <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/19njQuGCffcgErVsOS4lpct6bVtFaM7uA" alt="Bogotá – Parque Tercer Milenio" loading="lazy" onclick="openLightbox(this.src)">
-                        <p class="apunte-caption">Bogotá – Parque Tercer Milenio</p>
-                    </div>
-                    <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/1HUb2cfB9zpVfRETW_O9x9SxrlY0IpE8Q" alt="Bogotá – Calle 13" loading="lazy" onclick="openLightbox(this.src)">
-                        <p class="apunte-caption">Bogotá – Calle 13</p>
-                    </div>
-                    <div class="apunte-item">
-                        <img src="https://lh3.googleusercontent.com/d/10-4i1hsgpNStaQwoO_NTBID0UydJFFiy" alt="Bogotá – San Victorino" loading="lazy" onclick="openLightbox(this.src)">
-                        <p class="apunte-caption">Bogotá – San Victorino</p>
-                    </div>
+                    <button class="apuntes-nav apuntes-next" onclick="apunteNav(1)" aria-label="Siguiente">&#8250;</button>
                 </div>
+                <div class="apuntes-thumbs" id="apuntes-thumbs"></div>
             </div>
         </div>
     </section>
@@ -1776,6 +1769,55 @@
         // 1b. LIGHTBOX (Apuntes de Viaje)
         function openLightbox(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').classList.add('active'); }
         function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
+
+        // 1c. VISOR DE APUNTES DE VIAJE (imagen principal + próximas 5 miniaturas)
+        const apuntesData = [
+            { src: 'https://lh3.googleusercontent.com/d/1QKdNrDgWh-bqKAkSBE4lcte7XTsENjr6', alt: 'Praha' },
+            { src: 'https://lh3.googleusercontent.com/d/1uqC_pUXXyuv79FXB5jvMEViWBIXLJ4ii', alt: 'Bruxelles' },
+            { src: 'https://lh3.googleusercontent.com/d/1Acnjfnn1BUPiimgsPhAAB7W70HjPIH81', alt: 'Amsterdam' },
+            { src: 'https://lh3.googleusercontent.com/d/1YO-lFBvHVFlGjPmakw94gW88rEma51ue', alt: 'Glasgow' },
+            { src: 'https://lh3.googleusercontent.com/d/1yCzlfyx_cfc8VSuqqeo5svotUOf0zqMp', alt: 'Londres' },
+            { src: 'https://lh3.googleusercontent.com/d/1tUS1T3zdWP2X1pYrxyLeI2rCVlkFumUg', alt: 'Cartagena' },
+            { src: 'https://lh3.googleusercontent.com/d/1_R24bdbOlCTs6CXy6QdKpG-Z6dVNUzwy', alt: 'Cartagena' },
+            { src: 'https://lh3.googleusercontent.com/d/16OFSICz6G-0xmE8YDKOLI_rVBLbe_e4f', alt: 'Cartagena' },
+            { src: 'https://lh3.googleusercontent.com/d/1dUmFoUFTgSfch9BkDHAXJb3M7ODugVre', alt: 'Cartagena' },
+            { src: 'https://lh3.googleusercontent.com/d/1hBJSNccYoAzs9Rc49q4-rwJBAZ8xUkgT', alt: 'Roma' },
+            { src: 'https://lh3.googleusercontent.com/d/1a3OMjC7Bdqz5YuaC0ShB8Rxe29gbmYCr', alt: 'Venecia' },
+            { src: 'https://lh3.googleusercontent.com/d/1kulv4NYtkQRk-NBOU-SYyirlkq8L28NG', alt: 'San Gimignano' },
+            { src: 'https://lh3.googleusercontent.com/d/1yvMkV4vPBGxUCUMk8aQW2P4Lc6bQsU4e', alt: 'Boston' },
+            { src: 'https://lh3.googleusercontent.com/d/1htruOuaeKpLorfOaCvD1gUf2EcNngOoh', alt: 'Bogotá' },
+            { src: 'https://lh3.googleusercontent.com/d/19njQuGCffcgErVsOS4lpct6bVtFaM7uA', alt: 'Bogotá – Parque Tercer Milenio' },
+            { src: 'https://lh3.googleusercontent.com/d/1HUb2cfB9zpVfRETW_O9x9SxrlY0IpE8Q', alt: 'Bogotá – Calle 13' },
+            { src: 'https://lh3.googleusercontent.com/d/10-4i1hsgpNStaQwoO_NTBID0UydJFFiy', alt: 'Bogotá – San Victorino' }
+        ];
+        let apunteIndex = 0;
+
+        function renderApuntes() {
+            const main = apuntesData[apunteIndex];
+            const mainImg = document.getElementById('apunte-main-img');
+            mainImg.src = main.src;
+            mainImg.alt = main.alt;
+            document.getElementById('apunte-main-caption').textContent = main.alt;
+
+            const thumbs = document.getElementById('apuntes-thumbs');
+            thumbs.innerHTML = '';
+            for (let i = 1; i <= 5; i++) {
+                const idx = (apunteIndex + i) % apuntesData.length;
+                const item = apuntesData[idx];
+                const thumb = document.createElement('div');
+                thumb.className = 'apunte-thumb';
+                thumb.innerHTML = '<img src="' + item.src + '" alt="' + item.alt + '" loading="lazy">';
+                thumb.onclick = function () { apunteIndex = idx; renderApuntes(); };
+                thumbs.appendChild(thumb);
+            }
+        }
+
+        function apunteNav(dir) {
+            apunteIndex = (apunteIndex + dir + apuntesData.length) % apuntesData.length;
+            renderApuntes();
+        }
+
+        renderApuntes();
 
         // 2. FILTRO PROYECTOS (soporta múltiples categorías por proyecto)
         let currentCategory = 'all';
