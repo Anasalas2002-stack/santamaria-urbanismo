@@ -539,18 +539,23 @@
 
         /* --- OTRAS SECCIONES --- */
         #perfil {
-            padding: 120px 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 110px 0 60px;
         }
 
         .intro-grid {
             display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 80px;
-            align-items: start;
+            grid-template-columns: 0.85fr 1.5fr;
+            gap: 60px;
+            align-items: center;
         }
 
         .intro-img img {
             width: 100%;
+            max-height: 62vh;
+            object-fit: cover;
             filter: grayscale(100%);
             transition: 0.5s;
         }
@@ -560,13 +565,20 @@
         }
 
         .intro-caption {
-            margin-top: 15px;
+            margin-top: 12px;
             font-size: 0.8rem;
             color: #999;
         }
 
+        .intro-text h3 {
+            font-size: 1.3rem;
+            margin-bottom: 14px;
+        }
+
         .intro-text p {
-            margin-bottom: 16px;
+            font-size: 0.88rem;
+            line-height: 1.5;
+            margin-bottom: 10px;
         }
 
         .btn-outline {
@@ -586,36 +598,36 @@
             border-color: #000;
         }
 
-        .clients-section {
-            margin-top: 100px;
-            padding-top: 60px;
-            border-top: 1px solid #eee;
+        #clientes {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 110px 0;
+            background: #fafafa;
         }
 
         .clients-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 50px 30px;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 22px 18px;
             margin-top: 40px;
             align-items: center;
             justify-items: center;
-            max-width: 1000px;
+            max-width: 1100px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        .clients-grid .client-logo:nth-last-child(2) { grid-column: 2; }
-        .clients-grid .client-logo:nth-last-child(1) { grid-column: 3; }
-
         .client-logo {
-            height: 180px;
-            width: 200px;
-            background: #fcfcfc;
+            height: 110px;
+            width: 100%;
+            background: #fff;
             border: 1px solid #eee;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 14px;
         }
 
         .client-logo img {
@@ -651,6 +663,18 @@
             letter-spacing: 1.5px;
             color: #999;
             margin: 0;
+        }
+
+        .award-group-logo {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .award-group-logo img {
+            height: 52px;
+            max-width: 200px;
+            object-fit: contain;
         }
 
         .award-group-arrow {
@@ -902,13 +926,13 @@
                 padding: 20px;
             }
 
-            .clients-grid {
-                grid-template-columns: repeat(2, 1fr);
+            #perfil,
+            #clientes {
+                min-height: 0;
             }
 
-            .clients-grid .client-logo:nth-last-child(2),
-            .clients-grid .client-logo:nth-last-child(1) {
-                grid-column: auto;
+            .clients-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .client-logo {
@@ -1115,6 +1139,7 @@
             <ul>
                 <li><a href="#proyectos">Proyectos</a></li>
                 <li><a href="#perfil">La Firma</a></li>
+                <li><a href="#clientes">Clientes</a></li>
                 <li><a href="#premios">Reconocimientos</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
@@ -1347,7 +1372,7 @@
             <h2 class="section-title">La Firma</h2>
             <div class="intro-grid">
                 <div class="intro-img">
-                    <img src="https://lh3.googleusercontent.com/d/1zhBm9p7gf8qznyHekbAOYAlFGbJ6tqgf" alt="Camilo Santamaría">
+                    <img src="https://lh3.googleusercontent.com/d/1sMWpnfM0JzvcWSaTk0_t6QHgn76caP9n" alt="Camilo Santamaría">
                     <p class="intro-caption">Camilo Santamaría</p>
                 </div>
                 <div class="intro-text">
@@ -1375,7 +1400,7 @@
                         varias Interventorías de Troncales, de Patios y de Portales de Transmilenio en las Fases I, II y
                         III.</p>
                     <p>En 2002, Camilo Santamaría ganó la Bienal de Arquitectura de Colombia con el Parque Tercer
-                        Milenio, proyecto que también obtuvo el segundo puesto en la Bienal Latinoamericana de
+                        Milenio, proyecto que también revivió el segundo puesto en la Bienal Latinoamericana de
                         Arquitectura de Quito.</p>
                     <div style="margin-top: 40px;">
                         <a href="https://drive.google.com/file/d/1dud6l41eXRlnYwrOGreoVIR6iXAyE3E5/view" target="_blank" class="btn-outline">Descargar Curriculum Vitae</a>
@@ -1383,26 +1408,40 @@
                     </div>
                 </div>
             </div>
-            <div class="clients-section">
-                <div style="text-align: center;">
-                    <h2 class="section-title">Nuestros Clientes</h2>
-                </div>
-                <div class="clients-grid">
-                    <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1kocRnjnhFurbdzkyY3EGA8hK9X0wtgPl" alt="Amarilo"></div>
-                    <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1qeEsoNdFwkdYHJWRHBLhE_Fpxy-bYOeb" alt="Prodesa"></div>
-                    <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1gQkpihMefEC03v6qf-MoimSr4b1vgF1G" alt="Ingetec"></div>
-                    <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1vt1cMLYHOdV5-fW3Ff8DM_xnY8qkf33R" alt="Cusezar"></div>
-                    <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1kqIHnjE2U0ZdEfwDLrxeFBt9yRxmngf9" alt="Camacol"></div>
-                    <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1ARF6q1_WofSrHnHWywv5Ht9oXTLsy_hA" alt="Colsubsidio"></div>
-                    <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1nqHqLyZpXWxYIqBf_uO0hj6Q-JIrGpf9" alt="Ospinas"></div>
-                    <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/190iHCIdw36vpOo_zJ_ST7mKYw4MnDHiF" alt="Constructora Colpatria"></div>
-                    <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1YuCm1A2LkS9qbI3aG-AsKY-nYdZ6QmGP" alt="Renobo"></div>
-                    <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1knKPi-GtAbtO99Za2GCY01S-B4emV_XL" alt="qbo"></div>
-                    <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1osdks6JmJCA_p10X_Ok7E5ay-F7X48Z0" alt="Probogotá"></div>
-                    <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1RcXMBZC3bhtiVtk9_nVTIOiOPzupAoNl" alt="Apiros"></div>
-                    <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1Pf3XRyI069K0vrxrOk4Fed4GDazohxJx" alt="Planificadas"></div>
-                    <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1AiZlnR24E2jT2D5biYiNUdQuZ833mcua" alt="Universidad de los Andes"></div>
-                </div>
+        </div>
+    </section>
+
+    <!-- CLIENTES -->
+    <section id="clientes">
+        <div class="container">
+            <div style="text-align: center;">
+                <h2 class="section-title">Nuestros Clientes</h2>
+            </div>
+            <div class="clients-grid">
+                <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1kocRnjnhFurbdzkyY3EGA8hK9X0wtgPl" alt="Amarilo"></div>
+                <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1qeEsoNdFwkdYHJWRHBLhE_Fpxy-bYOeb" alt="Prodesa"></div>
+                <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1gQkpihMefEC03v6qf-MoimSr4b1vgF1G" alt="Ingetec"></div>
+                <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1vt1cMLYHOdV5-fW3Ff8DM_xnY8qkf33R" alt="Cusezar"></div>
+                <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1kqIHnjE2U0ZdEfwDLrxeFBt9yRxmngf9" alt="Camacol"></div>
+                <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1ARF6q1_WofSrHnHWywv5Ht9oXTLsy_hA" alt="Colsubsidio"></div>
+                <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1nqHqLyZpXWxYIqBf_uO0hj6Q-JIrGpf9" alt="Ospinas"></div>
+                <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/190iHCIdw36vpOo_zJ_ST7mKYw4MnDHiF" alt="Constructora Colpatria"></div>
+                <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1YuCm1A2LkS9qbI3aG-AsKY-nYdZ6QmGP" alt="Renobo"></div>
+                <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1knKPi-GtAbtO99Za2GCY01S-B4emV_XL" alt="qbo"></div>
+                <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1osdks6JmJCA_p10X_Ok7E5ay-F7X48Z0" alt="Probogotá"></div>
+                <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1RcXMBZC3bhtiVtk9_nVTIOiOPzupAoNl" alt="Apiros"></div>
+                <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1Pf3XRyI069K0vrxrOk4Fed4GDazohxJx" alt="Planificadas"></div>
+                <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1AiZlnR24E2jT2D5biYiNUdQuZ833mcua" alt="Universidad de los Andes"></div>
+                <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/14FKmlPR3TvR0JvNWJR75cwXl8Et2N6e_" alt="Colegio Los Nogales"></div>
+                <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1iMtCwGfmx1uqekqumzZTXNSxddazAX87" alt="Ecopetrol"></div>
+                <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1P52lYp3HM-OUKxtYFRpx5MDM32DrFtlv" alt="Compensar"></div>
+                <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1T6l4n_BP6jbPmeNrBoXTHOzPWY5rTiRb" alt="SAOMA Constructora"></div>
+                <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1rXRpQBPo1sYEWooWQ46KlZ9qzoevRXzh" alt="Colegio Nueva Granada"></div>
+                <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1-rpUSGRj-6fSK5vZ4uT0u2ts4M3Zutez" alt="ANDI"></div>
+                <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1LhRDRIM26oKyy9jk6nVZhhwPnviQvcvm" alt="Steer Group"></div>
+                <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1kXag65X4xeBO49es-qvJLyvIGfZc3CSm" alt="Argos"></div>
+                <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1M3TRvhhcECKMlBWwL6Sej3hCcutpH3W9" alt="Fundación Zoraida"></div>
+                <div class="client-logo"><img src="https://lh3.googleusercontent.com/d/1TKFLf8itP0HNsHp66xE-r-whCkL4iRLt" alt="Los Lagartos"></div>
             </div>
         </div>
     </section>
@@ -1414,7 +1453,9 @@
             <div class="awards-list">
                 <div class="award-group">
                     <div class="award-group-header" onclick="this.parentElement.classList.toggle('open')">
-                        <p class="award-group-title">SCA / CPNAA &middot; Bienal Nacional de Arquitectura</p>
+                        <div class="award-group-logo">
+                            <img src="https://lh3.googleusercontent.com/d/1wbMd4FNLHbVx3N6autUPxsbgVNELgqzU" alt="SCA / CPNAA · Bienal Nacional de Arquitectura">
+                        </div>
                         <span class="award-group-arrow">&#9662;</span>
                     </div>
                     <div class="award-group-items">
@@ -1432,7 +1473,10 @@
                 </div>
                 <div class="award-group">
                     <div class="award-group-header" onclick="this.parentElement.classList.toggle('open')">
-                        <p class="award-group-title">Colegio de Arquitectos del Ecuador &middot; Bienal Panamericana de Quito</p>
+                        <div class="award-group-logo">
+                            <img src="https://lh3.googleusercontent.com/d/1z918bounSn2f6Nf3p1XQscA7nOlokMZL" alt="Colegio de Arquitectos del Ecuador">
+                            <img src="https://lh3.googleusercontent.com/d/1qHKk-EYuRnxZVXq7h3jQ576wN3Eg04Ib" alt="Bienal Panamericana de Quito">
+                        </div>
                         <span class="award-group-arrow">&#9662;</span>
                     </div>
                     <div class="award-group-items">
@@ -1452,7 +1496,9 @@
                 </div>
                 <div class="award-group">
                     <div class="award-group-header" onclick="this.parentElement.classList.toggle('open')">
-                        <p class="award-group-title">CEMEX &middot; Premio Obras CEMEX</p>
+                        <div class="award-group-logo">
+                            <img src="https://lh3.googleusercontent.com/d/1XYKS-Mywj_lmz5MdzTg2R1dKH4ybWOOY" alt="CEMEX · Premio Obras CEMEX">
+                        </div>
                         <span class="award-group-arrow">&#9662;</span>
                     </div>
                     <div class="award-group-items">
@@ -1474,7 +1520,9 @@
                 </div>
                 <div class="award-group">
                     <div class="award-group-header" onclick="this.parentElement.classList.toggle('open')">
-                        <p class="award-group-title">FIABCI &middot; Premios a la Excelencia Inmobiliaria</p>
+                        <div class="award-group-logo">
+                            <img src="https://lh3.googleusercontent.com/d/1VNqLG2BmaN5j21KjQhqiScMHlP9Zsq0x" alt="FIABCI · Premios a la Excelencia Inmobiliaria">
+                        </div>
                         <span class="award-group-arrow">&#9662;</span>
                     </div>
                     <div class="award-group-items">
