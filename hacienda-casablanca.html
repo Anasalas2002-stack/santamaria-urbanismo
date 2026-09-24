@@ -24,9 +24,10 @@
         header.scrolled nav a { color: #1a1a1a; text-shadow: none; }
         nav a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -5px; left: 0; background: currentColor; transition: width 0.3s; }
         nav a:hover::after { width: 100%; }
-        .project-hero-fixed { height: 100vh; width: 100%; position: relative; overflow: hidden; background-size: cover; background-position: center; background-color: #000; }
-        .project-hero-fixed::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 55%; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.65)); pointer-events: none; z-index: 5; }
-        .hero-caption { position: absolute; bottom: 60px; left: 60px; color: white; z-index: 10; max-width: 620px; border-left: 4px solid white; padding-left: 25px; }
+        .project-hero-fixed { width: 100%; position: relative; background-color: #000; }
+        .project-hero-fixed .hero-photo { width: 100%; height: auto; display: block; }
+        .project-hero-fixed::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 30%; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.65)); pointer-events: none; z-index: 5; }
+        .hero-caption { position: absolute; bottom: 30px; left: 60px; color: white; z-index: 10; max-width: 620px; border-left: 4px solid white; padding-left: 25px; }
         .hero-caption .proj-cat { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 3px; color: rgba(255,255,255,0.8); margin-bottom: 8px; }
         .hero-caption h1 { font-size: 2.5rem; font-weight: 300; text-transform: uppercase; letter-spacing: 3px; text-shadow: 0 2px 15px rgba(0,0,0,0.5); line-height: 1.1; }
         .hero-caption .proj-meta { font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-top: 8px; letter-spacing: 1px; }
@@ -108,7 +109,8 @@
     </button>
 </header>
 
-<div class="project-hero-fixed" style="background-image: url('https://lh3.googleusercontent.com/d/1_xAhjumV46K1ojRwjZbrq0zYyAC5qz65');">
+<div class="project-hero-fixed">
+    <img class="hero-photo" src="https://lh3.googleusercontent.com/d/1_xAhjumV46K1ojRwjZbrq0zYyAC5qz65" alt="Hacienda Casablanca">
     <div class="hero-caption">
         <p class="proj-cat">Ordenamiento Territorial · Urbanismo</p>
         <h1>Hacienda Casablanca</h1>
