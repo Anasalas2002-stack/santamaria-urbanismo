@@ -43,12 +43,12 @@
         .project-row .row-text { flex: 1; }
         .project-row .row-text p { font-size: 1rem; color: #444; line-height: 1.85; }
         .project-row .row-img { flex: 0 0 460px; }
-        .project-row .row-img img { width: 100%; height: auto; display: block; cursor: zoom-in; }
+        .project-row .row-img img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; cursor: zoom-in; }
         .project-row.image-only { width: 100vw; position: relative; left: 50%; margin-left: -50vw; }
         .project-row.image-only.side-left { justify-content: flex-start; }
         .project-row.image-only.side-right { justify-content: flex-end; }
-        .project-row.image-only .row-img { flex: 0 0 auto; }
-        .project-row.image-only .row-img img { width: auto; max-width: 48vw; height: auto; max-height: 85vh; }
+        .panorama-row { width: 100vw; position: relative; left: 50%; margin-left: -50vw; margin-bottom: 0; }
+        .panorama-row img { width: 100%; height: auto; display: block; cursor: zoom-in; }
         .lightbox-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 5000; align-items: center; justify-content: center; cursor: zoom-out; }
         .lightbox-overlay.active { display: flex; }
         .lightbox-overlay img { max-width: 90vw; max-height: 90vh; object-fit: contain; box-shadow: 0 10px 40px rgba(0,0,0,0.5); cursor: default; }
@@ -80,7 +80,6 @@
             .project-row, .project-row.reverse { flex-direction: column; gap: 25px; margin-bottom: 50px; }
             .project-row .row-img { flex: 0 0 auto; width: 100%; }
             .project-row.image-only { width: 100%; left: 0; margin-left: 0; justify-content: center !important; }
-            .project-row.image-only .row-img img { max-width: 100%; width: 100%; max-height: none; }
         }
         @media (max-width: 480px) {
             header, header.scrolled { padding: 15px; }
