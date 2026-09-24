@@ -42,9 +42,12 @@
         .project-row .row-text { flex: 1; }
         .project-row .row-text p { font-size: 1rem; color: #444; line-height: 1.85; }
         .project-row .row-img { flex: 0 0 460px; }
-        .project-row.image-only { justify-content: center; }
-        .project-row.image-only .row-img { flex: 0 0 460px; }
-        .project-row .row-img img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; cursor: zoom-in; border: 1px solid #eee; }
+        .project-row .row-img img { width: 100%; height: auto; display: block; cursor: zoom-in; }
+        .project-row.image-only { width: 100vw; position: relative; left: 50%; margin-left: -50vw; }
+        .project-row.image-only.side-left { justify-content: flex-start; }
+        .project-row.image-only.side-right { justify-content: flex-end; }
+        .project-row.image-only .row-img { flex: 0 0 auto; }
+        .project-row.image-only .row-img img { width: auto; max-width: 48vw; height: auto; max-height: 85vh; }
         .lightbox-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 5000; align-items: center; justify-content: center; cursor: zoom-out; }
         .lightbox-overlay.active { display: flex; }
         .lightbox-overlay img { max-width: 90vw; max-height: 90vh; object-fit: contain; box-shadow: 0 10px 40px rgba(0,0,0,0.5); cursor: default; }
@@ -75,6 +78,8 @@
             .project-body { padding: 40px 20px 70px; }
             .project-row, .project-row.reverse { flex-direction: column; gap: 25px; margin-bottom: 50px; }
             .project-row .row-img { flex: 0 0 auto; width: 100%; }
+            .project-row.image-only { width: 100%; left: 0; margin-left: 0; justify-content: center !important; }
+            .project-row.image-only .row-img img { max-width: 100%; width: 100%; max-height: none; }
         }
         @media (max-width: 480px) {
             header, header.scrolled { padding: 15px; }
@@ -135,10 +140,10 @@
                 <div class="row-text"><p>Un edificio de parqueaderos de cuatro niveles permitió liberar espacio para parques internos, de modo que los niños puedan jugar sin exposición a vías vehiculares. Los edificios de cinco pisos garantizan una escala humana tanto al interior del conjunto como hacia la calle, mientras la mezcla de fachadas, balcones y ventanas —incluso en las culatas— da variedad y vida al espacio público de manzanas totalmente paramentadas.</p></div>
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1IVuzL5GuKxiHRbhwT_6Phdmtx-Clrirg" alt="Palermo RDM" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-right">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1Iu3Oi5uRvSgIWR6MzIw8iA2HS0pOHP2b" alt="Palermo RDM" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-left">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1nH3G2Xtm_HVnqhmFeTAu7USSdPU6LQ31" alt="Palermo RDM" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
 </section>

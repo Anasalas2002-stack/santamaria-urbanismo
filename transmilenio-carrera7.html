@@ -42,9 +42,12 @@
         .project-row .row-text { flex: 1; }
         .project-row .row-text p { font-size: 1rem; color: #444; line-height: 1.85; }
         .project-row .row-img { flex: 0 0 460px; }
-        .project-row.image-only { justify-content: center; }
-        .project-row.image-only .row-img { flex: 0 0 460px; }
-        .project-row .row-img img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; cursor: zoom-in; border: 1px solid #eee; }
+        .project-row .row-img img { width: 100%; height: auto; display: block; cursor: zoom-in; }
+        .project-row.image-only { width: 100vw; position: relative; left: 50%; margin-left: -50vw; }
+        .project-row.image-only.side-left { justify-content: flex-start; }
+        .project-row.image-only.side-right { justify-content: flex-end; }
+        .project-row.image-only .row-img { flex: 0 0 auto; }
+        .project-row.image-only .row-img img { width: auto; max-width: 48vw; height: auto; max-height: 85vh; }
         .lightbox-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 5000; align-items: center; justify-content: center; cursor: zoom-out; }
         .lightbox-overlay.active { display: flex; }
         .lightbox-overlay img { max-width: 90vw; max-height: 90vh; object-fit: contain; box-shadow: 0 10px 40px rgba(0,0,0,0.5); cursor: default; }
@@ -75,6 +78,8 @@
             .project-body { padding: 40px 20px 70px; }
             .project-row, .project-row.reverse { flex-direction: column; gap: 25px; margin-bottom: 50px; }
             .project-row .row-img { flex: 0 0 auto; width: 100%; }
+            .project-row.image-only { width: 100%; left: 0; margin-left: 0; justify-content: center !important; }
+            .project-row.image-only .row-img img { max-width: 100%; width: 100%; max-height: none; }
         }
         @media (max-width: 480px) {
             header, header.scrolled { padding: 15px; }
@@ -137,37 +142,37 @@
                 <div class="row-text"><p>En el sector norte de la ciudad, la propuesta contempló importantes mejoras urbanísticas mediante la incorporación de nuevas áreas verdes y la adecuación del espacio público, complementadas con intersecciones viales estratégicas que buscaban optimizar la movilidad general del corredor y su articulación con la red vial existente. Desde el punto de vista arquitectónico, las estaciones fueron concebidas bajo un diseño más abierto y transparente, favoreciendo la integración visual entre ambos costados de la vía, mejorando las condiciones de accesibilidad y aportando una imagen contemporánea al sistema.</p></div>
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1r0zbOKSpq4HpYl24Yg8wGthqBGx59cLO" alt="TransMilenio Carrera 7" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-right">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1NQ8mMO6QCPsmocFUSJUk_ESrV-WubaPK" alt="TransMilenio Carrera 7" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-left">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1Rx7yGs6DQhPWpHFOkhy7seB9hjQtZXid" alt="TransMilenio Carrera 7" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-right">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/12Gv1BpmFXQ5Wh_-vFErBSYTTO1JmBc_f" alt="TransMilenio Carrera 7" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-left">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1t_p9Tqf1oAzWA1ER3PH_7iJi96VAlUE2" alt="TransMilenio Carrera 7" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-right">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/11L4NZYmKgBgIj5lVkmX_hi3ie-0DktqC" alt="TransMilenio Carrera 7" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-left">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1_DR0rUUVxVu3ldeCyVx_ubDkfjFIjIOs" alt="TransMilenio Carrera 7" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-right">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1KMFfc8u_xDKsE9NsNQesg29Pdyo8ZlXi" alt="TransMilenio Carrera 7" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-left">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1YUwtaTNKJsfS5rC7T_W5Cq37986ZZXbD" alt="TransMilenio Carrera 7" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-right">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1_EfmY-PF77SbSpR6yCES_SfdvdBHnB38" alt="TransMilenio Carrera 7" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-left">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1x5i3QYISMfQk0gWx9WbFkBrJGtGqCwyn" alt="TransMilenio Carrera 7" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-right">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1QnH704197W2MMuEBBEicqgPXbaZ_1Axo" alt="TransMilenio Carrera 7" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
 </section>

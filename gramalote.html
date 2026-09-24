@@ -42,9 +42,12 @@
         .project-row .row-text { flex: 1; }
         .project-row .row-text p { font-size: 1rem; color: #444; line-height: 1.85; }
         .project-row .row-img { flex: 0 0 460px; }
-        .project-row.image-only { justify-content: center; }
-        .project-row.image-only .row-img { flex: 0 0 460px; }
-        .project-row .row-img img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; cursor: zoom-in; border: 1px solid #eee; }
+        .project-row .row-img img { width: 100%; height: auto; display: block; cursor: zoom-in; }
+        .project-row.image-only { width: 100vw; position: relative; left: 50%; margin-left: -50vw; }
+        .project-row.image-only.side-left { justify-content: flex-start; }
+        .project-row.image-only.side-right { justify-content: flex-end; }
+        .project-row.image-only .row-img { flex: 0 0 auto; }
+        .project-row.image-only .row-img img { width: auto; max-width: 48vw; height: auto; max-height: 85vh; }
         .lightbox-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 5000; align-items: center; justify-content: center; cursor: zoom-out; }
         .lightbox-overlay.active { display: flex; }
         .lightbox-overlay img { max-width: 90vw; max-height: 90vh; object-fit: contain; box-shadow: 0 10px 40px rgba(0,0,0,0.5); cursor: default; }
@@ -75,6 +78,8 @@
             .project-body { padding: 40px 20px 70px; }
             .project-row, .project-row.reverse { flex-direction: column; gap: 25px; margin-bottom: 50px; }
             .project-row .row-img { flex: 0 0 auto; width: 100%; }
+            .project-row.image-only { width: 100%; left: 0; margin-left: 0; justify-content: center !important; }
+            .project-row.image-only .row-img img { max-width: 100%; width: 100%; max-height: none; }
         }
         @media (max-width: 480px) {
             header, header.scrolled { padding: 15px; }
@@ -140,19 +145,19 @@
                 <div class="row-text"><p>El espacio público más representativo es la plaza principal, de aproximadamente 8.500 m², ubicada en el centro del nuevo Gramalote. Su diseño resuelve una diferencia de nivel de cerca de 15 metros mediante una gradería orientada hacia el paisaje montañoso de Norte de Santander, articulada por terrazas comerciales, zonas duras arborizadas, rampas peatonales y una cascada de agua. El uso de materiales regionales y especies vegetales nativas refuerza la identidad local y consolida la plaza como el corazón cívico y social del nuevo municipio.</p></div>
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1RTl3c9IYo54_0zHqZYPTu6r0kevDsZnH" alt="Gramalote" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-left">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1wdT-vOiIps5tv2iLZ09VI5KmVtv9wR6i" alt="Gramalote" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-right">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1a5BGbpv-ObCVvm9BDHx6laYCr8MPZxKB" alt="Gramalote" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-left">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/11euoWzaPMdQFyyojnBaerQGbWuBcNVVW" alt="Gramalote" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-right">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1mBUE7JeN1Qi8GSjH9dVMf1p6UFZeLQi4" alt="Gramalote" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-left">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1M_sfavpT1soEX9TtzkVVEvBV2XQNNwzV" alt="Gramalote" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
 </section>
