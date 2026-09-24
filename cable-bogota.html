@@ -42,9 +42,12 @@
         .project-row .row-text { flex: 1; }
         .project-row .row-text p { font-size: 1rem; color: #444; line-height: 1.85; }
         .project-row .row-img { flex: 0 0 460px; }
-        .project-row.image-only { justify-content: center; }
-        .project-row.image-only .row-img { flex: 0 0 460px; }
-        .project-row .row-img img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; cursor: zoom-in; border: 1px solid #eee; }
+        .project-row .row-img img { width: 100%; height: auto; display: block; cursor: zoom-in; }
+        .project-row.image-only { width: 100vw; position: relative; left: 50%; margin-left: -50vw; }
+        .project-row.image-only.side-left { justify-content: flex-start; }
+        .project-row.image-only.side-right { justify-content: flex-end; }
+        .project-row.image-only .row-img { flex: 0 0 auto; }
+        .project-row.image-only .row-img img { width: auto; max-width: 48vw; height: auto; max-height: 85vh; }
         .lightbox-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 5000; align-items: center; justify-content: center; cursor: zoom-out; }
         .lightbox-overlay.active { display: flex; }
         .lightbox-overlay img { max-width: 90vw; max-height: 90vh; object-fit: contain; box-shadow: 0 10px 40px rgba(0,0,0,0.5); cursor: default; }
@@ -75,6 +78,8 @@
             .project-body { padding: 40px 20px 70px; }
             .project-row, .project-row.reverse { flex-direction: column; gap: 25px; margin-bottom: 50px; }
             .project-row .row-img { flex: 0 0 auto; width: 100%; }
+            .project-row.image-only { width: 100%; left: 0; margin-left: 0; justify-content: center !important; }
+            .project-row.image-only .row-img img { max-width: 100%; width: 100%; max-height: none; }
         }
         @media (max-width: 480px) {
             header, header.scrolled { padding: 15px; }
@@ -135,25 +140,25 @@
                 <div class="row-text"><p>El impacto social del proyecto se refleja en tres aspectos: movilidad, acceso a equipamientos y recuperación del espacio público. La sustitución de buses alimentadores diésel por un sistema totalmente eléctrico contribuye a la reducción de emisiones contaminantes y al mejoramiento de la calidad del aire. La intervención generó nuevos espacios públicos alrededor de las estaciones y torres —plazoletas, andenes accesibles, zonas comunitarias, parques y zonas verdes—, impulsando la revitalización urbana y favoreciendo el mejoramiento de fachadas, la consolidación de actividades comerciales y una mayor percepción de seguridad. TransMiCable ha contribuido además a posicionar a Ciudad Bolívar como un nuevo referente urbano y turístico de Bogotá.</p></div>
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1E8Fwy6xe9M4uRcfuxIJ8j-MPsVJiqiS0" alt="TransMiCable" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-right">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1PRziwJuLKm1KQGy_adVTLlBTDfOaLLzw" alt="TransMiCable" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-left">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1Peqm_xhd_8E4aB5kbwlZI69nIe8DUrDk" alt="TransMiCable" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-right">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1yMUyKLjzfAa18Pk5GjBPdVLPXtpmDFjb" alt="TransMiCable" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-left">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1NMOlvp0yMCOPwImMu0Z7WCZgc69W_sJA" alt="TransMiCable" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-right">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/15-Go3PvJmuer9289QQvNIFZFtx9kta1L" alt="TransMiCable" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-left">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1BkNPJFfgYzwSHki1Gf04Z_0awLrODiDu" alt="TransMiCable" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-right">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1sjUD2bfvhiA-GxF0QtFmG6GZRCjaE92P" alt="TransMiCable" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
 </section>

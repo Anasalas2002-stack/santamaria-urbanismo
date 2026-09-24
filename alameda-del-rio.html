@@ -42,9 +42,12 @@
         .project-row .row-text { flex: 1; }
         .project-row .row-text p { font-size: 1rem; color: #444; line-height: 1.85; }
         .project-row .row-img { flex: 0 0 460px; }
-        .project-row.image-only { justify-content: center; }
-        .project-row.image-only .row-img { flex: 0 0 460px; }
-        .project-row .row-img img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; cursor: zoom-in; border: 1px solid #eee; }
+        .project-row .row-img img { width: 100%; height: auto; display: block; cursor: zoom-in; }
+        .project-row.image-only { width: 100vw; position: relative; left: 50%; margin-left: -50vw; }
+        .project-row.image-only.side-left { justify-content: flex-start; }
+        .project-row.image-only.side-right { justify-content: flex-end; }
+        .project-row.image-only .row-img { flex: 0 0 auto; }
+        .project-row.image-only .row-img img { width: auto; max-width: 48vw; height: auto; max-height: 85vh; }
         .lightbox-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 5000; align-items: center; justify-content: center; cursor: zoom-out; }
         .lightbox-overlay.active { display: flex; }
         .lightbox-overlay img { max-width: 90vw; max-height: 90vh; object-fit: contain; box-shadow: 0 10px 40px rgba(0,0,0,0.5); cursor: default; }
@@ -75,6 +78,8 @@
             .project-body { padding: 40px 20px 70px; }
             .project-row, .project-row.reverse { flex-direction: column; gap: 25px; margin-bottom: 50px; }
             .project-row .row-img { flex: 0 0 auto; width: 100%; }
+            .project-row.image-only { width: 100%; left: 0; margin-left: 0; justify-content: center !important; }
+            .project-row.image-only .row-img img { max-width: 100%; width: 100%; max-height: none; }
         }
         @media (max-width: 480px) {
             header, header.scrolled { padding: 15px; }
@@ -136,28 +141,28 @@
                 <div class="row-text"><p>Se propusieron manzanas entre 2 y 4 hectáreas, divididas en cuatro lotes donde se localizaron conjuntos de vivienda de 12 pisos de altura. El proyecto tiene tres barrios identificados, cada uno con una centralidad donde convergen un parque, un colegio y una zona comercial, con distintos estratos socioeconómicos en convivencia. El diseño se inspiró en los bulevares del barrio El Prado de Barranquilla y en los parques locales de barrios, con un paisajismo abundante que genera sombra gracias a la colaboración de la entidad "Barranquilla Siembra". A la fecha, el proyecto cuenta con más de 10.000 viviendas construidas con proyección a llegar a 14.000, desarrolladas por cinco constructores distintos.</p></div>
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1XUfvbKN7yZeWlbgDqrsCtCx-Z6taU52Z" alt="Alameda del Río" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-right">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1oLDvUUgLFsJcapQRd00Ta3n5QGEbq8Mf" alt="Alameda del Río" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-left">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1ea9wPLydSHsf1NGkpA98EX12BABgdhWB" alt="Alameda del Río" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-right">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1H5UF9cvDNWSvK1qX6hFLfHPg6wGrVi2u" alt="Alameda del Río" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-left">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1rGvk5cyPzah4OCLPKWEU3w1rq2NwfZyC" alt="Alameda del Río" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-right">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1-tcVkXAsTtYhs9EtKaWUypikrlzWdYVL" alt="Alameda del Río" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-left">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/15vbDdj9XjLBhbxLbphuih-ubjDjwzghA" alt="Alameda del Río" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-right">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1yhG7MWO3rzwIDB0U25y0UuKUlFJXFhvD" alt="Alameda del Río" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-left">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/10Ep_WJeHf8cFCZ1Ccl0rKpUhKQTRSnJx" alt="Alameda del Río" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
 </section>

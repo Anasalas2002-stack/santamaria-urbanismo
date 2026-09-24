@@ -42,9 +42,12 @@
         .project-row .row-text { flex: 1; }
         .project-row .row-text p { font-size: 1rem; color: #444; line-height: 1.85; }
         .project-row .row-img { flex: 0 0 460px; }
-        .project-row.image-only { justify-content: center; }
-        .project-row.image-only .row-img { flex: 0 0 460px; }
-        .project-row .row-img img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; cursor: zoom-in; border: 1px solid #eee; }
+        .project-row .row-img img { width: 100%; height: auto; display: block; cursor: zoom-in; }
+        .project-row.image-only { width: 100vw; position: relative; left: 50%; margin-left: -50vw; }
+        .project-row.image-only.side-left { justify-content: flex-start; }
+        .project-row.image-only.side-right { justify-content: flex-end; }
+        .project-row.image-only .row-img { flex: 0 0 auto; }
+        .project-row.image-only .row-img img { width: auto; max-width: 48vw; height: auto; max-height: 85vh; }
         .lightbox-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 5000; align-items: center; justify-content: center; cursor: zoom-out; }
         .lightbox-overlay.active { display: flex; }
         .lightbox-overlay img { max-width: 90vw; max-height: 90vh; object-fit: contain; box-shadow: 0 10px 40px rgba(0,0,0,0.5); cursor: default; }
@@ -75,6 +78,8 @@
             .project-body { padding: 40px 20px 70px; }
             .project-row, .project-row.reverse { flex-direction: column; gap: 25px; margin-bottom: 50px; }
             .project-row .row-img { flex: 0 0 auto; width: 100%; }
+            .project-row.image-only { width: 100%; left: 0; margin-left: 0; justify-content: center !important; }
+            .project-row.image-only .row-img img { max-width: 100%; width: 100%; max-height: none; }
         }
         @media (max-width: 480px) {
             header, header.scrolled { padding: 15px; }
@@ -127,22 +132,22 @@
                 <div class="row-text"><p>Desde 1996, Camilo Santamaría ha participado de manera continua en la planificación y estructuración urbana de la Primera y Segunda Línea del Metro de Bogotá. Su experiencia abarca estudios conceptuales, planificación urbana, renovación urbana, diseño de estaciones, espacio público y estructuración técnica, consolidando cerca de tres décadas de trayectoria en uno de los proyectos de infraestructura más importantes del país, en colaboración con INGETEC–BECHTEL–SYSTRA, la Financiera de Desarrollo Nacional (FDN) y la Secretaría Distrital de Planeación (SDP).</p></div>
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1p6u9WkRK43ut5hhXQLxF0LRux0xSch4N" alt="SITM Metro" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-right">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/18lFN2vtFIvVDR5Zl2DtyWlmcBNFI-vmz" alt="SITM Metro" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-left">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/13p3THZjosqrIYow0qgwRXNr89zqaS_J-" alt="SITM Metro" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-right">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1-BDzRJS9MIIHwC4IqCeoR38JEP5mz9rX" alt="SITM Metro" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-left">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1-i9Is0S7Y1hBChSvA03RdFNiH9TOuVbE" alt="SITM Metro" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-right">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1kylLHPtZGLyYaX_wYmu9H0tV273q0ZBT" alt="SITM Metro" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
-            <div class="project-row image-only">
+            <div class="project-row image-only side-left">
                 <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1noppEjbN-H1GNRv-r5F6AR5gYMNxmLCT" alt="SITM Metro" loading="lazy" onclick="openLightbox(this.src)"></div>
             </div>
 </section>
