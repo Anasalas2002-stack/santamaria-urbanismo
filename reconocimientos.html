@@ -642,23 +642,13 @@
         }
 
         .awards-list {
-            display: flex;
-            gap: 70px;
-            align-items: flex-start;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .awards-col {
-            flex: 1;
-            min-width: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 50px 60px;
+            align-items: start;
         }
 
         .award-group {
-            margin-top: 50px;
-        }
-
-        .award-group:first-child {
             margin-top: 0;
         }
 
@@ -671,30 +661,18 @@
             padding-bottom: 5px;
         }
 
-        .award-group-title {
-            font-size: 0.78rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #999;
-            margin: 0;
-        }
-
         .award-group-logo {
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
             gap: 18px;
         }
 
         .award-group-logo img {
-            width: 300px;
-            height: 136px;
+            width: 220px;
+            height: 100px;
             object-fit: contain;
             mix-blend-mode: multiply;
-        }
-
-        .award-group:not(.award-group-featured) .award-group-logo img {
-            width: 150px;
-            height: 68px;
         }
 
         .award-group-arrow {
@@ -710,36 +688,62 @@
 
         .award-group-items {
             display: none;
+            margin-top: 20px;
         }
 
         .award-group.open .award-group-items {
             display: block;
         }
 
-        .award-dup { cursor: pointer; }
-        .award-dup-summary { border-bottom: none; padding-bottom: 8px; }
-        .award-dup-toggle { display: inline-block; font-size: 0.75rem; color: #999; margin-left: 6px; text-transform: none; letter-spacing: 0; }
-        .award-dup-items { display: none; padding-left: 100px; }
-        .award-dup.open .award-dup-items { display: block; }
-        .award-dup-items .award-item { padding: 10px 0; }
-        .award-dup-items .award-item:last-child { border-bottom: 1px solid #ddd; }
-
-        .award-item {
-            display: flex;
-            padding: 20px 0;
-            border-bottom: 1px solid #ddd;
-            align-items: baseline;
+        .award-table-header {
+            display: grid;
+            grid-template-columns: 30% 1fr 60px;
+            gap: 18px;
+            font-size: 0.64rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #999;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ddd;
+            margin-bottom: 4px;
         }
 
-        .award-year {
-            font-weight: 700;
-            width: 100px;
-            flex-shrink: 0;
+        .award-table-header span:last-child {
+            text-align: right;
+        }
+
+        .award-item {
+            display: grid;
+            grid-template-columns: 30% 1fr 60px;
+            gap: 18px;
+            padding: 14px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .award-proyecto strong {
+            display: block;
+            font-size: 0.88rem;
+            color: #1a1a1a;
+            line-height: 1.4;
+        }
+
+        .award-proyecto .award-client {
+            display: block;
+            font-size: 0.76rem;
+            color: #999;
+            margin-top: 3px;
         }
 
         .award-desc {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: #555;
+            line-height: 1.6;
+        }
+
+        .award-year {
+            font-size: 0.85rem;
+            color: #555;
+            text-align: right;
         }
 
         #contacto {
@@ -898,22 +902,27 @@
             }
 
             .awards-list {
-                flex-direction: column;
-                gap: 0;
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
 
-            .awards-col + .awards-col {
-                margin-top: 50px;
+            .award-table-header {
+                grid-template-columns: 1fr;
+                gap: 2px;
             }
 
-            .award-group-logo img {
-                width: 220px;
-                height: 100px;
+            .award-table-header span:not(:first-child) {
+                display: none;
             }
 
-            .award-group:not(.award-group-featured) .award-group-logo img {
-                width: 110px;
-                height: 50px;
+            .award-item {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+
+            .award-year {
+                text-align: left;
+                color: #999;
             }
 
             .nav-toggle {
@@ -1018,13 +1027,6 @@
                 font-size: 1.5rem;
             }
 
-            .award-item {
-                flex-wrap: wrap;
-            }
-
-            .award-dup-items {
-                padding-left: 30px;
-            }
         }
 
         @media (max-width: 480px) {
@@ -1067,16 +1069,6 @@
             .hero-controls .hero-btn svg {
                 width: 16px;
                 height: 16px;
-            }
-
-            .award-item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .award-year {
-                width: auto;
-                margin-bottom: 4px;
             }
 
             .apuntes-viewer {
@@ -1281,8 +1273,7 @@
         <div class="container">
             <h2 class="section-title">Reconocimientos</h2>
             <div class="awards-list">
-            <div class="awards-col">
-                <div class="award-group award-group-featured">
+                <div class="award-group">
                     <div class="award-group-header" onclick="this.parentElement.classList.toggle('open')">
                         <div class="award-group-logo">
                             <img src="https://lh3.googleusercontent.com/d/1wbMd4FNLHbVx3N6autUPxsbgVNELgqzU" alt="SCA / CPNAA · Bienal Nacional de Arquitectura">
@@ -1290,16 +1281,52 @@
                         <span class="award-group-arrow">&#9662;</span>
                     </div>
                     <div class="award-group-items">
-                <div class="award-item"><div class="award-year">2025</div><div class="award-desc">Villas de San Pablo, Barranquilla (Fundación Santo Domingo / Prodesa) — II Salones Regionales de Arquitectura y Urbanismo, ganador Vivienda Colectiva – VIP.</div></div>
-                <div class="award-item"><div class="award-year">2023</div><div class="award-desc">Palermo Sm5, Reserva de Madrid (Prodesa) — Salones Regionales de Arquitectura, mención Categoría Hábitat Social.</div></div>
-                <div class="award-item"><div class="award-year">2023</div><div class="award-desc">Conjunto Residencial Perdiz, Barranquilla (Prodesa) — Salones Regionales de Arquitectura, mención Categoría Hábitat Social.</div></div>
-                <div class="award-item"><div class="award-year">2015</div><div class="award-desc">Macroproyecto Ciudad Verde, Soacha — Reconocimiento SCA al Arq. Camilo Santamaría por su compromiso social y ambiental.</div></div>
-                <div class="award-item"><div class="award-year">2010</div><div class="award-desc">Conjunto Residencial Albear de Suba Etapa II, Bogotá (Prodesa) — XXII Bienal Colombiana de Arquitectura, Categoría Hábitat y Vivienda Colectiva.</div></div>
-                <div class="award-item"><div class="award-year">2010</div><div class="award-desc">Urbanización El Triunfo, Et. 1 Salitre, Bogotá (Prodesa) — XX Bienal Colombiana de Arquitectura, Categoría Hábitat y Vivienda Colectiva.</div></div>
-                <div class="award-item"><div class="award-year">2006</div><div class="award-desc">Parque Tercer Milenio, Bogotá (IDU) — XX Bienal Colombiana de Arquitectura, Premio Karl Brunner, ganador Diseño Urbano y Paisajismo.</div></div>
-                <div class="award-item"><div class="award-year">1999</div><div class="award-desc">Las Mercedes de Suba, Bogotá (Prodesa) — XVII Bienal Colombiana de Arquitectura, Mención de Honor Premio Nacional al Hábitat Popular.</div></div>
-                <div class="award-item"><div class="award-year">1998</div><div class="award-desc">Aragón, Bogotá (Prodesa) — XVI Bienal Colombiana de Arquitectura, Premio Obra Seleccionada, Diseño Arquitectónico.</div></div>
-                
+                        <div class="award-table-header"><span>Proyecto</span><span>Descripción</span><span>Año</span></div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Agrupación de Vivienda Villas de San Pablo, Barranquilla</strong><span class="award-client">Fundación Santo Domingo / Prodesa</span></div>
+                    <div class="award-desc">II Salones Regionales de Arquitectura y Urbanismo 2025, ganador premio Vivienda Colectiva – Vivienda de interés prioritario Fundación Santo Domingo, Barranquilla.</div>
+                    <div class="award-year">2025</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Agrupación de Vivienda Palermo Sm5 (Reserva de Madrid)</strong><span class="award-client">Prodesa</span></div>
+                    <div class="award-desc">Salones Regionales de Arquitectura, mención en la Categoría Hábitat Social.</div>
+                    <div class="award-year">2023</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Conjunto Residencial Perdiz, Barranquilla</strong><span class="award-client">Prodesa</span></div>
+                    <div class="award-desc">Salones Regionales de Arquitectura, mención en la Categoría Hábitat Social.</div>
+                    <div class="award-year">2023</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Macroproyecto Ciudad Verde, Soacha, Cundinamarca</strong><span class="award-client">Arq. Camilo Santamaría</span></div>
+                    <div class="award-desc">SCA otorga reconocimiento al Arq. Camilo Santamaría por su compromiso social y ambiental en el proyecto Ciudad Verde.</div>
+                    <div class="award-year">2015</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Conjunto Residencial Albear de Suba Etapa II, Bogotá</strong><span class="award-client">Prodesa</span></div>
+                    <div class="award-desc">XXII Bienal Colombiana de Arquitectura, obtuvo un lugar dentro de la Categoría Hábitat y Vivienda Colectiva.</div>
+                    <div class="award-year">2010</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Urbanización El Triunfo, Et. 1 Salitre, Bogotá</strong><span class="award-client">Prodesa</span></div>
+                    <div class="award-desc">XX Bienal Colombiana de Arquitectura, obtuvo un lugar dentro de la Categoría Hábitat y Vivienda Colectiva.</div>
+                    <div class="award-year">2010</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Parque Tercer Milenio, Bogotá</strong><span class="award-client">Instituto de Desarrollo Urbano (IDU)</span></div>
+                    <div class="award-desc">XX Bienal Colombiana de Arquitectura, Premio Karl Brunner, ganador Categoría de Diseño Urbano y Paisajismo.</div>
+                    <div class="award-year">2006</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Las Mercedes de Suba, Vivienda Multifamiliar, Bogotá</strong><span class="award-client">Prodesa</span></div>
+                    <div class="award-desc">XXVI Bienal Colombiana de Arquitectura, Premio Nacional al Hábitat Popular, mención de honor Categoría Proyectos Construidos.</div>
+                    <div class="award-year">1999</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Aragón, Vivienda Multifamiliar, Bogotá</strong><span class="award-client">Prodesa</span></div>
+                    <div class="award-desc">XVI Bienal Colombiana de Arquitectura, Premio Obra Seleccionada, Categoría de Diseño Arquitectónico.</div>
+                    <div class="award-year">1998</div>
+                </div>
                     </div>
                 </div>
                 <div class="award-group">
@@ -1311,8 +1338,12 @@
                         <span class="award-group-arrow">&#9662;</span>
                     </div>
                     <div class="award-group-items">
-                <div class="award-item"><div class="award-year">2008</div><div class="award-desc">Parque Tercer Milenio, Bogotá (IDU) — XVI Bienal Panamericana de Arquitectura de Quito, segundo puesto Arquitectura Paisajista.</div></div>
-                
+                        <div class="award-table-header"><span>Proyecto</span><span>Descripción</span><span>Año</span></div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Parque Tercer Milenio, Bogotá</strong><span class="award-client">Instituto de Desarrollo Urbano (IDU)</span></div>
+                    <div class="award-desc">XVI Bienal Panamericana de Arquitectura de Quito, ganador segundo puesto Categoría Arquitectura Paisajista.</div>
+                    <div class="award-year">2008</div>
+                </div>
                     </div>
                 </div>
                 <div class="award-group">
@@ -1323,12 +1354,14 @@
                         <span class="award-group-arrow">&#9662;</span>
                     </div>
                     <div class="award-group-items">
-                <div class="award-item"><div class="award-year">2020</div><div class="award-desc">Arq. Camilo Santamaría — Mención de Honor, Premio José Gómez Pinzón por sus servicios a la arquitectura, la ingeniería y la construcción en Colombia.</div></div>
-
+                        <div class="award-table-header"><span>Proyecto</span><span>Descripción</span><span>Año</span></div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Arq. Camilo Santamaría</strong><span class="award-client">Arquitectura, Ingeniería y la Construcción</span></div>
+                    <div class="award-desc">Mención de Honor, Premio José Gómez Pinzón al Arq. Camilo Santamaría, por los valiosos servicios a la arquitectura, la ingeniería y la construcción en Colombia.</div>
+                    <div class="award-year">2020</div>
+                </div>
                     </div>
                 </div>
-            </div>
-            <div class="awards-col">
                 <div class="award-group">
                     <div class="award-group-header" onclick="this.parentElement.classList.toggle('open')">
                         <div class="award-group-logo">
@@ -1337,20 +1370,47 @@
                         <span class="award-group-arrow">&#9662;</span>
                     </div>
                     <div class="award-group-items">
-                <div class="award-item"><div class="award-year">2016</div><div class="award-desc">Agrupación de Vivienda Palmar, Reserva de Madrid (Prodesa) — Primer lugar Vivienda Interés Social.</div></div>
-                <div class="award-item"><div class="award-year">2016</div><div class="award-desc">Macroproyecto Ciudad Verde, Soacha (Amarilo) — Finalista Premio Especial en Valor Social, edición internacional.</div></div>
-                <div class="award-item"><div class="award-year">2015</div><div class="award-desc">Agrupaciones Pampa y Prados, Reserva de Madrid (Prodesa) — XXIV Premio Obras Cemex, primer lugar VIS.</div></div>
-                <div class="award-dup" onclick="this.classList.toggle('open')">
-                    <div class="award-item award-dup-summary"><div class="award-year">2 premios</div><div class="award-desc">Agrupación Primavera, Ciudad Verde (Prodesa) <span class="award-dup-toggle">&#9662; Ver los 2 reconocimientos (2013, 2013)</span></div></div>
-                    <div class="award-dup-items">
-                        <div class="award-item"><div class="award-year">2013</div><div class="award-desc">Agrupación Primavera, Ciudad Verde (Prodesa) — XXII Premio Obras Cemex, primer lugar Vivienda Interés Social.</div></div>
-                        <div class="award-item"><div class="award-year">2013</div><div class="award-desc">Agrupación Primavera, Ciudad Verde (Prodesa) — XXII Premio Obras Cemex, finalista Categoría Habitacional Internacional, CDMX.</div></div>
-                    </div>
+                        <div class="award-table-header"><span>Proyecto</span><span>Descripción</span><span>Año</span></div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Agrupación de Vivienda Palmar (Reserva de Madrid)</strong><span class="award-client">Prodesa</span></div>
+                    <div class="award-desc">Primer lugar Vivienda Interés Social.</div>
+                    <div class="award-year">2016</div>
                 </div>
-                <div class="award-item"><div class="award-year">2009</div><div class="award-desc">Conjunto Nuevo Horizonte I y II, Soacha (Prodesa) — V Premio Obras Cemex Colombia, mención especial Vivienda de Interés Social.</div></div>
-                <div class="award-item"><div class="award-year">2008</div><div class="award-desc">Parque Tercer Milenio, Bogotá (IDU) — IV Premio Obras Cemex Colombia, mención especial Infraestructura / Urbanismo.</div></div>
-                <div class="award-item"><div class="award-year">2008</div><div class="award-desc">Urbanización Senderos de Funza (Prodesa) — IV Premio Obras Cemex Colombia, mención especial Vivienda de Interés Social.</div></div>
-                
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Macroproyecto Ciudad Verde, Soacha, Cundinamarca</strong><span class="award-client">Amarilo</span></div>
+                    <div class="award-desc">Finalista del Premio Especial en Valor Social, edición internacional.</div>
+                    <div class="award-year">2016</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Agrupaciones de Vivienda Pampa y Prados (Reserva de Madrid)</strong><span class="award-client">Prodesa</span></div>
+                    <div class="award-desc">XXIV Premio Obras Cemex, primer lugar VIS.</div>
+                    <div class="award-year">2015</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Agrupación de Vivienda Primavera (Ciudad Verde), Soacha, Cundinamarca</strong><span class="award-client">Prodesa</span></div>
+                    <div class="award-desc">XXII Premio Obras Cemex, primer lugar Vivienda Interés Social.</div>
+                    <div class="award-year">2013</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Agrupación de Vivienda Primavera (Ciudad Verde), Soacha, Cundinamarca</strong><span class="award-client">Prodesa</span></div>
+                    <div class="award-desc">XXII Premio Obras Cemex, finalista Categoría Habitacional Internacional, CDMX.</div>
+                    <div class="award-year">2013</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Conjunto Residencial Nuevo Horizonte I y II, Soacha, Cundinamarca</strong><span class="award-client">Prodesa</span></div>
+                    <div class="award-desc">V Premio Obras Cemex Colombia, mención especial Categoría Vivienda de Interés Social.</div>
+                    <div class="award-year">2009</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Parque Tercer Milenio, Bogotá</strong><span class="award-client">Instituto de Desarrollo Urbano (IDU)</span></div>
+                    <div class="award-desc">IV Premio Obras Cemex Colombia, mención especial Categoría Infraestructura / Urbanismo.</div>
+                    <div class="award-year">2008</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Urbanización Senderos de Funza</strong><span class="award-client">Prodesa</span></div>
+                    <div class="award-desc">IV Premio Obras Cemex Colombia, mención especial Categoría Vivienda de Interés Social.</div>
+                    <div class="award-year">2008</div>
+                </div>
                     </div>
                 </div>
                 <div class="award-group">
@@ -1361,27 +1421,99 @@
                         <span class="award-group-arrow">&#9662;</span>
                     </div>
                     <div class="award-group-items">
-                <div class="award-item"><div class="award-year">2024</div><div class="award-desc">HUB de Movilidad Plaza Calle 136, Bogotá — Ganador Categoría Urbanismo.</div></div>
-                <div class="award-item"><div class="award-year">2023</div><div class="award-desc">Macroproyecto Alameda del Río, Barranquilla (Amarilo) — Ganador Categoría Urbanismo.</div></div>
-                <div class="award-item"><div class="award-year">2023</div><div class="award-desc">Conjunto Residencial Perdiz, Barranquilla (Prodesa) — Segundo finalista Categoría VIS.</div></div>
-                <div class="award-item"><div class="award-year">2022</div><div class="award-desc">Plan Parcial Hacienda Casablanca, Madrid, Cundinamarca (Amarilo) — Ganador Categoría Urbanismo.</div></div>
-                <div class="award-item"><div class="award-year">2022</div><div class="award-desc">Conjunto Residencial Palermo, Reserva de Madrid (Prodesa) — Segundo finalista Categoría VIS.</div></div>
-                <div class="award-item"><div class="award-year">2019</div><div class="award-desc">TransMiCable Ciudad Bolívar, estaciones Manitas y Mirador del Paraíso, Bogotá — Finalista Categoría Sector Público.</div></div>
-                <div class="award-item"><div class="award-year">2019</div><div class="award-desc">Nuevo Casco Urbano de Gramalote, Norte de Santander (FONTUR / Cámara de Comercio de Cúcuta) — Ganador Categoría Sector Público.</div></div>
-                <div class="award-item"><div class="award-year">2017</div><div class="award-desc">Agrupación Palmeto, Ciudad Verde (Prodesa) — Ganador Categoría Sector VIS.</div></div>
-                <div class="award-item"><div class="award-year">2016</div><div class="award-desc">Conjunto Residencial Palmar, Reserva de Madrid (Prodesa) — Ganador Categoría VIS.</div></div>
-                <div class="award-item"><div class="award-year">2016</div><div class="award-desc">Ciudad del Bicentenario, manzanas 78B y 76B, Cartagena (Fundación Mario Santo Domingo) — Finalista Categoría VIS.</div></div>
-                <div class="award-item"><div class="award-year">2015</div><div class="award-desc">Agrupaciones Pampa y Prados, Reserva de Madrid (Prodesa) — Ganador Categoría VIS.</div></div>
-                <div class="award-item"><div class="award-year">2012</div><div class="award-desc">Macroproyecto Ciudad Verde, Soacha (Amarilo) — Gran Ganador, Macroproyecto de Interés Social Nacional.</div></div>
-                <div class="award-item"><div class="award-year">2012</div><div class="award-desc">Urbanización Paraíso II, Mosquera, Cundinamarca (Prodesa) — Ganador Categoría Vivienda de Interés Social.</div></div>
-                <div class="award-item"><div class="award-year">2012</div><div class="award-desc">Urbanización Salitre Alto Reservado (El Triunfo), Bogotá (Prodesa) — Ganador Categoría Vivienda de Interés Social.</div></div>
-                <div class="award-item"><div class="award-year">2009</div><div class="award-desc">Conjunto Nuevo Horizonte I y II, Soacha (Prodesa) — Finalista Categoría VIS Dormitorio.</div></div>
-                <div class="award-item"><div class="award-year">2007</div><div class="award-desc">Conjunto Residencial Punto Madrid (Prodesa) — Ganador Categoría Vivienda de Interés Social, Ciudad Dormitorio.</div></div>
-                <div class="award-item"><div class="award-year">2007</div><div class="award-desc">Conjunto Residencial Recodo de Mosquera, Cundinamarca (Prodesa) — Finalista Categoría Vivienda de Interés Social.</div></div>
-                <div class="award-item"><div class="award-year">2004</div><div class="award-desc">Las Margaritas de Suba, Bogotá (Prodesa) — Finalista Categoría Residencial.</div></div>
+                        <div class="award-table-header"><span>Proyecto</span><span>Descripción</span><span>Año</span></div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>HUB de Movilidad Plaza Calle 136 (Espacio público – parqueaderos), Bogotá</strong></div>
+                    <div class="award-desc">Ganador Categoría Urbanismo.</div>
+                    <div class="award-year">2024</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Macroproyecto Alameda del Río, Barranquilla</strong><span class="award-client">Amarilo</span></div>
+                    <div class="award-desc">Ganador Categoría Urbanismo.</div>
+                    <div class="award-year">2023</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Conjunto Residencial Perdiz, Barranquilla</strong><span class="award-client">Prodesa</span></div>
+                    <div class="award-desc">Segundo finalista Categoría VIS.</div>
+                    <div class="award-year">2023</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Plan Parcial Hacienda Casablanca, Madrid, Cundinamarca</strong><span class="award-client">Amarilo</span></div>
+                    <div class="award-desc">Ganador Categoría Urbanismo.</div>
+                    <div class="award-year">2022</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Conjunto Residencial Palermo (Reserva de Madrid)</strong><span class="award-client">Prodesa</span></div>
+                    <div class="award-desc">Segundo finalista Categoría VIS.</div>
+                    <div class="award-year">2022</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>TransMiCable Ciudad Bolívar, estaciones Manitas y Mirador del Paraíso, Bogotá</strong></div>
+                    <div class="award-desc">Finalista Categoría Sector Público.</div>
+                    <div class="award-year">2019</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Nuevo Casco Urbano de Gramalote, Norte de Santander</strong><span class="award-client">FONTUR / Cámara de Comercio de Cúcuta</span></div>
+                    <div class="award-desc">Ganador Categoría Sector Público.</div>
+                    <div class="award-year">2019</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Agrupación de Vivienda Palmeto (Ciudad Verde), Soacha, Cundinamarca</strong><span class="award-client">Prodesa</span></div>
+                    <div class="award-desc">Ganador Categoría Sector VIS.</div>
+                    <div class="award-year">2017</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Conjunto Residencial Palmar (Reserva de Madrid)</strong><span class="award-client">Prodesa</span></div>
+                    <div class="award-desc">Ganador Categoría VIS.</div>
+                    <div class="award-year">2016</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Ciudad del Bicentenario, manzanas 78B y 76B, Cartagena</strong><span class="award-client">Fundación Mario Santo Domingo</span></div>
+                    <div class="award-desc">Finalista Categoría VIS.</div>
+                    <div class="award-year">2016</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Agrupaciones de Vivienda Pampa y Prados (Reserva de Madrid)</strong><span class="award-client">Prodesa</span></div>
+                    <div class="award-desc">Ganador Categoría VIS.</div>
+                    <div class="award-year">2015</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Macroproyecto Ciudad Verde, Soacha</strong><span class="award-client">Amarilo</span></div>
+                    <div class="award-desc">Gran Ganador, Macroproyecto de Interés Social Nacional.</div>
+                    <div class="award-year">2012</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Urbanización Paraíso II, Mosquera, Cundinamarca</strong><span class="award-client">Prodesa</span></div>
+                    <div class="award-desc">Ganador Categoría Vivienda de Interés Social.</div>
+                    <div class="award-year">2012</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Urbanización Salitre Alto Reservado (El Triunfo), Bogotá</strong><span class="award-client">Prodesa</span></div>
+                    <div class="award-desc">Ganador Categoría Vivienda de Interés Social.</div>
+                    <div class="award-year">2012</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Conjunto Residencial Nuevo Horizonte I y II, Soacha, Cundinamarca</strong><span class="award-client">Prodesa</span></div>
+                    <div class="award-desc">Finalista Categoría VIS Dormitorio.</div>
+                    <div class="award-year">2009</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Conjunto Residencial Punto Madrid</strong><span class="award-client">Prodesa</span></div>
+                    <div class="award-desc">Ganador Categoría Vivienda de Interés Social, Ciudad Dormitorio.</div>
+                    <div class="award-year">2007</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Conjunto Residencial Recodo de Mosquera, Cundinamarca</strong><span class="award-client">Prodesa</span></div>
+                    <div class="award-desc">Finalista Categoría Vivienda de Interés Social (VIS).</div>
+                    <div class="award-year">2007</div>
+                </div>
+                <div class="award-item">
+                    <div class="award-proyecto"><strong>Las Margaritas de Suba, Vivienda Multifamiliar, Bogotá</strong><span class="award-client">Prodesa</span></div>
+                    <div class="award-desc">Finalista Categoría Residencial.</div>
+                    <div class="award-year">2004</div>
+                </div>
                     </div>
                 </div>
-            </div>
             </div>
         </div>
     </section>
