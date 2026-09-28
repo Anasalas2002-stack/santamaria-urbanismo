@@ -659,7 +659,8 @@
         .award-group-header {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-start;
+            gap: 16px;
             cursor: pointer;
             padding-bottom: 5px;
         }
@@ -679,16 +680,16 @@
         }
 
         .award-group-logo img {
-            height: 72px;
-            max-width: 260px;
+            width: 150px;
+            height: 68px;
             object-fit: contain;
+            mix-blend-mode: multiply;
         }
 
         .award-group-arrow {
             color: #999;
             font-size: 0.8rem;
             transition: transform 0.3s ease;
-            margin-left: 12px;
             flex-shrink: 0;
         }
 
