@@ -24,10 +24,10 @@
         header.scrolled nav a { color: #1a1a1a; text-shadow: none; }
         nav a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -5px; left: 0; background: currentColor; transition: width 0.3s; }
         nav a:hover::after { width: 100%; }
-        .project-hero-fixed { width: 100%; position: relative; background-color: #000; }
-        .project-hero-fixed .hero-photo { width: 100%; height: auto; display: block; }
+        .project-hero-fixed { height: 100vh; width: 100%; position: relative; background-color: #000; overflow: hidden; }
+        .project-hero-fixed .hero-photo { width: 100%; height: 100%; object-fit: contain; display: block; }
         .project-hero-fixed::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 30%; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.65)); pointer-events: none; z-index: 5; }
-        .hero-caption { position: absolute; bottom: 30px; left: 60px; color: white; z-index: 10; max-width: 620px; border-left: 4px solid white; padding-left: 25px; }
+        .hero-caption { position: absolute; bottom: 40px; left: 60px; color: white; z-index: 10; max-width: 620px; border-left: 4px solid white; padding-left: 25px; }
         .hero-caption .proj-cat { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 3px; color: rgba(255,255,255,0.8); margin-bottom: 8px; }
         .hero-caption h1 { font-size: 2.5rem; font-weight: 300; text-transform: uppercase; letter-spacing: 3px; text-shadow: 0 2px 15px rgba(0,0,0,0.5); line-height: 1.1; }
         .hero-caption .proj-meta { font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-top: 8px; letter-spacing: 1px; }
@@ -37,17 +37,14 @@
         .meta-value { font-size: 0.95rem; color: #1a1a1a; }
         .back-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 40px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; color: #1a1a1a; border: 1px solid #ddd; padding: 12px 20px; transition: 0.3s; }
         .back-link:hover { background: #000; color: white; border-color: #000; }
-        .project-body { max-width: 1200px; margin: 0 auto; padding: 60px 60px 100px; }
-        .project-row { display: flex; align-items: center; gap: 60px; margin-bottom: 70px; }
-        .project-row.reverse { flex-direction: row-reverse; }
-        .project-row .row-text { flex: 1; }
-        .project-row .row-text p { font-size: 1rem; color: #444; line-height: 1.85; }
-        .project-row .row-img { flex: 0 0 460px; }
-        .project-row .row-img img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; cursor: zoom-in; }
-        .project-row.image-only { width: 100vw; position: relative; left: 50%; margin-left: -50vw; }
-        .project-row.image-only.side-left { justify-content: flex-start; }
-        .project-row.image-only.side-right { justify-content: flex-end; }
-        .panorama-row { width: 100vw; position: relative; left: 50%; margin-left: -50vw; margin-bottom: 0; }
+        .project-body { max-width: 1320px; margin: 0 auto; padding: 60px 60px 100px; }
+        .project-text { max-width: 760px; margin: 0 auto 70px; }
+        .project-text p { font-size: 1.05rem; color: #444; line-height: 1.9; margin-bottom: 26px; }
+        .project-text p:last-child { margin-bottom: 0; }
+        .project-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(520px, 1fr)); gap: 50px; }
+        .project-gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; cursor: zoom-in; transition: transform 0.4s ease; }
+        .project-gallery img:hover { transform: scale(1.02); }
+        .panorama-row { width: 100vw; position: relative; left: 50%; margin-left: -50vw; margin-top: 50px; }
         .panorama-row img { width: 100%; height: auto; display: block; cursor: zoom-in; }
         .lightbox-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 5000; align-items: center; justify-content: center; cursor: zoom-out; }
         .lightbox-overlay.active { display: flex; }
@@ -77,9 +74,7 @@
             .hero-caption { left: 20px; bottom: 40px; max-width: calc(100% - 40px); } .hero-caption h1 { font-size: 1.8rem; }
             .datos-proyecto { padding: 70px 20px 40px; }
             .project-body { padding: 40px 20px 70px; }
-            .project-row, .project-row.reverse { flex-direction: column; gap: 25px; margin-bottom: 50px; }
-            .project-row .row-img { flex: 0 0 auto; width: 100%; }
-            .project-row.image-only { width: 100%; left: 0; margin-left: 0; justify-content: center !important; }
+            .project-gallery { grid-template-columns: 1fr; gap: 30px; }
         }
         @media (max-width: 480px) {
             header, header.scrolled { padding: 15px; }
@@ -129,31 +124,21 @@
 </section>
 
 <section class="project-body">
-            <div class="project-row">
-                <div class="row-text"><p>L'Angolo 59 es un edificio multifamiliar ubicado en el barrio Prado Norte de Barranquilla, desarrollado sobre un lote esquinero de 1.521 m². El proyecto fue concebido como una respuesta contemporánea a las condiciones urbanas y climáticas del sector, integrándose a un entorno residencial de densidades y alturas diversas mediante una torre de 17 pisos que evita la generación de culatas y aporta una imagen urbana completa sobre ambas vías que delimitan el predio.</p></div>
-                <div class="row-img"><img src="https://lh3.googleusercontent.com/d/16DrbefbxG_uUzbcOi0DR2-xIJgA1V1qT" alt="L'Angolo 59" loading="lazy" onclick="openLightbox(this.src)"></div>
-            </div>
-            <div class="project-row reverse">
-                <div class="row-text"><p>La implantación del edificio privilegió la relación con el espacio exterior y la calidad ambiental de las viviendas. A través de amplios retiros perimetrales se garantizó la iluminación y ventilación natural de todos los espacios interiores, conservando árboles existentes y generando áreas libres ajardinadas que enriquecen el paisaje urbano. El acceso peatonal, la recepción y las zonas comunes se ubicaron estratégicamente en la esquina, fortaleciendo la conexión visual entre el edificio y la ciudad.</p></div>
-                <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1WKRj3NzVu2-EOquRU_T-BNZl9Iw8xFWC" alt="L'Angolo 59" loading="lazy" onclick="openLightbox(this.src)"></div>
-            </div>
-            <div class="project-row">
-                <div class="row-text"><p>El diseño de las fachadas respondió a un detallado estudio de asoleación, incorporando balcones en todos los niveles para controlar la incidencia solar, mejorar el confort térmico y proporcionar espacios exteriores privados. La variación de los balcones genera una composición volumétrica dinámica de luces y sombras, complementada por el uso de ladrillo de gran formato color arena como material predominante, aportando identidad, durabilidad y eficiencia ambiental.</p></div>
-                <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1oviVzYbbZ4FZZHtdFlOopDy2eBjWFzBk" alt="L'Angolo 59" loading="lazy" onclick="openLightbox(this.src)"></div>
-            </div>
-            <div class="project-row reverse">
-                <div class="row-text"><p>El edificio alberga 60 viviendas con áreas que van desde apartaestudios hasta amplios apartamentos familiares, ofreciendo una amplia diversidad tipológica y altos niveles de flexibilidad. La estructura aporticada en concreto permitió adaptar diferentes configuraciones interiores. El proyecto incorporó además un piso completo de zonas comunales —espacios recreativos, deportivos y de encuentro—, fortaleciendo la vida colectiva y la calidad de vida de sus residentes.</p></div>
-                <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1XK-bM1B6TguqR-8LwBKr0ybcs-MT8T3a" alt="L'Angolo 59" loading="lazy" onclick="openLightbox(this.src)"></div>
-            </div>
-            <div class="project-row image-only side-left">
-                <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1gIyqJFoSeWlQs7pkw3Rz5LMTOTpxZmrS" alt="L'Angolo 59" loading="lazy" onclick="openLightbox(this.src)"></div>
-            </div>
-            <div class="project-row image-only side-right">
-                <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1ZUx2CGtHbxpry5pKcpRSjtIIlZ65dCDB" alt="L'Angolo 59" loading="lazy" onclick="openLightbox(this.src)"></div>
-            </div>
-            <div class="project-row image-only side-left">
-                <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1MKbJwAGUEZ5EqxyZrtbdbmiQ4Blp1LWw" alt="L'Angolo 59" loading="lazy" onclick="openLightbox(this.src)"></div>
-            </div>
+        <div class="project-text">
+            <p>L'Angolo 59 es un edificio multifamiliar ubicado en el barrio Prado Norte de Barranquilla, desarrollado sobre un lote esquinero de 1.521 m². El proyecto fue concebido como una respuesta contemporánea a las condiciones urbanas y climáticas del sector, integrándose a un entorno residencial de densidades y alturas diversas mediante una torre de 17 pisos que evita la generación de culatas y aporta una imagen urbana completa sobre ambas vías que delimitan el predio.</p>
+            <p>La implantación del edificio privilegió la relación con el espacio exterior y la calidad ambiental de las viviendas. A través de amplios retiros perimetrales se garantizó la iluminación y ventilación natural de todos los espacios interiores, conservando árboles existentes y generando áreas libres ajardinadas que enriquecen el paisaje urbano. El acceso peatonal, la recepción y las zonas comunes se ubicaron estratégicamente en la esquina, fortaleciendo la conexión visual entre el edificio y la ciudad.</p>
+            <p>El diseño de las fachadas respondió a un detallado estudio de asoleación, incorporando balcones en todos los niveles para controlar la incidencia solar, mejorar el confort térmico y proporcionar espacios exteriores privados. La variación de los balcones genera una composición volumétrica dinámica de luces y sombras, complementada por el uso de ladrillo de gran formato color arena como material predominante, aportando identidad, durabilidad y eficiencia ambiental.</p>
+            <p>El edificio alberga 60 viviendas con áreas que van desde apartaestudios hasta amplios apartamentos familiares, ofreciendo una amplia diversidad tipológica y altos niveles de flexibilidad. La estructura aporticada en concreto permitió adaptar diferentes configuraciones interiores. El proyecto incorporó además un piso completo de zonas comunales —espacios recreativos, deportivos y de encuentro—, fortaleciendo la vida colectiva y la calidad de vida de sus residentes.</p>
+        </div>
+        <div class="project-gallery">
+            <img src="https://lh3.googleusercontent.com/d/16DrbefbxG_uUzbcOi0DR2-xIJgA1V1qT" alt="L'Angolo 59" loading="lazy" onclick="openLightbox(this.src)">
+            <img src="https://lh3.googleusercontent.com/d/1WKRj3NzVu2-EOquRU_T-BNZl9Iw8xFWC" alt="L'Angolo 59" loading="lazy" onclick="openLightbox(this.src)">
+            <img src="https://lh3.googleusercontent.com/d/1oviVzYbbZ4FZZHtdFlOopDy2eBjWFzBk" alt="L'Angolo 59" loading="lazy" onclick="openLightbox(this.src)">
+            <img src="https://lh3.googleusercontent.com/d/1XK-bM1B6TguqR-8LwBKr0ybcs-MT8T3a" alt="L'Angolo 59" loading="lazy" onclick="openLightbox(this.src)">
+            <img src="https://lh3.googleusercontent.com/d/1gIyqJFoSeWlQs7pkw3Rz5LMTOTpxZmrS" alt="L'Angolo 59" loading="lazy" onclick="openLightbox(this.src)">
+            <img src="https://lh3.googleusercontent.com/d/1ZUx2CGtHbxpry5pKcpRSjtIIlZ65dCDB" alt="L'Angolo 59" loading="lazy" onclick="openLightbox(this.src)">
+            <img src="https://lh3.googleusercontent.com/d/1MKbJwAGUEZ5EqxyZrtbdbmiQ4Blp1LWw" alt="L'Angolo 59" loading="lazy" onclick="openLightbox(this.src)">
+        </div>
 </section>
 
 <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">

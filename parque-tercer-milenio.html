@@ -24,10 +24,10 @@
         header.scrolled nav a { color: #1a1a1a; text-shadow: none; }
         nav a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -5px; left: 0; background: currentColor; transition: width 0.3s; }
         nav a:hover::after { width: 100%; }
-        .project-hero-fixed { width: 100%; position: relative; background-color: #000; }
-        .project-hero-fixed .hero-photo { width: 100%; height: auto; display: block; }
+        .project-hero-fixed { height: 100vh; width: 100%; position: relative; background-color: #000; overflow: hidden; }
+        .project-hero-fixed .hero-photo { width: 100%; height: 100%; object-fit: contain; display: block; }
         .project-hero-fixed::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 30%; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.65)); pointer-events: none; z-index: 5; }
-        .hero-caption { position: absolute; bottom: 30px; left: 60px; color: white; z-index: 10; max-width: 620px; border-left: 4px solid white; padding-left: 25px; }
+        .hero-caption { position: absolute; bottom: 40px; left: 60px; color: white; z-index: 10; max-width: 620px; border-left: 4px solid white; padding-left: 25px; }
         .hero-caption .proj-cat { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 3px; color: rgba(255,255,255,0.8); margin-bottom: 8px; }
         .hero-caption h1 { font-size: 2.5rem; font-weight: 300; text-transform: uppercase; letter-spacing: 3px; text-shadow: 0 2px 15px rgba(0,0,0,0.5); line-height: 1.1; }
         .hero-caption .proj-meta { font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-top: 8px; letter-spacing: 1px; }
@@ -37,17 +37,14 @@
         .meta-value { font-size: 0.95rem; color: #1a1a1a; }
         .back-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 40px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; color: #1a1a1a; border: 1px solid #ddd; padding: 12px 20px; transition: 0.3s; }
         .back-link:hover { background: #000; color: white; border-color: #000; }
-        .project-body { max-width: 1200px; margin: 0 auto; padding: 60px 60px 100px; }
-        .project-row { display: flex; align-items: center; gap: 60px; margin-bottom: 70px; }
-        .project-row.reverse { flex-direction: row-reverse; }
-        .project-row .row-text { flex: 1; }
-        .project-row .row-text p { font-size: 1rem; color: #444; line-height: 1.85; }
-        .project-row .row-img { flex: 0 0 460px; }
-        .project-row .row-img img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; cursor: zoom-in; }
-        .project-row.image-only { width: 100vw; position: relative; left: 50%; margin-left: -50vw; }
-        .project-row.image-only.side-left { justify-content: flex-start; }
-        .project-row.image-only.side-right { justify-content: flex-end; }
-        .panorama-row { width: 100vw; position: relative; left: 50%; margin-left: -50vw; margin-bottom: 0; }
+        .project-body { max-width: 1320px; margin: 0 auto; padding: 60px 60px 100px; }
+        .project-text { max-width: 760px; margin: 0 auto 70px; }
+        .project-text p { font-size: 1.05rem; color: #444; line-height: 1.9; margin-bottom: 26px; }
+        .project-text p:last-child { margin-bottom: 0; }
+        .project-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(520px, 1fr)); gap: 50px; }
+        .project-gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; cursor: zoom-in; transition: transform 0.4s ease; }
+        .project-gallery img:hover { transform: scale(1.02); }
+        .panorama-row { width: 100vw; position: relative; left: 50%; margin-left: -50vw; margin-top: 50px; }
         .panorama-row img { width: 100%; height: auto; display: block; cursor: zoom-in; }
         .lightbox-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 5000; align-items: center; justify-content: center; cursor: zoom-out; }
         .lightbox-overlay.active { display: flex; }
@@ -77,9 +74,7 @@
             .hero-caption { left: 20px; bottom: 40px; max-width: calc(100% - 40px); } .hero-caption h1 { font-size: 1.8rem; }
             .datos-proyecto { padding: 70px 20px 40px; }
             .project-body { padding: 40px 20px 70px; }
-            .project-row, .project-row.reverse { flex-direction: column; gap: 25px; margin-bottom: 50px; }
-            .project-row .row-img { flex: 0 0 auto; width: 100%; }
-            .project-row.image-only { width: 100%; left: 0; margin-left: 0; justify-content: center !important; }
+            .project-gallery { grid-template-columns: 1fr; gap: 30px; }
         }
         @media (max-width: 480px) {
             header, header.scrolled { padding: 15px; }
@@ -130,35 +125,25 @@
 </section>
 
 <section class="project-body">
-            <div class="project-row">
-                <div class="row-text"><p>El Parque Tercer Milenio es un parque Distrital de 16,7 hectáreas, de escala metropolitana, destinado a la recreación activa. Está ubicado en el centro de Bogotá a dos cuadras de la Plaza de Bolívar, entre la Carrera 10 y la Avenida Caracas y entre la Avenida Comuneros (Calle 6) y la Calle 9, sobre la antigua zona denominada "El Cartucho".</p></div>
-                <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1Vuhd5IyIuXX8H-aL1hm9Gz_PfuYhomqL" alt="Parque Tercer Milenio" loading="lazy" onclick="openLightbox(this.src)"></div>
-            </div>
-            <div class="project-row reverse">
-                <div class="row-text"><p>El proyecto fue producto de un proceso de renovación urbana en el cual la ciudad, a través del IDU y con la coordinación de la oficina de Renovación Urbana, compró un total de 20 hectáreas (640 predios) que se encontraban en un grado avanzado de deterioro. Al estar inscrito en un lugar con alta carga histórica para la ciudad, el diseño rescata elementos de la memoria del sector a través del paisajismo y el ordenamiento, con una propuesta contemporánea.</p></div>
-                <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1QPEnzCBarTGYEtqhxPw0xP2wb9GmAlvt" alt="Parque Tercer Milenio" loading="lazy" onclick="openLightbox(this.src)"></div>
-            </div>
-            <div class="project-row">
-                <div class="row-text"><p>Entre los elementos paisajísticos más relevantes se encuentran la construcción de una topografía artificial por medio de taludes, que contribuye a la zonificación y a la creación de microespacios; la incorporación del agua en estanques, piletas y fuentes interactivas, como memoria de los antiguos ríos que atravesaban la zona; y la conformación de jardines temáticos con especies nativas propias del bosque andino de los Cerros Orientales.</p></div>
-                <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1a5a4epwqJ0BUAT1e0nMFDlfGFSYUOuQv" alt="Parque Tercer Milenio" loading="lazy" onclick="openLightbox(this.src)"></div>
-            </div>
-            <div class="project-row reverse">
-                <div class="row-text"><p>El parque se divide en 17 zonas destinadas a la recreación, contemplación y ocio, articuladas por la Alameda Tercer Milenio —32 metros de ancho y 400 metros de largo— que lo atraviesa de norte a sur y comunica la Calle 6 con la Plaza de San Victorino. Es peatonal en su totalidad, con ciclorrutas, vías de tráfico restringido y una reserva de 3 hectáreas para un futuro centro comercial y cultural que beneficiará la valorización del sector.</p></div>
-                <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1yrxRYVaG0Mq2eCKB6FFN8373T80dPSA4" alt="Parque Tercer Milenio" loading="lazy" onclick="openLightbox(this.src)"></div>
-            </div>
-            <div class="project-row">
-                <div class="row-text"><p>El proyecto obtuvo el primer lugar en la Bienal de Arquitectura de Colombia en 2002 y el segundo puesto en la Bienal Latinoamericana de Arquitectura de Quito, siendo reconocido como uno de los proyectos urbanos más significativos de Colombia en las últimas décadas.</p></div>
-                <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1FZhROKlXTpopNuquLk30SfMUIpDbazuk" alt="Parque Tercer Milenio" loading="lazy" onclick="openLightbox(this.src)"></div>
-            </div>
-            <div class="project-row image-only side-right">
-                <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1wDTiCsECM2CkloKnpEP5S5KgEAyyfelz" alt="Parque Tercer Milenio" loading="lazy" onclick="openLightbox(this.src)"></div>
-            </div>
-            <div class="project-row image-only side-left">
-                <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1mgrJhUKRVG640Gado5AaLR5wlJcgyMAe" alt="Parque Tercer Milenio" loading="lazy" onclick="openLightbox(this.src)"></div>
-            </div>
-            <div class="panorama-row">
-                <img src="https://lh3.googleusercontent.com/d/1Wp0vYaSDLPSmQS0K7u_kvXczEASa_FmH" alt="Parque Tercer Milenio" loading="lazy" onclick="openLightbox(this.src)">
-            </div>
+        <div class="project-text">
+            <p>El Parque Tercer Milenio es un parque Distrital de 16,7 hectáreas, de escala metropolitana, destinado a la recreación activa. Está ubicado en el centro de Bogotá a dos cuadras de la Plaza de Bolívar, entre la Carrera 10 y la Avenida Caracas y entre la Avenida Comuneros (Calle 6) y la Calle 9, sobre la antigua zona denominada "El Cartucho".</p>
+            <p>El proyecto fue producto de un proceso de renovación urbana en el cual la ciudad, a través del IDU y con la coordinación de la oficina de Renovación Urbana, compró un total de 20 hectáreas (640 predios) que se encontraban en un grado avanzado de deterioro. Al estar inscrito en un lugar con alta carga histórica para la ciudad, el diseño rescata elementos de la memoria del sector a través del paisajismo y el ordenamiento, con una propuesta contemporánea.</p>
+            <p>Entre los elementos paisajísticos más relevantes se encuentran la construcción de una topografía artificial por medio de taludes, que contribuye a la zonificación y a la creación de microespacios; la incorporación del agua en estanques, piletas y fuentes interactivas, como memoria de los antiguos ríos que atravesaban la zona; y la conformación de jardines temáticos con especies nativas propias del bosque andino de los Cerros Orientales.</p>
+            <p>El parque se divide en 17 zonas destinadas a la recreación, contemplación y ocio, articuladas por la Alameda Tercer Milenio —32 metros de ancho y 400 metros de largo— que lo atraviesa de norte a sur y comunica la Calle 6 con la Plaza de San Victorino. Es peatonal en su totalidad, con ciclorrutas, vías de tráfico restringido y una reserva de 3 hectáreas para un futuro centro comercial y cultural que beneficiará la valorización del sector.</p>
+            <p>El proyecto obtuvo el primer lugar en la Bienal de Arquitectura de Colombia en 2002 y el segundo puesto en la Bienal Latinoamericana de Arquitectura de Quito, siendo reconocido como uno de los proyectos urbanos más significativos de Colombia en las últimas décadas.</p>
+        </div>
+        <div class="project-gallery">
+            <img src="https://lh3.googleusercontent.com/d/1Vuhd5IyIuXX8H-aL1hm9Gz_PfuYhomqL" alt="Parque Tercer Milenio" loading="lazy" onclick="openLightbox(this.src)">
+            <img src="https://lh3.googleusercontent.com/d/1QPEnzCBarTGYEtqhxPw0xP2wb9GmAlvt" alt="Parque Tercer Milenio" loading="lazy" onclick="openLightbox(this.src)">
+            <img src="https://lh3.googleusercontent.com/d/1a5a4epwqJ0BUAT1e0nMFDlfGFSYUOuQv" alt="Parque Tercer Milenio" loading="lazy" onclick="openLightbox(this.src)">
+            <img src="https://lh3.googleusercontent.com/d/1yrxRYVaG0Mq2eCKB6FFN8373T80dPSA4" alt="Parque Tercer Milenio" loading="lazy" onclick="openLightbox(this.src)">
+            <img src="https://lh3.googleusercontent.com/d/1FZhROKlXTpopNuquLk30SfMUIpDbazuk" alt="Parque Tercer Milenio" loading="lazy" onclick="openLightbox(this.src)">
+            <img src="https://lh3.googleusercontent.com/d/1wDTiCsECM2CkloKnpEP5S5KgEAyyfelz" alt="Parque Tercer Milenio" loading="lazy" onclick="openLightbox(this.src)">
+            <img src="https://lh3.googleusercontent.com/d/1mgrJhUKRVG640Gado5AaLR5wlJcgyMAe" alt="Parque Tercer Milenio" loading="lazy" onclick="openLightbox(this.src)">
+        </div>
+        <div class="panorama-row">
+            <img src="https://lh3.googleusercontent.com/d/1Wp0vYaSDLPSmQS0K7u_kvXczEASa_FmH" alt="Parque Tercer Milenio" loading="lazy" onclick="openLightbox(this.src)">
+        </div>
 </section>
 
 <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
