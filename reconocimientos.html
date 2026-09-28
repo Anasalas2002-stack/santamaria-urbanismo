@@ -641,11 +641,18 @@
             background: #fafafa;
         }
 
+        .awards-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 60px;
+            align-items: start;
+        }
+
         .award-group {
             margin-top: 50px;
         }
 
-        .award-group:first-child {
+        .award-group:nth-child(-n+2) {
             margin-top: 0;
         }
 
@@ -876,6 +883,18 @@
             .contact-grid {
                 grid-template-columns: 1fr;
                 gap: 40px;
+            }
+
+            .awards-list {
+                grid-template-columns: 1fr;
+            }
+
+            .award-group:nth-child(-n+2) {
+                margin-top: 50px;
+            }
+
+            .award-group:first-child {
+                margin-top: 0;
             }
 
             .nav-toggle {

@@ -24,10 +24,10 @@
         header.scrolled nav a { color: #1a1a1a; text-shadow: none; }
         nav a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -5px; left: 0; background: currentColor; transition: width 0.3s; }
         nav a:hover::after { width: 100%; }
-        .project-hero-fixed { width: 100%; position: relative; background-color: #000; }
-        .project-hero-fixed .hero-photo { width: 100%; height: auto; display: block; }
+        .project-hero-fixed { height: 100vh; width: 100%; position: relative; background-color: #000; overflow: hidden; }
+        .project-hero-fixed .hero-photo { width: 100%; height: 100%; object-fit: contain; display: block; }
         .project-hero-fixed::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 30%; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.65)); pointer-events: none; z-index: 5; }
-        .hero-caption { position: absolute; bottom: 30px; left: 60px; color: white; z-index: 10; max-width: 620px; border-left: 4px solid white; padding-left: 25px; }
+        .hero-caption { position: absolute; bottom: 40px; left: 60px; color: white; z-index: 10; max-width: 620px; border-left: 4px solid white; padding-left: 25px; }
         .hero-caption .proj-cat { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 3px; color: rgba(255,255,255,0.8); margin-bottom: 8px; }
         .hero-caption h1 { font-size: 2.5rem; font-weight: 300; text-transform: uppercase; letter-spacing: 3px; text-shadow: 0 2px 15px rgba(0,0,0,0.5); line-height: 1.1; }
         .hero-caption .proj-meta { font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-top: 8px; letter-spacing: 1px; }
@@ -37,17 +37,14 @@
         .meta-value { font-size: 0.95rem; color: #1a1a1a; }
         .back-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 40px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; color: #1a1a1a; border: 1px solid #ddd; padding: 12px 20px; transition: 0.3s; }
         .back-link:hover { background: #000; color: white; border-color: #000; }
-        .project-body { max-width: 1200px; margin: 0 auto; padding: 60px 60px 100px; }
-        .project-row { display: flex; align-items: center; gap: 60px; margin-bottom: 70px; }
-        .project-row.reverse { flex-direction: row-reverse; }
-        .project-row .row-text { flex: 1; }
-        .project-row .row-text p { font-size: 1rem; color: #444; line-height: 1.85; }
-        .project-row .row-img { flex: 0 0 460px; }
-        .project-row .row-img img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; cursor: zoom-in; }
-        .project-row.image-only { width: 100vw; position: relative; left: 50%; margin-left: -50vw; }
-        .project-row.image-only.side-left { justify-content: flex-start; }
-        .project-row.image-only.side-right { justify-content: flex-end; }
-        .panorama-row { width: 100vw; position: relative; left: 50%; margin-left: -50vw; margin-bottom: 0; }
+        .project-body { max-width: 1320px; margin: 0 auto; padding: 60px 60px 100px; }
+        .project-text { max-width: 760px; margin: 0 auto 70px; }
+        .project-text p { font-size: 1.05rem; color: #444; line-height: 1.9; margin-bottom: 26px; }
+        .project-text p:last-child { margin-bottom: 0; }
+        .project-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(520px, 1fr)); gap: 50px; }
+        .project-gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; cursor: zoom-in; transition: transform 0.4s ease; }
+        .project-gallery img:hover { transform: scale(1.02); }
+        .panorama-row { width: 100vw; position: relative; left: 50%; margin-left: -50vw; margin-top: 50px; }
         .panorama-row img { width: 100%; height: auto; display: block; cursor: zoom-in; }
         .lightbox-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 5000; align-items: center; justify-content: center; cursor: zoom-out; }
         .lightbox-overlay.active { display: flex; }
@@ -77,9 +74,7 @@
             .hero-caption { left: 20px; bottom: 40px; max-width: calc(100% - 40px); } .hero-caption h1 { font-size: 1.8rem; }
             .datos-proyecto { padding: 70px 20px 40px; }
             .project-body { padding: 40px 20px 70px; }
-            .project-row, .project-row.reverse { flex-direction: column; gap: 25px; margin-bottom: 50px; }
-            .project-row .row-img { flex: 0 0 auto; width: 100%; }
-            .project-row.image-only { width: 100%; left: 0; margin-left: 0; justify-content: center !important; }
+            .project-gallery { grid-template-columns: 1fr; gap: 30px; }
         }
         @media (max-width: 480px) {
             header, header.scrolled { padding: 15px; }
@@ -130,34 +125,22 @@
 </section>
 
 <section class="project-body">
-            <div class="project-row">
-                <div class="row-text"><p>El proyecto se ubica en terrenos que formaron parte de una de las más reconocidas haciendas de la Sabana de Bogotá, contigua al casco urbano de Madrid y al cerro Casablanca, en un sector de importante desarrollo residencial, industrial, comercial y recreativo, con una estrecha integración urbana con el municipio de Mosquera. Dentro de un Plan Maestro de largo plazo para el desarrollo de toda la Hacienda (cerca de 1.000 hectáreas), se planteó en 2006 la expansión urbana del municipio mediante la incorporación de un terreno de 41 hectáreas a solo 600 metros de la plaza principal, urbanizado entre 2010 y 2020.</p></div>
-                <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1sN5ODM170RFjW7Q0dgDDohX0EpYcYiIz" alt="Hacienda Casablanca" loading="lazy" onclick="openLightbox(this.src)"></div>
-            </div>
-            <div class="project-row reverse">
-                <div class="row-text"><p>El diseño urbano del Plan Parcial se estructuró a partir de elementos naturales y patrimoniales: la Calle 7 (antigua Troncal de Occidente), el río Subachoque que rodea el predio en tres de sus costados, el cerro Casablanca y la histórica alameda de acacias que conducía a la casa principal de la Hacienda. Sobre esta alameda se consolidó la Avenida Casablanca, principal acceso al proyecto, concebida como un "parkway" de 54 metros de ancho con un separador central de 30 metros donde se preservaron las acacias y el antiguo camino, transformado en paseo urbano para peatones y ciclistas.</p></div>
-                <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1fdp-6KMRCgltCJQIALXxrX1LppFdHFUE" alt="Hacienda Casablanca" loading="lazy" onclick="openLightbox(this.src)"></div>
-            </div>
-            <div class="project-row">
-                <div class="row-text"><p>En sentido transversal se desarrolló el Parque Casablanca, un parque lineal de 45 metros de ancho y cerca de 330 metros de longitud que integra ambiental y paisajísticamente dos tramos del río. Hacia la Calle 7 se dispuso una vía paralela acompañada de una alameda como barrera ambiental y corredor peatonal y ciclístico; en la glorieta de acceso se conservaron el antiguo muro de piedra y la portada de la Hacienda como elementos representativos de su historia.</p></div>
-                <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1IF2A91JgfZqktIPH-2CS_KRRUl2rjBaC" alt="Hacienda Casablanca" loading="lazy" onclick="openLightbox(this.src)"></div>
-            </div>
-            <div class="project-row reverse">
-                <div class="row-text"><p>El plan parcial se concibió bajo criterios de proximidad y accesibilidad: sus habitantes pueden acceder a la mayoría de servicios a menos de 600 metros, con un centro comercial, un colegio y un hospital conectados mediante paseos urbanos, ciclorrutas y senderos peatonales. La norma permitió una mezcla de casas, town houses y edificios de 6 pisos entremezclados con parques y zonas verdes, dando al proyecto un carácter de "ciudad jardín" muy cercana al centro del municipio.</p></div>
-                <div class="row-img"><img src="https://lh3.googleusercontent.com/d/19q_zAw-QffOciQzlkAjx7l7sRyKN7LgE" alt="Hacienda Casablanca" loading="lazy" onclick="openLightbox(this.src)"></div>
-            </div>
-            <div class="project-row image-only side-left">
-                <div class="row-img"><img src="https://lh3.googleusercontent.com/d/120B3FTJwWuhvSciCJlZQ0vi9zt4UvoJt" alt="Hacienda Casablanca" loading="lazy" onclick="openLightbox(this.src)"></div>
-            </div>
-            <div class="project-row image-only side-right">
-                <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1sbtMXQB1RssMjMIvHpFpvhldo1On_53r" alt="Hacienda Casablanca" loading="lazy" onclick="openLightbox(this.src)"></div>
-            </div>
-            <div class="project-row image-only side-left">
-                <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1syvOQ4wIawxubni3cpT4TaOrNanaDIUy" alt="Hacienda Casablanca" loading="lazy" onclick="openLightbox(this.src)"></div>
-            </div>
-            <div class="project-row image-only side-right">
-                <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1k22VZYMpm9yJFVZ-4Z0wdRryioBdLpe5" alt="Hacienda Casablanca" loading="lazy" onclick="openLightbox(this.src)"></div>
-            </div>
+        <div class="project-text">
+            <p>El proyecto se ubica en terrenos que formaron parte de una de las más reconocidas haciendas de la Sabana de Bogotá, contigua al casco urbano de Madrid y al cerro Casablanca, en un sector de importante desarrollo residencial, industrial, comercial y recreativo, con una estrecha integración urbana con el municipio de Mosquera. Dentro de un Plan Maestro de largo plazo para el desarrollo de toda la Hacienda (cerca de 1.000 hectáreas), se planteó en 2006 la expansión urbana del municipio mediante la incorporación de un terreno de 41 hectáreas a solo 600 metros de la plaza principal, urbanizado entre 2010 y 2020.</p>
+            <p>El diseño urbano del Plan Parcial se estructuró a partir de elementos naturales y patrimoniales: la Calle 7 (antigua Troncal de Occidente), el río Subachoque que rodea el predio en tres de sus costados, el cerro Casablanca y la histórica alameda de acacias que conducía a la casa principal de la Hacienda. Sobre esta alameda se consolidó la Avenida Casablanca, principal acceso al proyecto, concebida como un "parkway" de 54 metros de ancho con un separador central de 30 metros donde se preservaron las acacias y el antiguo camino, transformado en paseo urbano para peatones y ciclistas.</p>
+            <p>En sentido transversal se desarrolló el Parque Casablanca, un parque lineal de 45 metros de ancho y cerca de 330 metros de longitud que integra ambiental y paisajísticamente dos tramos del río. Hacia la Calle 7 se dispuso una vía paralela acompañada de una alameda como barrera ambiental y corredor peatonal y ciclístico; en la glorieta de acceso se conservaron el antiguo muro de piedra y la portada de la Hacienda como elementos representativos de su historia.</p>
+            <p>El plan parcial se concibió bajo criterios de proximidad y accesibilidad: sus habitantes pueden acceder a la mayoría de servicios a menos de 600 metros, con un centro comercial, un colegio y un hospital conectados mediante paseos urbanos, ciclorrutas y senderos peatonales. La norma permitió una mezcla de casas, town houses y edificios de 6 pisos entremezclados con parques y zonas verdes, dando al proyecto un carácter de "ciudad jardín" muy cercana al centro del municipio.</p>
+        </div>
+        <div class="project-gallery">
+            <img src="https://lh3.googleusercontent.com/d/1sN5ODM170RFjW7Q0dgDDohX0EpYcYiIz" alt="Hacienda Casablanca" loading="lazy" onclick="openLightbox(this.src)">
+            <img src="https://lh3.googleusercontent.com/d/1fdp-6KMRCgltCJQIALXxrX1LppFdHFUE" alt="Hacienda Casablanca" loading="lazy" onclick="openLightbox(this.src)">
+            <img src="https://lh3.googleusercontent.com/d/1IF2A91JgfZqktIPH-2CS_KRRUl2rjBaC" alt="Hacienda Casablanca" loading="lazy" onclick="openLightbox(this.src)">
+            <img src="https://lh3.googleusercontent.com/d/19q_zAw-QffOciQzlkAjx7l7sRyKN7LgE" alt="Hacienda Casablanca" loading="lazy" onclick="openLightbox(this.src)">
+            <img src="https://lh3.googleusercontent.com/d/120B3FTJwWuhvSciCJlZQ0vi9zt4UvoJt" alt="Hacienda Casablanca" loading="lazy" onclick="openLightbox(this.src)">
+            <img src="https://lh3.googleusercontent.com/d/1sbtMXQB1RssMjMIvHpFpvhldo1On_53r" alt="Hacienda Casablanca" loading="lazy" onclick="openLightbox(this.src)">
+            <img src="https://lh3.googleusercontent.com/d/1syvOQ4wIawxubni3cpT4TaOrNanaDIUy" alt="Hacienda Casablanca" loading="lazy" onclick="openLightbox(this.src)">
+            <img src="https://lh3.googleusercontent.com/d/1k22VZYMpm9yJFVZ-4Z0wdRryioBdLpe5" alt="Hacienda Casablanca" loading="lazy" onclick="openLightbox(this.src)">
+        </div>
 </section>
 
 <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
