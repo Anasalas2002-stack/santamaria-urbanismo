@@ -643,16 +643,16 @@
 
         .awards-list {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            column-gap: 60px;
-            align-items: start;
+            grid-template-columns: 1fr;
+            max-width: 720px;
+            margin: 0 auto;
         }
 
         .award-group {
             margin-top: 50px;
         }
 
-        .award-group:nth-child(-n+2) {
+        .award-group:first-child {
             margin-top: 0;
         }
 
@@ -680,8 +680,8 @@
         }
 
         .award-group-logo img {
-            width: 150px;
-            height: 68px;
+            width: 300px;
+            height: 136px;
             object-fit: contain;
             mix-blend-mode: multiply;
         }
@@ -886,16 +886,9 @@
                 gap: 40px;
             }
 
-            .awards-list {
-                grid-template-columns: 1fr;
-            }
-
-            .award-group:nth-child(-n+2) {
-                margin-top: 50px;
-            }
-
-            .award-group:first-child {
-                margin-top: 0;
+            .award-group-logo img {
+                width: 220px;
+                height: 100px;
             }
 
             .nav-toggle {
