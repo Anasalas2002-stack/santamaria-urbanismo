@@ -642,10 +642,16 @@
         }
 
         .awards-list {
-            display: grid;
-            grid-template-columns: 1fr;
-            max-width: 720px;
+            display: flex;
+            gap: 70px;
+            align-items: flex-start;
+            max-width: 1000px;
             margin: 0 auto;
+        }
+
+        .awards-col {
+            flex: 1;
+            min-width: 0;
         }
 
         .award-group {
@@ -686,7 +692,7 @@
             mix-blend-mode: multiply;
         }
 
-        .award-group:not(:first-child) .award-group-logo img {
+        .award-group:not(.award-group-featured) .award-group-logo img {
             width: 150px;
             height: 68px;
         }
@@ -891,12 +897,21 @@
                 gap: 40px;
             }
 
+            .awards-list {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .awards-col + .awards-col {
+                margin-top: 50px;
+            }
+
             .award-group-logo img {
                 width: 220px;
                 height: 100px;
             }
 
-            .award-group:not(:first-child) .award-group-logo img {
+            .award-group:not(.award-group-featured) .award-group-logo img {
                 width: 110px;
                 height: 50px;
             }
@@ -1266,7 +1281,8 @@
         <div class="container">
             <h2 class="section-title">Reconocimientos</h2>
             <div class="awards-list">
-                <div class="award-group">
+            <div class="awards-col">
+                <div class="award-group award-group-featured">
                     <div class="award-group-header" onclick="this.parentElement.classList.toggle('open')">
                         <div class="award-group-logo">
                             <img src="https://lh3.googleusercontent.com/d/1wbMd4FNLHbVx3N6autUPxsbgVNELgqzU" alt="SCA / CPNAA · Bienal Nacional de Arquitectura">
@@ -1308,9 +1324,11 @@
                     </div>
                     <div class="award-group-items">
                 <div class="award-item"><div class="award-year">2020</div><div class="award-desc">Arq. Camilo Santamaría — Mención de Honor, Premio José Gómez Pinzón por sus servicios a la arquitectura, la ingeniería y la construcción en Colombia.</div></div>
-                
+
                     </div>
                 </div>
+            </div>
+            <div class="awards-col">
                 <div class="award-group">
                     <div class="award-group-header" onclick="this.parentElement.classList.toggle('open')">
                         <div class="award-group-logo">
@@ -1363,6 +1381,7 @@
                 <div class="award-item"><div class="award-year">2004</div><div class="award-desc">Las Margaritas de Suba, Bogotá (Prodesa) — Finalista Categoría Residencial.</div></div>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </section>
