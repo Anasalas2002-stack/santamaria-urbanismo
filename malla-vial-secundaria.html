@@ -26,9 +26,8 @@
         nav a:hover::after { width: 100%; }
         .project-hero-fixed { width: 100%; min-height: 420px; position: relative; background-color: #000; }
         .project-hero-fixed .hero-photo { width: 100%; height: auto; display: block; }
-        .project-hero-fixed::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 280px; background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent); pointer-events: none; z-index: 5; }
         .project-hero-fixed::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 30%; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.65)); pointer-events: none; z-index: 5; }
-        .hero-caption { position: absolute; top: 170px; left: 60px; color: white; z-index: 10; max-width: 620px; border-left: 4px solid white; padding-left: 25px; }
+        .hero-caption { position: absolute; bottom: 30px; left: 60px; color: white; z-index: 10; max-width: 620px; border-left: 4px solid white; padding-left: 25px; }
         .hero-caption .proj-cat { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 3px; color: rgba(255,255,255,0.8); margin-bottom: 8px; }
         .hero-caption h1 { font-size: 2.5rem; font-weight: 300; text-transform: uppercase; letter-spacing: 3px; text-shadow: 0 2px 15px rgba(0,0,0,0.5); line-height: 1.1; }
         .hero-caption .proj-meta { font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-top: 8px; letter-spacing: 1px; }
@@ -39,22 +38,27 @@
         .back-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 40px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; color: #1a1a1a; border: 1px solid #ddd; padding: 12px 20px; transition: 0.3s; }
         .back-link:hover { background: #000; color: white; border-color: #000; }
         .project-body { max-width: 1320px; margin: 0 auto; padding: 60px 60px 0; }
-        .project-body p { max-width: 760px; margin: 0 auto 26px; font-size: 1.05rem; color: #444; line-height: 1.9; }
-        .project-inline-img { max-width: 900px; margin: 0 auto 50px; }
-        .project-inline-img img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; cursor: zoom-in; transition: transform 0.4s ease; }
-        .project-inline-img img:hover { transform: scale(1.02); }
+        .project-row { display: flex; align-items: center; gap: 60px; margin-bottom: 70px; }
+        .project-row.reverse { flex-direction: row-reverse; }
+        .project-row.text-only { justify-content: center; }
+        .project-row .row-text { flex: 1; }
+        .project-row .row-text p { max-width: 620px; font-size: 1.05rem; color: #444; line-height: 1.9; }
+        .project-row.text-only .row-text p { max-width: 760px; margin: 0 auto; }
+        .project-row .row-img { flex: 0 0 520px; }
+        .project-row .row-img img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; cursor: zoom-in; transition: transform 0.4s ease; }
+        .project-row .row-img img:hover { transform: scale(1.02); }
         .project-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(520px, 1fr)); gap: 50px; margin-bottom: 50px; }
         .project-gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; cursor: zoom-in; transition: transform 0.4s ease; }
         .project-gallery img:hover { transform: scale(1.02); }
         .panorama-row { width: 100vw; position: relative; left: 50%; margin-left: -50vw; margin-bottom: 50px; }
         .panorama-row img { width: 100%; height: auto; display: block; cursor: zoom-in; }
-        .next-project { max-width: 1320px; margin: 0 auto; padding: 0 60px 100px; }
-        .next-project-link { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 35px 45px; border: 1px solid #ddd; transition: 0.3s; }
+        .next-project { max-width: 1320px; margin: 0 auto; padding: 0 60px 70px; display: flex; justify-content: flex-end; }
+        .next-project-link { display: inline-flex; align-items: center; gap: 12px; padding: 12px 20px; border: 1px solid #ddd; transition: 0.3s; }
         .next-project-link:hover { background: #000; border-color: #000; color: #fff; }
-        .next-project-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #999; flex: 0 0 auto; }
+        .next-project-label { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 1.5px; color: #999; }
         .next-project-link:hover .next-project-label { color: rgba(255,255,255,0.6); }
-        .next-project-title { font-size: 1.4rem; font-weight: 300; text-transform: uppercase; letter-spacing: 2px; flex: 1; text-align: center; }
-        .next-project-arrow { font-size: 1.4rem; flex: 0 0 auto; }
+        .next-project-title { font-size: 0.82rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
+        .next-project-arrow { font-size: 0.9rem; }
         .lightbox-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 5000; align-items: center; justify-content: center; cursor: zoom-out; }
         .lightbox-overlay.active { display: flex; }
         .lightbox-overlay img { max-width: 90vw; max-height: 90vh; object-fit: contain; box-shadow: 0 10px 40px rgba(0,0,0,0.5); cursor: default; }
@@ -80,18 +84,19 @@
             header.nav-open nav { right: 0; }
             nav ul { flex-direction: column; gap: 26px; width: 100%; }
             nav a { color: #1a1a1a; text-shadow: none; font-size: 0.9rem; }
-            .hero-caption { top: 110px; left: 20px; max-width: calc(100% - 40px); } .hero-caption h1 { font-size: 1.8rem; }
+            .hero-caption { bottom: 40px; left: 20px; max-width: calc(100% - 40px); } .hero-caption h1 { font-size: 1.8rem; }
             .datos-proyecto { padding: 70px 20px 40px; }
             .project-body { padding: 40px 20px 0; }
+            .project-row, .project-row.reverse { flex-direction: column; gap: 25px; margin-bottom: 45px; }
+            .project-row .row-img { flex: 0 0 auto; width: 100%; }
+            .project-row .row-text p { max-width: 100%; }
             .project-gallery { grid-template-columns: 1fr; gap: 30px; }
-            .project-inline-img { margin-bottom: 35px; }
-            .next-project { padding: 0 20px 70px; }
-            .next-project-link { flex-direction: column; gap: 12px; padding: 28px 25px; text-align: center; }
+            .next-project { padding: 0 20px 50px; justify-content: center; }
         }
         @media (max-width: 480px) {
             header, header.scrolled { padding: 15px; }
             .logo img { height: 48px; } header.scrolled .logo img { height: 44px; }
-            .hero-caption { top: 90px; left: 15px; padding-left: 18px; }
+            .hero-caption { bottom: 25px; left: 15px; padding-left: 18px; }
             .hero-caption h1 { font-size: 1.3rem; letter-spacing: 1.5px; }
             .hero-caption .proj-meta { font-size: 0.78rem; }
         }
@@ -136,15 +141,21 @@
 </section>
 
 <section class="project-body">
-        <p>La Malla Vial Intermedia fue concebida como un componente estratégico del sistema de movilidad de Bogotá, destinado a complementar la red arterial principal y fortalecer la conectividad entre las diferentes piezas urbanas de la ciudad. Su formulación abarcó el Centro Metropolitano, el Tejido Residencial Norte, el Tejido Residencial Sur y la Ciudad Sur, territorios que concentran gran parte del desarrollo urbano de la capital.</p>
-        <div class="project-inline-img"><img src="https://lh3.googleusercontent.com/d/1By6l8wLINjpzLKa6iJqmMkPo2yF_NUme" alt="Malla Vial Intermedia" loading="lazy" onclick="openLightbox(this.src)"></div>
-        <p>La propuesta entendió la movilidad como un elemento estructurador del territorio, definiendo una red de corredores de escala zonal capaz de distribuir los flujos de tránsito, mejorar la accesibilidad a los barrios y conectar centralidades, equipamientos y sistemas de transporte. Desde el punto de vista urbanístico, el estudio propuso una red articulada con la estructura territorial definida por el Plan de Ordenamiento Territorial, favoreciendo la integración entre áreas residenciales, zonas de actividad económica, equipamientos y centralidades urbanas. La propuesta incorporó también criterios relacionados con la morfología urbana, la preservación patrimonial, la ciudad de ladera y la relación entre movilidad, espacio público y desarrollo urbano.</p>
-        <p>La propuesta consideró la articulación con los sistemas de transporte público y las rutas alimentadoras, fortaleciendo la cobertura territorial y optimizando los desplazamientos urbanos. Como resultado, se definió una red de aproximadamente 3.300 kilómetros-carril que complementaba la capacidad de la malla arterial y contribuía a una estructura urbana más integrada, accesible y eficiente para Bogotá.</p>
+        <div class="project-row">
+            <div class="row-img"><img src="https://lh3.googleusercontent.com/d/1By6l8wLINjpzLKa6iJqmMkPo2yF_NUme" alt="Malla Vial Intermedia" loading="lazy" onclick="openLightbox(this.src)"></div>
+            <div class="row-text"><p>La Malla Vial Intermedia fue concebida como un componente estratégico del sistema de movilidad de Bogotá, destinado a complementar la red arterial principal y fortalecer la conectividad entre las diferentes piezas urbanas de la ciudad. Su formulación abarcó el Centro Metropolitano, el Tejido Residencial Norte, el Tejido Residencial Sur y la Ciudad Sur, territorios que concentran gran parte del desarrollo urbano de la capital.</p></div>
+        </div>
+        <div class="project-row text-only">
+            <div class="row-text"><p>La propuesta entendió la movilidad como un elemento estructurador del territorio, definiendo una red de corredores de escala zonal capaz de distribuir los flujos de tránsito, mejorar la accesibilidad a los barrios y conectar centralidades, equipamientos y sistemas de transporte. Desde el punto de vista urbanístico, el estudio propuso una red articulada con la estructura territorial definida por el Plan de Ordenamiento Territorial, favoreciendo la integración entre áreas residenciales, zonas de actividad económica, equipamientos y centralidades urbanas. La propuesta incorporó también criterios relacionados con la morfología urbana, la preservación patrimonial, la ciudad de ladera y la relación entre movilidad, espacio público y desarrollo urbano.</p></div>
+        </div>
+        <div class="project-row text-only">
+            <div class="row-text"><p>La propuesta consideró la articulación con los sistemas de transporte público y las rutas alimentadoras, fortaleciendo la cobertura territorial y optimizando los desplazamientos urbanos. Como resultado, se definió una red de aproximadamente 3.300 kilómetros-carril que complementaba la capacidad de la malla arterial y contribuía a una estructura urbana más integrada, accesible y eficiente para Bogotá.</p></div>
+        </div>
 </section>
 
 <section class="next-project">
     <a href="cable-bogota.html" class="next-project-link">
-        <span class="next-project-label">Siguiente proyecto</span>
+        <span class="next-project-label">Siguiente:</span>
         <span class="next-project-title">TransMiCable</span>
         <span class="next-project-arrow">&#8594;</span>
     </a>
